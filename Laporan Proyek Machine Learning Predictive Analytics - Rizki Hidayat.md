@@ -129,6 +129,19 @@ Barplot untuk fitur 'cp' adalah :
 
 ![Barplot_cp](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/fb1174e91dd23b9631a2f1a53918ac1a7d3a3f3f/Image/bar_plot_cp.png 'Bar Plot - cp')
 
+48,8% pasien memiliki sakit dada asymptomatic 22,9% pasien memiliki sakit dada non-anginal, 22,7%  pasien memiliki sakit dada atypical anginan, and sisanya meiliki sakit dada typical angina
+
+##### fbs (Kadar gula darah puasa)
+Barplot untuk fitur 'fbs' adalah:
+
+![Barplot_cp](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/27c164f499f3f97dc326a83c242a75bcaa06eb04/Image/bar_plot_fbs.png 'Bar Plot - fbs')
+
+Kebanyakan pasien tidak memiliki gula darah puasa > 120 mg/dl, dengan 83,7% pesentase.
+
+##### restecg (Hasil elevtrokardiografi saat istirahat)
+Barplot untuk 'restecg' adalah:
+
+![Barplot_restecg](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/27c164f499f3f97dc326a83c242a75bcaa06eb04/Image/bar_plot_restecg.png 'Bar Plot - restecg')
 
 
 
