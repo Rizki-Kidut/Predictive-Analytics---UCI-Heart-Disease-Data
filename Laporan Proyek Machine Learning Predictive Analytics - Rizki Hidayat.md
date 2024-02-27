@@ -139,9 +139,41 @@ Barplot untuk fitur 'fbs' adalah:
 Kebanyakan pasien tidak memiliki gula darah puasa > 120 mg/dl, dengan 83,7% pesentase.
 
 ##### restecg (Hasil elevtrokardiografi saat istirahat)
-Barplot untuk 'restecg' adalah:
+Barplot untuk fitur 'restecg' adalah:
 
 ![Barplot_restecg](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/27c164f499f3f97dc326a83c242a75bcaa06eb04/Image/bar_plot_restecg.png 'Bar Plot - restecg')
+
+Setengah dari total pasien memiliki hasil normal, dimana 23,6% pasien lainnya memilki hasil Iv hypertrophy dan sisanya memiliki hasil st-t abnormality.
+
+##### exang (Angina akibat olah raga)
+Barplot untuk fitur 'exang' adalah:
+
+![Barplot_exang](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/e50cd5d6044dbeb19a1796d85cded6fd9105283e/Image/bar_plot_exang.png 'Bar Plot - exang')
+
+62,1% pasien tidak memiliki angina yang diakibatkan dari olehraga, sedangkan sisanya memilikinya.
+
+##### slope (kemiringan puncak latihan segmen ST)
+Barplot untuk fitur 'slope' adalah:
+
+![Barplot_slope](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/e50cd5d6044dbeb19a1796d85cded6fd9105283e/Image/bar_plot_slope.png 'Bar Plot - slope')
+
+Mayoritas pasien memiliki kemiringan puncak latihan segmen ST flat and upsloping dengan 47,9% dan 45,5% persentase, sedangkan sisanya memiliki kemiringan puncak latihan segmen ST downsloping.
+
+##### ca (jumlah pembuluh darah utama diwarnai oleh flouroskopi)
+Barplot untuk fitur 'ca' adalah:
+
+![Barplot_ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/e50cd5d6044dbeb19a1796d85cded6fd9105283e/Image/bar_plot_ca.png 'Bar Plot - ca')
+
+Kebanyakan dari pasien memiliki jumlah pembuluh darah utama 0 dengen 70,7% persentase, dimana sisanya 19% memiliki jumlah 1, 7,7% memiliki jumlah  2 and 2,6% memiliki jumlah 3 pembuluh darah utama.
+
+##### thal (Thalassemia)
+Barplot untuk fitur 'tal' adalah:
+
+![Barplot_thal](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/e50cd5d6044dbeb19a1796d85cded6fd9105283e/Image/bar_plot_thal.png 'Bar Plot - thal')
+
+Kebanyakan pasien memiliki thalasemia normal and reversible defect dengan 48,5% and 45,9% persentase, sisanya memilki thalasemia fixed defect
+
+####Univeariate Analisis 
 
 
 
