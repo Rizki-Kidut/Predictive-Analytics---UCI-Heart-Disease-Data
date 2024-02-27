@@ -173,9 +173,45 @@ Barplot untuk fitur 'tal' adalah:
 
 Kebanyakan pasien memiliki thalasemia normal and reversible defect dengan 48,5% and 45,9% persentase, sisanya memilki thalasemia fixed defect
 
-####Univeariate Analisis 
+#### Univeariate Analysis - Fitur Numerik
+Analisis ini dilakukan dengan menggunakan histogram untuk fitur numerik.
+Fitur - fitur numerik pada dataset ini adalah : ['age','trestbps','chol','thalch','oldpeak']
 
+Data histogram untuk fitur numerik adalah:
 
+![Histogram](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d129dfd39a2646f6c631ef152ce5948192d77c99/Image/histogram.png 'Histogram')
+
+Dari histogram diatas dapat disimpulkan:
+
+1. **Age  :** Puncak dari data berada di akhir 50 an sampai 60 an
+2. **Trest bps (Tekanan Darah) :** Data terkonsentrasi pada kisaran 120-140 mmHg
+3. **Chol (Serum Kolestrol)  :** Kebanyakan pasien memiliki nilai Kolestrol antara 200 - 300
+4. **Thalch (Detak jantung maksimal yang dicapai)  :** MMayoritas pasien memperoleh nilai detak jantung 125 - 175 bpm selama tes.
+5. **Oldpeak (ST depresi yang diakibatkan oleh latihan)  :** Kebanyakan nilai terkonsentrasi pada nilai 0, hal ini mengindikasikan bahwa pasien tidak mengalami ST depresi yang signifikan selama latihan
+
+### Bivariate Analysis
+
+Setelah melakukan univariate analyisis, selanjutnya dilakukan bivariate analayisis.
+1. Untuk data numerik: Mengguankan bar plots untuk menunjukkan nilai rata rata dari tiap fitur terhadap target, dan  KDE plots untuk memahami distribusi masing masing fitur terhadap target. Hal ini membantu dalam memahami bagaimana setiap fitur bervariasi antara dua hasil target.
+
+2. Untuk data kategori : Untuk melihat korelasi antara nilai kategori terhadap nilai target, digunakan Chi-square test of independence. Uji statistik ini menilai apakah terdapat hubungan yang signifikan antara dua variabel kategori.
+
+#### Bivariate Analysis - Data numerik vs Target
+
+Plot untuk Bivariate Analysis - Data numerik vs Target adalah sebagai berikut:
+
+![Numerik vs Target](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d129dfd39a2646f6c631ef152ce5948192d77c99/Image/continous%20features%20vs%20target.png 'Numerik vs Target')
+
+**Kesimpulan:**
+
+1. Usia (usia): Distribusinya menunjukkan sedikit perubahan dengan rata-rata pasien yang menderita penyakit jantung sedikit lebih muda dibandingkan mereka yang tidak menderita penyakit jantung. Usia rata-rata pasien tanpa penyakit jantung lebih tinggi.
+2. Tekanan Darah Saat Istirahat (trestbps): Kedua kategori menampilkan distribusi yang tumpang tindih dalam plot KDE, dengan nilai rata-rata yang hampir sama, menunjukkan terbatasnya daya pembeda untuk fitur ini.
+3. Kolesterol Serum (kol): Distribusi kadar kolesterol untuk kedua kategori tersebut cukup dekat, namun rata-rata kadar kolesterol pada pasien penyakit jantung sedikit lebih rendah.
+4. Pencapaian Denyut Jantung Maksimum (thalach): Ada perbedaan nyata dalam distribusi. Pasien dengan penyakit jantung cenderung mencapai detak jantung maksimum yang lebih tinggi selama tes stres dibandingkan dengan mereka yang tidak menderita penyakit jantung.
+5. ST Depresi (oldpeak): Depresi ST yang disebabkan oleh olahraga relatif lebih rendah pada pasien dengan penyakit jantung. Sebarannya mencapai puncaknya mendekati nol, sedangkan kategori non-penyakit memiliki penyebaran yang lebih luas.
+------------------------
+Berdasarkan perbedaan visual dalam distribusi dan nilai rata-rata, Denyut Jantung Maksimum (thalach) tampaknya memiliki dampak paling besar terhadap status penyakit jantung, diikuti oleh ST Depresi (puncak lama) dan Usia (usia).
+​
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
