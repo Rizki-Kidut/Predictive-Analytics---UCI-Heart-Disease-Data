@@ -119,7 +119,15 @@ Fitur - fitur kategori pada dataset ini adalah : ['sex','cp','fbs','restecg','ex
 
 ##### Sex (Jenis kelamin)
 Barplot untuk fitur 'sex' adalah :
-![Barplot_sex]('https://drive.google.com/uc?export=download&id=1kKmgybz_wzX6Jj0G_tnpY014NVVureXr')
+
+![Barplot_sex](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/fb1174e91dd23b9631a2f1a53918ac1a7d3a3f3f/Image/bar_plot_sex.png 'Bar Plot - Sex')
+
+Dari plot diatas dapat diketahui bahwa dataset didominasi oleh pasien Pria, dengan jumlah 551 pasein dan perentase 75,7%.
+
+##### Cp (Jenis sakit jantung)
+Barplot untuk fitur 'cp' adalah :
+
+![Barplot_cp](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/fb1174e91dd23b9631a2f1a53918ac1a7d3a3f3f/Image/bar_plot_cp.png 'Bar Plot - cp')
 
 
 
