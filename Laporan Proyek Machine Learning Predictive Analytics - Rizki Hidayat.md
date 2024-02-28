@@ -204,14 +204,84 @@ Plot untuk Bivariate Analysis - Data numerik vs Target adalah sebagai berikut:
 
 **Kesimpulan:**
 
-1. Usia (usia): Distribusinya menunjukkan sedikit perubahan dengan rata-rata pasien yang menderita penyakit jantung sedikit lebih muda dibandingkan mereka yang tidak menderita penyakit jantung. Usia rata-rata pasien tanpa penyakit jantung lebih tinggi.
+1. Usia (age): Distribusinya menunjukkan sedikit perubahan dengan rata-rata pasien yang menderita penyakit jantung sedikit lebih muda dibandingkan mereka yang tidak menderita penyakit jantung. Usia rata-rata pasien tanpa penyakit jantung lebih tinggi.
 2. Tekanan Darah Saat Istirahat (trestbps): Kedua kategori menampilkan distribusi yang tumpang tindih dalam plot KDE, dengan nilai rata-rata yang hampir sama, menunjukkan terbatasnya daya pembeda untuk fitur ini.
-3. Kolesterol Serum (kol): Distribusi kadar kolesterol untuk kedua kategori tersebut cukup dekat, namun rata-rata kadar kolesterol pada pasien penyakit jantung sedikit lebih rendah.
+3. Kolesterol Serum (chol): Distribusi kadar kolesterol untuk kedua kategori tersebut cukup dekat, namun rata-rata kadar kolesterol pada pasien penyakit jantung sedikit lebih rendah.
 4. Pencapaian Denyut Jantung Maksimum (thalach): Ada perbedaan nyata dalam distribusi. Pasien dengan penyakit jantung cenderung mencapai detak jantung maksimum yang lebih tinggi selama tes stres dibandingkan dengan mereka yang tidak menderita penyakit jantung.
 5. ST Depresi (oldpeak): Depresi ST yang disebabkan oleh olahraga relatif lebih rendah pada pasien dengan penyakit jantung. Sebarannya mencapai puncaknya mendekati nol, sedangkan kategori non-penyakit memiliki penyebaran yang lebih luas.
 ------------------------
-Berdasarkan perbedaan visual dalam distribusi dan nilai rata-rata, Denyut Jantung Maksimum (thalach) tampaknya memiliki dampak paling besar terhadap status penyakit jantung, diikuti oleh ST Depresi (puncak lama) dan Usia (usia).
-​
+Berdasarkan perbedaan visual dalam distribusi dan nilai rata-rata, Denyut Jantung Maksimum (thalach) tampaknya memiliki dampak paling besar terhadap status penyakit jantung, diikuti oleh ST Depresi (oldpeak) dan Usia (age).
+
+Selain menggunakan Bar Plot dan KDE Plot, digunakan juga Correlation Matrix untuk melihat korelasi antar data numerik.
+
+![Correlation Matrix](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/correlation%20matrix.png 'Correlation Matrix')
+
+**Kesimpulan:**
+
+Dari correlation matrix, ca (Number of major vessels (0-3) colored by fluoroscopy) adalah fitur pertama yang memiliki korelasi yang kuat dengan nilai target, dengan oldpeak (ST Depression) di urutan kedua dan age di urutan ketiga.
+
+#### Bivariate Analysis - Data kategori vs Target
+​Hasil Chi-square test of independence untuk data kategori adalah sebagai berikut:
+
+![Obbserved sex](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_sex.png 'Obbserved sex')
+
+Chi-square statistic for sex: 65.9822706513826
+
+p-value for sex: 1.5977088721905247e-13
+
+![Obbserved cp](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_sex.png 'Obbserved cp')
+
+Chi-square statistic for cp: 212.4106179794831
+
+p-value for cp: 8.869629556756493e-39
+
+![Obbserved fbs](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_fbs.png 'Obbserved fbs')
+
+Chi-square statistic for fbs: 28.39522630288068
+
+p-value for fbs: 1.03712317210912e-05
+
+![Obbserved restecg](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_restecg.png 'Obbserved rest ecg')
+
+Chi-square statistic for restecg: 41.2837747903622
+
+p-value for restecg: 1.8447365567425365e-06
+
+![Obbserved exang](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_exang.png 'Obbserved exang')
+
+Chi-square statistic for exang: 194.00745483156376
+
+p-value for exang: 7.295567046348765e-41
+
+![Obbserved slope](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_slope.png 'Obbserved slope')
+
+Chi-square statistic for slope: 281.339671416197
+
+p-value for slope: 3.833652276746616e-56
+
+![Obbserved ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_ca.png 'Obbserved ca')
+
+Chi-square statistic for ca: 299.2114011632948
+
+p-value for ca: 6.875267359872916e-57
+
+![Obbserved thal](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_thal.png 'Obbserved thal')
+
+Chi-square statistic for thal: 284.85474944248324
+
+p-value for thal: 6.860971388362645e-57
+
+Inferences:
+
+1. Sex : There are 170 Men patients with level 1 heart dissease, and 20 Men patients has level 4 heart dissease, while most of Men patients doesn't have heart dissease.
+2. Cp : Most of patients with asymptomatic chest pain have heart dissease with 141 patients with level 1, 53 patients with level 2, 51 patients with level 3, and 17 patients with level 4 heart disease. While most of patients with atypical angina don't have heart dissease.
+3. Fbs : Majority of patients without fasting blood sugar > 120 mg/dl, don't have heart dissease,but most of patients with fasting blood sugar > 120 mg/dl, have heart dissease
+4. Restecg (Resting Electrocardiographic Results) : Most of patients with normal restecg don't have heart dissease while majority patients with IV Hyperthropy and st-abnormality have heart dissease
+5. Exang (Exercise-Induced Angina) : Majority of patients without excercise-induced angina don't have heart dissease while most of patients with it have level 1 heart dissese (116 patients)
+6. Slope (The slope of the peak exercise ST segment) : Majority patients with slope flat have heart dissease from level 1 (142 patients), level 2 & level 3 ( both 44 patients) and level 4 (11 patients), while most of patient with upslopping don't have heart dissease
+7. Ca (Number of major vessels (0-3) colored by fluoroscopy) : Majority of patient with 0 major vessels don't have heart dissease, while the most patients with 1,2,3 level have heart dissesase
+8. Thal (Thalassemia) : Most of patients with reversible defect have heart dissease, while patients with normal thal don't have heart dissease
+
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
