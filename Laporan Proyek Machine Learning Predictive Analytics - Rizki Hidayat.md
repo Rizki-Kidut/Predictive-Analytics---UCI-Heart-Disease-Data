@@ -271,20 +271,31 @@ Chi-square statistic for thal: 284.85474944248324
 
 p-value for thal: 6.860971388362645e-57
 
-Inferences:
+**Kesimpulan:**
 
-1. Sex : There are 170 Men patients with level 1 heart dissease, and 20 Men patients has level 4 heart dissease, while most of Men patients doesn't have heart dissease.
-2. Cp : Most of patients with asymptomatic chest pain have heart dissease with 141 patients with level 1, 53 patients with level 2, 51 patients with level 3, and 17 patients with level 4 heart disease. While most of patients with atypical angina don't have heart dissease.
-3. Fbs : Majority of patients without fasting blood sugar > 120 mg/dl, don't have heart dissease,but most of patients with fasting blood sugar > 120 mg/dl, have heart dissease
-4. Restecg (Resting Electrocardiographic Results) : Most of patients with normal restecg don't have heart dissease while majority patients with IV Hyperthropy and st-abnormality have heart dissease
-5. Exang (Exercise-Induced Angina) : Majority of patients without excercise-induced angina don't have heart dissease while most of patients with it have level 1 heart dissese (116 patients)
-6. Slope (The slope of the peak exercise ST segment) : Majority patients with slope flat have heart dissease from level 1 (142 patients), level 2 & level 3 ( both 44 patients) and level 4 (11 patients), while most of patient with upslopping don't have heart dissease
-7. Ca (Number of major vessels (0-3) colored by fluoroscopy) : Majority of patient with 0 major vessels don't have heart dissease, while the most patients with 1,2,3 level have heart dissesase
-8. Thal (Thalassemia) : Most of patients with reversible defect have heart dissease, while patients with normal thal don't have heart dissease
+1. Sex : Terdapat 170 pasien Pria dengan penyakit jantung Level 1, dan 20 pasien pria dengan penyakit jantung Level 4, sedangkan kebanyakan pasien Pria tidak memiliki penyakit jantung.
+2. Cp : Kebanyakan pasien Pria dengan sakit dada asymptomatic memiliki penyakit jantung, dengan 141 pasien dengan penyakit jantung Level 1, 53 pasien dengan penyakit jantung Level 2, 51 pasien dengan penyakit jantung Level 3, dan 17 pasien dengan penyakit jantung Level 4. Sementara kebanyakan pasien dengan sakit dada atypical angina tidak memiliki penyakit jantung.
+3. Fbs : Mayoritas pasien tanpa gula darah puasa > 120 mg/dl, tidak memiliki penyakit jantung,tetapi kebanyakan pasien dengan gula darah puasa > 120 mg/dl, memiliki penyakit jantung.
+4. Restecg (Hasil Resting Electrocardiographic) : Kebanyakan pasien dengan restecg normal tidak memiliki penyakit jantung sementara mayoritas pasien dengan IV Hyperthropy dan st-abnormality memiliki penyakit jantung.
+5. Exang (Angina yang timbul karena latihan) : Mayoritas pasien tanpa exang tidak memiliki penyakit jantung sementara pasien dengan exang memiliki penyakit jantung level 1 (116 pasien)
+6. Slope (kemiringan puncak latihan segmen ST) : Mayoritas pasien dengan slope flat memiliki penyakit jantung dari level 1 (142 pasien), level 2 & level 3 ( keduanya 44 pasien) dan level 4 (11 pasien), sementara sebagian pasien dengan upslopping tidak memiliki penyakit jantung
+7. Ca (jumlah pembuluh darah utama (0-3) diwarnai oleh flouroskopi) : Mayoritas pasien dengan pembuluh darah utama 0 tidak memiliki penyakit jantung, sementara pasien dengan pembuluh darah utama 1,2 dan 3 memiliki penyakit jantung
+8. Thal (Thalassemia) : Kebanyakan pasein dengan reversible defect memiliki penyakit jantung, sementara pasien dengan normal thal tidak memiliki penyakit jantung
 
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+Setelah dilakukan pengecekan pada data set, masih terdapat missing values dan otliers pada data set.
+Maka proses data preparation yang dilakukan adalah sebagai barikut:
+
+1. Menangani Missing values, tahapan proses yang dilakukan antara lain:
+   - Melakukan inspeksi missing values pada dataset
+   - Penangan missing values dengan metode Iterative Imputer
+   - Cek hasil penangan missing values
+2. Menangani Outliers, tahapan proses yang dilakukan antara lain:
+   - Melakukan inspeksi outliers dengan metode IQR
+   - Melakukan visualisasi outliers dengan Box Plot
+   - Melakukan penanganan outliers satu per satu pada fitur
+   - Cek hasil penanganan outliers
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan proses data preparation yang dilakukan
