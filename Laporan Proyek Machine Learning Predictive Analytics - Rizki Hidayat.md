@@ -298,6 +298,109 @@ Maka proses data preparation yang dilakukan adalah sebagai barikut:
    - Cek hasil penanganan outliers
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
+Adapun detail dari proses-proses tersebut adalah sebagai berikut:
+
+1. Menangani Missing Values
+   - Inspeksi missing values pada dataset
+     Sebelum menangani missing values, missing values pada data perlu di inspeksi terlebih dahulu.
+     Missing values pada dataset dapat dilihat dengan fungsi di bawah ini
+     
+     ```
+     data.isnull()
+     ```
+     
+     Pada inspeksi kali ini, digunakan code berikut:
+     ```
+     heart_data.isnull().sum()
+     ```
+     Hal ini bertujuan untuk menjumalahkan nilai missing values, sehingga dapat diketahui total missing values pada data.
+     Hasil dari kode diatas adalah sebagai berikut:
+     
+     | Fitur  | Missing Values|
+     | ------ | ------ |
+     |age     |       0|
+     |sex     |       0|
+     |cp      |       0|
+     |trestbps|      59|
+     |chol    |      30|
+     |fbs     |      90|
+     |restecg |       2|
+     |thalch  |      55|
+     |exang   |      55|
+     |oldpeak |      62|
+     |slope   |     309|
+     |ca      |     611|
+     |thal    |     486|
+     |num     |       0|
+
+     dtype: int64
+
+     Dari hasil perhitungan kode diatas, dapat dilihat bahwa terdapat banyak missing values pada dataset yang perlu ditangani.
+     Untuk memastikan proporsi missing values pada dataset dapat digunakan kode berikut:
+     ```
+     round((heart_data.isnull().sum()[heart_data.isnull().sum()>0]/len(heart_data)*100),1).sort_values(ascending=False)
+     ```
+     Didapat Proporsi missing values sebegai berikut:
+     | Fitur  | Persentase|
+     | ------ | ------ |
+     |ca       |  66.4  |
+     |thal     |   52.8 |
+     |slope    |   33.6 |
+     |fbs      |    9.8 |
+     |oldpeak  |    6.7 |
+     |trestbps |    6.4 |
+     |thalch   |    6.0 |
+     |exang    |    6.0 |
+     |chol     |    3.3 |
+     |restecg  |    0.2 |
+     
+     dtype: float64
+     
+     Dari hasil inspeksi, diketahui:
+
+     - Terdapat 10 fitur dengan missing values.
+     - 7 fitur memiliki persentase missing values dibawah 10%.
+     - 3 fitur memiliki persentase missing values yang tinggi (30%, 50%, 60%).
+
+
+     Dikarenakan jumlah persentase missing values yang cukup tinggi, metode yang dipilih untuk menangani missing values tersebut adalah metode Iterative Imputer dengan menggunakan model machine learning Random Forest Classifier dan Random Forest Regressor.
+ - Penangan missing values dengan metode Iterative Imputer
+   
+   Adapun metode Itearative Imputer mengacu pada proses di mana setiap fitur dimodelkan sebagai fungsi dari fitur lainnya, misalnya. masalah regresi di mana nilai yang hilang diperkirakan. Setiap fitur diperhitungkan secara berurutan, satu demi satu, sehingga nilai yang diperhitungkan sebelumnya dapat digunakan sebagai bagian dari model dalam memprediksi fitur berikutnya.
+
+   Hal ini bersifat iteratif karena proses ini diulang beberapa kali, sehingga estimasi nilai yang hilang dapat dihitung dengan lebih baik seiring dengan estimasi nilai yang hilang di seluruh fitur.
+
+   Algoritme regresi yang berbeda dapat digunakan untuk memperkirakan nilai yang hilang untuk setiap fitur, meskipun metode linier sering kali digunakan untuk kesederhanaan. Jumlah iterasi suatu prosedur seringkali dibuat kecil, misalnya 10. Terakhir, urutan fitur yang diproses secara berurutan dapat dipertimbangkan, seperti dari fitur dengan nilai yang hilang paling sedikit ke fitur dengan nilai yang hilang paling banyak.
+​
+ - Cek hasil penangan missing values
+   
+   Setelah dilakukan proses Iterative Imputer tersebut, hasil pengecekan missing values mendapatkan hasil sebagai berikut:
+
+     | Fitur  | Missing Values|
+     | ------ | ------ |
+     |age     |       0|
+     |sex     |       0|
+     |cp      |       0|
+     |trestbps|       0|
+     |chol    |       0|
+     |fbs     |       0|
+     |restecg |       0|
+     |thalch  |       0|
+     |exang   |       0|
+     |oldpeak |       0|
+     |slope   |       0|
+     |ca      |       0|
+     |thal    |       0|
+     |num     |       0|
+
+     dtype: int64
+
+   Missing values adalah masalah umum dalam proyek pembelajaran mesin dan ilmu data. Kegagalan dalam menangani data yang hilang dengan benar dapat mengganggu hasil model machine learning atau mengurangi akurasi model. Untuk mengatasi hambatan ini, perlu dilakukan penanganan nilai-nilai yang hilang secara hati-hati. Tujuan dari penanganan missing values adalah membuat kumpulan data lengkap yang akan menempatkan analisis pada landasan yang kokoh. Mengabaikan data yang hilang dapat secara langsung memengaruhi performa dan keandalan dari model .
+​
+   
+     
+
+  
 - Menjelaskan proses data preparation yang dilakukan
 - Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
 
