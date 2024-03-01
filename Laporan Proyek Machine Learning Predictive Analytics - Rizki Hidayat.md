@@ -435,7 +435,22 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
       |num      |     0 |
       
       dtype: int64
-   
+      
+   - Melakukan visualisasi outliers dengan Box Plot
+     Untuk melihat lebih detail sebaran outliers pada data set, dapat dilakukan visualisasi dengan menggunakan Box Plot.
+     Box plot juga dikenal sebagai box-and-whisker plot, adalah grafik yang menunjukkan sebaran data untuk variabel kontinu. Ini adalah metode non-parametrik yang menampilkan variasi sampel populasi statistik tanpa membuat asumsi apa pun tentang distribusi statistik yang mendasarinya.
+     Berikut adalah bagian dasar dari Box Plot:
+     1. Garis tengah dalam kotak menunjukkan median data. Setengah dari data berada di atas nilai ini, dan setengahnya lagi di bawah. Jika datanya simetris maka mediannya berada di tengah kotak. Jika datanya miring, mediannya akan lebih dekat ke atas atau ke bawah kotak.
+     2. Bagian bawah dan atas kotak menunjukkan kuantil atau persentil ke-25 dan ke-75. Kedua kuantil ini juga disebut kuartil karena masing-masing kuantil memotong seperempat (25%) data. Panjang kotak merupakan selisih antara kedua persentil tersebut dan disebut rentang interkuartil (IQR).
+     3. Garis yang memanjang dari kotak disebut whiskers. Whiskers mewakili variasi data yang diharapkan. Whiskers memanjang 1,5 kali IQR dari atas dan bawah kotak. Jika data tidak sampai ke ujung whiskers, maka whiskers meluas ke nilai data minimum dan maksimum.
+     4. Jika ada nilai yang berada di atas atau di bawah ujung whiskers, nilai tersebut diplot sebagai titik. Titik-titik ini sering disebut outlier. Pencilan lebih ekstrem dibandingkan variasi yang diharapkan. Poin data ini layak untuk ditinjau untuk menentukan apakah data tersebut merupakan outlier atau kesalahan; whiskers tidak akan menyertakan outlier ini.
+     Box plot untuk data yang mengandung outliers adalah sebagai berikut:
+     ![Box plot trestbps](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_trestbps.png 'Box plot trestbps')
+     ![Box plot chol](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_chol.png 'Box plot chol')
+     ![Box plot thalch](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_thalch.png 'Box plot thalch')
+     ![Box plot oldpeak](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_oldpeak.png 'Box plot oldpeak')
+     ![Box plot ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_ca.png 'Box plot ca')
+     
      
 
   
