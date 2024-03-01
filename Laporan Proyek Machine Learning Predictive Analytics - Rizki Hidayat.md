@@ -364,17 +364,17 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
 
 
      Dikarenakan jumlah persentase missing values yang cukup tinggi, metode yang dipilih untuk menangani missing values tersebut adalah metode Iterative Imputer dengan menggunakan model machine learning Random Forest Classifier dan Random Forest Regressor.
- - Penangan missing values dengan metode Iterative Imputer
+   - Penangan missing values dengan metode Iterative Imputer
    
-   Adapun metode Iterative Imputer mengacu pada proses di mana setiap fitur dimodelkan sebagai fungsi dari fitur lainnya, misalnya. masalah regresi di mana nilai yang hilang diperkirakan. Setiap fitur diperhitungkan secara berurutan, satu demi satu, sehingga nilai yang diperhitungkan sebelumnya dapat digunakan sebagai bagian dari model dalam memprediksi fitur berikutnya.
+     Adapun metode Iterative Imputer mengacu pada proses di mana setiap fitur dimodelkan sebagai fungsi dari fitur lainnya, misalnya. masalah regresi di mana nilai yang hilang diperkirakan. Setiap fitur diperhitungkan secara berurutan, satu demi satu, sehingga nilai yang diperhitungkan sebelumnya dapat digunakan sebagai bagian dari model dalam memprediksi fitur berikutnya.
 
-   Hal ini bersifat iteratif karena proses ini diulang beberapa kali, sehingga estimasi nilai yang hilang dapat dihitung dengan lebih baik seiring dengan estimasi nilai yang hilang di seluruh fitur.
+     Hal ini bersifat iteratif karena proses ini diulang beberapa kali, sehingga estimasi nilai yang hilang dapat dihitung dengan lebih baik seiring dengan estimasi nilai yang hilang di seluruh fitur.
 
-   Algoritma regresi yang berbeda dapat digunakan untuk memperkirakan nilai yang hilang untuk setiap fitur, meskipun metode linier sering kali digunakan untuk kesederhanaan. Jumlah iterasi suatu prosedur seringkali dibuat kecil, misalnya 10. Terakhir, urutan fitur yang diproses secara berurutan dapat dipertimbangkan, seperti dari fitur dengan nilai yang hilang paling sedikit ke fitur dengan nilai yang hilang paling banyak.
+     Algoritma regresi yang berbeda dapat digunakan untuk memperkirakan nilai yang hilang untuk setiap fitur, meskipun metode linier sering kali digunakan untuk kesederhanaan. Jumlah iterasi suatu prosedur seringkali dibuat kecil, misalnya 10. Terakhir, urutan fitur yang diproses secara berurutan dapat dipertimbangkan, seperti dari fitur dengan nilai yang hilang paling sedikit ke fitur dengan nilai yang hilang paling banyak.
 ​
- - Cek hasil penangan missing values
+   - Cek hasil penangan missing values
    
-   Setelah dilakukan proses Iterative Imputer tersebut, hasil pengecekan missing values mendapatkan hasil sebagai berikut:
+     Setelah dilakukan proses Iterative Imputer tersebut, hasil pengecekan missing values mendapatkan hasil sebagai berikut:
 
      | Fitur  | Missing Values|
      | ------ | ------ |
@@ -395,46 +395,46 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
 
      dtype: int64
 
-   Missing values adalah masalah umum dalam proyek pembelajaran mesin dan ilmu data. Kegagalan dalam menangani data yang hilang dengan benar dapat mengganggu hasil model machine learning atau mengurangi akurasi model. Untuk mengatasi hambatan ini, perlu dilakukan penanganan nilai-nilai yang hilang secara hati-hati. Tujuan dari penanganan missing values adalah membuat kumpulan data lengkap yang akan menempatkan analisis pada landasan yang kokoh. Mengabaikan data yang hilang dapat secara langsung memengaruhi performa dan keandalan dari model .
+     Missing values adalah masalah umum dalam proyek pembelajaran mesin dan ilmu data. Kegagalan dalam menangani data yang hilang dengan benar dapat mengganggu hasil model machine learning atau mengurangi akurasi model. Untuk mengatasi hambatan ini, perlu dilakukan penanganan nilai-nilai yang hilang secara hati-hati. Tujuan dari penanganan missing values adalah membuat kumpulan data lengkap yang akan menempatkan analisis pada landasan yang kokoh. Mengabaikan data yang hilang dapat secara langsung memengaruhi performa dan keandalan dari model .
 ​
 2. Menangani Outliers,
-    - Melakukan inspeksi outliers dengan metode IQR
-      IQR adalah interquartile range atau rentang akar kuartil dari sekumpulan data. IQR digunakan dalam analisis statistik untuk membantu menarik kesimpulan mengenai sekumpulan data. IQR lebih sering digunakan daripada range karena IQR tidak menyertakan data paling luar.
-      Secara matematis, IQR dapat dirumuskan sebagai berikut:
-      <p align="center">
-      $IQR = Q3 - Q1$
-      </p>
+   - Melakukan inspeksi outliers dengan metode IQR
+     IQR adalah interquartile range atau rentang akar kuartil dari sekumpulan data. IQR digunakan dalam analisis statistik untuk membantu menarik kesimpulan mengenai sekumpulan data. IQR lebih sering digunakan daripada range karena IQR tidak menyertakan data paling luar.
+     Secara matematis, IQR dapat dirumuskan sebagai berikut:
+     <p align="center">
+     $IQR = Q3 - Q1$
+     </p>
 
-      Dengan Q1 adalah nilai di antara median dengan data terkecil atau dapat dikatakan *25th Percentile* sedang Q3 adalah nilai di antara median dengan data terbesar atau dapat dikatakan *75th Percentile*. Untuk menentukan outliers, perlu di tetapkan nilai batas atas dan batas bawah. Adapun rumus untuk batas atas dan batas bawah adalah:
+     Dengan Q1 adalah nilai di antara median dengan data terkecil atau dapat dikatakan *25th Percentile* sedang Q3 adalah nilai di antara median dengan data terbesar atau dapat dikatakan *75th Percentile*. Untuk menentukan outliers, perlu di tetapkan nilai batas atas dan batas bawah. Adapun rumus untuk batas atas dan batas bawah adalah:
 
-      <p align="center">
-      $Batas Atas = Q3 + 1.5 * IQR$
-      </p>
-      <p align="center">
-      $Batas Bawah = Q1 - 1.5 * IQR$
-      </p>
+     <p align="center">
+     $Batas Atas = Q3 + 1.5 * IQR$
+     </p>
+     <p align="center">
+     $Batas Bawah = Q1 - 1.5 * IQR$
+     </p>
 
-      Maka untuk data set ini jumlah outliernya dapat ditentukan dengan kode berikut:
-      ```
-      Q1 = heart_data[num_cols].quantile(0.25)
-      Q3 = heart_data[num_cols].quantile(0.75)
-      IQR = Q3 - Q1
-      outliers_count_specified = ((heart_data[num_cols] < (Q1 - 1.5 * IQR)) | (heart_data[num_cols] > (Q3 + 1.5 * IQR))).sum()
+     Maka untuk data set ini jumlah outliernya dapat ditentukan dengan kode berikut:
+     ```
+     Q1 = heart_data[num_cols].quantile(0.25)
+     Q3 = heart_data[num_cols].quantile(0.75)
+     IQR = Q3 - Q1
+     outliers_count_specified = ((heart_data[num_cols] < (Q1 - 1.5 * IQR)) | (heart_data[num_cols] > (Q3 + 1.5 * IQR))).sum()
       
-      outliers_count_specified
-      ```
-      Hasil nya adalah sebagai berikut:
-      | Fitur  | Outliers|
-      | ------ | ------ |
-      |age       |    0 |
-      |trestbps |    28 |
-      |chol     |   185 | 
-      |thalch   |    2 | 
-      |oldpeak  |     3 |
-      |ca       |    22 | 
-      |num      |     0 |
+     outliers_count_specified
+     ```
+     Hasil nya adalah sebagai berikut:
+     | Fitur  | Outliers|
+     | ------ | ------ |
+     |age      |    0  |
+     |trestbps |    28 |
+     |chol     |   185 | 
+     |thalch   |    2 | 
+     |oldpeak  |     3 |
+     |ca       |    22 | 
+     |num      |     0 |
       
-      dtype: int64
+     dtype: int64
       
    - Melakukan visualisasi outliers dengan Box Plot
      Untuk melihat lebih detail sebaran outliers pada data set, dapat dilakukan visualisasi dengan menggunakan Box Plot.
@@ -450,7 +450,72 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      ![Box plot thalch](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_thalch.png 'Box plot thalch')
      ![Box plot oldpeak](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_oldpeak.png 'Box plot oldpeak')
      ![Box plot ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_ca.png 'Box plot ca')
-     
+
+   - Melakukan penanganan outliers satu per satu pada fitur
+     Cara yang paling umum adalah dengan menghilangkan atau menghapus nilai nilai outliers yang berada di luar batas nilai IQR.
+     Hanya saja, dikarenakan data set yang digunakan hanya terdiri dari 900 data, dan jumlah outliersnya cukup banyak, maka Outliers pada data set ini diolah secara manual.
+     1. Penanganan Outliers pada fitur Tresbps
+        Sebelum melakukan penanganan, info statistik dari fitur di inspeksi dengan fitur describe().
+        ```
+        heart_data['trestbps'].describe()
+        ```
+        Info statistik dari fitur trestbps adalah:
+        | Statistik | Nilai|
+        | ------ | ------ |
+        |count   | 920.000000|
+        |mean    | 132.494054|
+        |std     |  18.534371|
+        |min     |   0.000000|
+        |25%     | 120.000000|
+        |50%     | 130.000000|
+        |75%     | 140.160000|
+        |max     | 200.000000|
+        
+        Name: trestbps, dtype: float64
+
+        Dari hasil terdapat data dengan nilai 0 di kolom trestbps, dikarenakan tekanan darah tidak mungkin memiliki nilai 0. Maka data dengan nilai 0 pada kolom ini bisa di drop
+        Dikarenakan hasil visual Box Plot untuk terstbps terdapat nilai 75 diluar batas bawah, maka nilai dibawah 80 bisa di drop.
+
+        ```
+        heart_data = heart_data[heart_data['trestbps'] >= 80]
+        ```
+
+        Hasil setelah penanganan outliers:
+        | Statistik | Nilai|
+        | ------ | ------ |
+        |count   | 919.000000|
+        |mean    | 132.638226|
+        |std     |  18.020920|
+        |min     |  80.000000|
+        |25%     | 120.000000|
+        |50%     | 130.000000|
+        |75%     | 140.240000|
+        |max     | 200.000000|
+        
+        Name: trestbps, dtype: float64
+     2. Penanganan Outliers Thalach
+        Berdasarkan informasi dari Box Plot,nilai pada kolom thalch dapat dimulai dari 71, sehingga nilai dibawah 71 dapat dihilangkan
+
+        ```
+        heart_data = heart_data[heart_data['thalch'] >= 71
+        ```
+
+        Hasil dari penanganan outliers tersebut:
+        |Statistik | Nilai|
+        | ------ | ------ |
+        |count   | 914.000000|
+        |mean    | 137.706718|
+        |std     |  24.877042|
+        |min     |  71.000000|
+        |25%     | 120.000000|
+        |50%     | 140.000000|
+        |75%     | 156.000000|
+        |max     | 202.000000|
+
+        Name: thalch, dtype: float64
+        
+
+        
      
 
   
