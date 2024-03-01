@@ -361,7 +361,7 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      - 3 fitur memiliki persentase missing values yang tinggi (30%, 50%, 60%).
 
      Dikarenakan jumlah persentase missing values yang cukup tinggi, metode yang dipilih untuk menangani missing values tersebut adalah metode Iterative Imputer dengan menggunakan model machine learning Random Forest Classifier dan Random Forest Regressor.
-   - Penangan missing values dengan metode Iterative Imputer
+   - Penanganan missing values dengan metode Iterative Imputer
    
      Adapun metode Iterative Imputer mengacu pada proses di mana setiap fitur dimodelkan sebagai fungsi dari fitur lainnya, misalnya. masalah regresi di mana nilai yang hilang diperkirakan. Setiap fitur diperhitungkan secara berurutan, satu demi satu, sehingga nilai yang diperhitungkan sebelumnya dapat digunakan sebagai bagian dari model dalam memprediksi fitur berikutnya.
 
@@ -576,8 +576,25 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
 - Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+Model yang digunakan untuk menyelesaikan masalah Multiclass Classification ini adalah sebagai berikut:
+1. Random Forest Classifier
+2. K-Nearest Neighbors
+3. Gaussian Naive Bayes
+4. Ada Boost, and
+5. XG Boost
+Selain itu dilakukan juga tuning hyperparameter menggunakan GridSearchCV
 
+Dari kelima model ini akan dipilih model dengan akurasi tertinggi.
+
+Tahapan yang dilakukan untuk training model ini antara lain:
+1. Encoding Fitur Kategori
+2. Split data menjadi data train dan data test
+3. Train data dengan 5 model dengan menerapkan tuning hyperparameter menggunakan GridSearchCV
+
+1. Encoding Fitur Kategori
+   Fitur kategori pada data set di encoding dengan menggunakan 
+
+   
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
 - Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
