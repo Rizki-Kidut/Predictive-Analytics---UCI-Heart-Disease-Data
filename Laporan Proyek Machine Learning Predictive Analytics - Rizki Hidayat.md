@@ -366,11 +366,11 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      Dikarenakan jumlah persentase missing values yang cukup tinggi, metode yang dipilih untuk menangani missing values tersebut adalah metode Iterative Imputer dengan menggunakan model machine learning Random Forest Classifier dan Random Forest Regressor.
  - Penangan missing values dengan metode Iterative Imputer
    
-   Adapun metode Itearative Imputer mengacu pada proses di mana setiap fitur dimodelkan sebagai fungsi dari fitur lainnya, misalnya. masalah regresi di mana nilai yang hilang diperkirakan. Setiap fitur diperhitungkan secara berurutan, satu demi satu, sehingga nilai yang diperhitungkan sebelumnya dapat digunakan sebagai bagian dari model dalam memprediksi fitur berikutnya.
+   Adapun metode Iterative Imputer mengacu pada proses di mana setiap fitur dimodelkan sebagai fungsi dari fitur lainnya, misalnya. masalah regresi di mana nilai yang hilang diperkirakan. Setiap fitur diperhitungkan secara berurutan, satu demi satu, sehingga nilai yang diperhitungkan sebelumnya dapat digunakan sebagai bagian dari model dalam memprediksi fitur berikutnya.
 
    Hal ini bersifat iteratif karena proses ini diulang beberapa kali, sehingga estimasi nilai yang hilang dapat dihitung dengan lebih baik seiring dengan estimasi nilai yang hilang di seluruh fitur.
 
-   Algoritme regresi yang berbeda dapat digunakan untuk memperkirakan nilai yang hilang untuk setiap fitur, meskipun metode linier sering kali digunakan untuk kesederhanaan. Jumlah iterasi suatu prosedur seringkali dibuat kecil, misalnya 10. Terakhir, urutan fitur yang diproses secara berurutan dapat dipertimbangkan, seperti dari fitur dengan nilai yang hilang paling sedikit ke fitur dengan nilai yang hilang paling banyak.
+   Algoritma regresi yang berbeda dapat digunakan untuk memperkirakan nilai yang hilang untuk setiap fitur, meskipun metode linier sering kali digunakan untuk kesederhanaan. Jumlah iterasi suatu prosedur seringkali dibuat kecil, misalnya 10. Terakhir, urutan fitur yang diproses secara berurutan dapat dipertimbangkan, seperti dari fitur dengan nilai yang hilang paling sedikit ke fitur dengan nilai yang hilang paling banyak.
 ​
  - Cek hasil penangan missing values
    
@@ -397,6 +397,44 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
 
    Missing values adalah masalah umum dalam proyek pembelajaran mesin dan ilmu data. Kegagalan dalam menangani data yang hilang dengan benar dapat mengganggu hasil model machine learning atau mengurangi akurasi model. Untuk mengatasi hambatan ini, perlu dilakukan penanganan nilai-nilai yang hilang secara hati-hati. Tujuan dari penanganan missing values adalah membuat kumpulan data lengkap yang akan menempatkan analisis pada landasan yang kokoh. Mengabaikan data yang hilang dapat secara langsung memengaruhi performa dan keandalan dari model .
 ​
+2. Menangani Outliers,
+    - Melakukan inspeksi outliers dengan metode IQR
+      IQR adalah interquartile range atau rentang akar kuartil dari sekumpulan data. IQR digunakan dalam analisis statistik untuk membantu menarik kesimpulan mengenai sekumpulan data. IQR lebih sering digunakan daripada range karena IQR tidak menyertakan data paling luar.
+      Secara matematis, IQR dapat dirumuskan sebagai berikut:
+      <p align="center">
+      $IQR = Q3 - Q1$
+      </p>
+
+      Dengan Q1 adalah nilai di antara median dengan data terkecil atau dapat dikatakan *25th Percentile* sedang Q3 adalah nilai di antara median dengan data terbesar atau dapat dikatakan *75th Percentile*. Untuk menentukan outliers, perlu di tetapkan nilai batas atas dan batas bawah. Adapun rumus untuk batas atas dan batas bawah adalah:
+
+      <p align="center">
+      $Batas Atas = Q3 + 1.5 * IQR$
+      </p>
+      <p align="center">
+      $Batas Bawah = Q1 - 1.5 * IQR$
+      </p>
+
+      Maka untuk data set ini jumlah outliernya dapat ditentukan dengan kode berikut:
+      ```
+      Q1 = heart_data[num_cols].quantile(0.25)
+      Q3 = heart_data[num_cols].quantile(0.75)
+      IQR = Q3 - Q1
+      outliers_count_specified = ((heart_data[num_cols] < (Q1 - 1.5 * IQR)) | (heart_data[num_cols] > (Q3 + 1.5 * IQR))).sum()
+      
+      outliers_count_specified
+      ```
+      Hasil nya adalah sebagai berikut:
+      | Fitur  | Outliers|
+      | ------ | ------ |
+      |age       |    0 |
+      |trestbps |    28 |
+      |chol     |   185 | 
+      |thalch   |    2 | 
+      |oldpeak  |     3 |
+      |ca       |    22 | 
+      |num      |     0 |
+      
+      dtype: int64
    
      
 
