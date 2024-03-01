@@ -4,8 +4,6 @@
 
 Penyakit jantung koroner adalah salah satu penyebab utama kematian di seluruh dunia. Memprediksi penyakit jantung adalah salah satu tugas yang paling menantang di bidang analisis data klinis. Machine learning (ML) berguna dalam bantuan diagnostik dalam hal pengambilan keputusan dan prediksi berdasarkan data yang dihasilkan oleh sektor perawatan kesehatan secara global. Kami juga telah merasakan teknik ML yang digunakan dalam bidang medis untuk prediksi penyakit. Dalam hal ini, banyak studi penelitian telah ditunjukkan pada prediksi penyakit jantung menggunakan pengklasifikasi ML.
 
-
-
 **Rubrik/Kriteria Tambahan**:
 Menurut Organisasi Kesehatan Dunia [1], CVD adalah penyebab kematian terbesar di dunia, yang mengakibatkan kematian sekitar 17,9 juta orang setiap tahunnya. 
 
@@ -362,7 +360,6 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      - 7 fitur memiliki persentase missing values dibawah 10%.
      - 3 fitur memiliki persentase missing values yang tinggi (30%, 50%, 60%).
 
-
      Dikarenakan jumlah persentase missing values yang cukup tinggi, metode yang dipilih untuk menangani missing values tersebut adalah metode Iterative Imputer dengan menggunakan model machine learning Random Forest Classifier dan Random Forest Regressor.
    - Penangan missing values dengan metode Iterative Imputer
    
@@ -513,12 +510,68 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
         |max     | 202.000000|
 
         Name: thalch, dtype: float64
-        
+     3. Penanganan Outliers Oldpeak
+        Terdapat 3 outliers pada kolom oldpeak. Outtliers ditangani menggunakan metode IQR.
+        ```
+        Q1 = heart_data['oldpeak'].quantile(0.25)
+        Q3 = heart_data['oldpeak'].quantile(0.75)
+        IQR = Q3 - Q1
+        lower_bound = Q1 - 1.5 * IQR
+        upper_bound = Q3 + 1.5 * IQR
+        heart_data = heart_data[(heart_data['oldpeak'] >= lower_bound) & (heart_data['oldpeak'] <= upper_bound)]
+        ```
+     4. Penanganan Outliers Chol
+        Sebelum melakukan penanganan, info statistik dari fitur di inspeksi dengan fitur describe().
+        ```
+        heart_data['chol'].describe()
+        ```
 
+        Info statistik dari fitur chol adalah:
+        | Statistik | Nilai|
+        | ------ | ------ |
+        |count   | 911.000000|
+        |mean    | 200.296191|
+        |std     | 108.268402|
+        |min     |   0.000000|
+        |25%     | 177.500000|
+        |50%     | 223.000000|
+        |75%     | 267.000000|
+        |max     | 603.000000|
         
-     
+        Name: chol, dtype: float64
 
-  
+        Terdapat beberapa nili 0 pada kolom cholestrol, sehingga nilai cholestrol tidak mungkin bernilai 0.
+        Jumlah nilai 0 pada kolom cholestrol dihitung jumlahnya dan dihilangkan dari data dengan menggunakan kode berikut:
+        ```
+        print("zero_counts :",(heart_data['chol'] == 0).sum())
+        heart_data = heart_data[heart_data['chol'] != 0]
+        ```
+        Terdapat 167 nilai 0 pada kolom chol.
+
+        Dari informasi pada Box Plot, Diputuskan untuk menyaring nilai chol antara 126 dan 400.
+        ```
+        heart_data = heart_data[heart_data['chol'] >= 126]
+        heart_data = heart_data[heart_data['chol'] <= 400]
+        ```
+
+        Hasil dari penanganan outliers tersebut:
+        |Statistik | Nilai|
+        | ------ | ------ |
+        |count   | 728.000000|
+        |mean    | 242.279986|
+        |std     |  48.270612|
+        |min     | 126.000000|
+        |25%     | 209.000000|
+        |50%     | 236.500000|
+        |75%     | 274.000000|
+        |max     | 394.000000|
+        
+        Name: chol, dtype: float64
+
+        Name: thalch, dtype: float64
+
+        Jumlah data setelah outliers ditangani adalah 728 data.
+
 - Menjelaskan proses data preparation yang dilakukan
 - Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
 
