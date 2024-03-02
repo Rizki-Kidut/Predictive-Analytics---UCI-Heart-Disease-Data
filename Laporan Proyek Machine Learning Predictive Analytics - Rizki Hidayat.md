@@ -677,7 +677,9 @@ Tahapan yang dilakukan untuk training model ini antara lain:
 
    
 **Rubrik/Kriteria Tambahan (Opsional)**: 
-1. Random Forest
+Berikut adalah penjelasan singkat dari algoritma yang digunakan dalam proyek ini:
+
+**1. Random Forest**
 
    Algoritma Random Forest diperkenalkan oleh Leo Breiman dan Adele Cutler. Algoritma ini didasarkan pada konsep ensemble learning, yakni proses menggabungkan beberapa pengklasifikasi untuk memecahkan masalah yang kompleks dan untuk meningkatkan kinerja model.
 
@@ -707,7 +709,7 @@ Tahapan yang dilakukan untuk training model ini antara lain:
    - Waktu komputasi pada dataset berskala besar relatif lambat
    - Tidak cocok untuk metode linier dengan banyak fitur sparse
      
-2. K-Nearest Neighbors (KNN)
+**2. K-Nearest Neighbors (KNN)**
   
    KNN adalah singkatan dari K-Nearest Neighbor, sebuah algoritma machine learning yang bekerja berdasarkan prinsip bahwa objek yang mirip cenderung berada dalam jarak yang dekat satu sama lain. Dengan kata lain, data yang memiliki karakteristik serupa akan cenderung saling bertetangga dalam ruang fitur (feature space).
 
@@ -727,7 +729,7 @@ Tahapan yang dilakukan untuk training model ini antara lain:
    - Penskalaan fitur diperlukan
    - Sensitif terhadap noise, missing value, dan outlier
 
-3. GaussianNB
+**3. Gaussian Naive Bayes**
   
    Gaussian Naive Bayes (GNB) adalah teknik klasifikasi yang digunakan dalam pembelajaran mesin berdasarkan pendekatan probabilistik dan distribusi Gaussian. Gaussian Naive Bayes mengasumsikan bahwa setiap parameter, disebut juga fitur atau prediktor, memiliki kapasitas independen dalam memprediksi variabel keluaran.
    Kombinasi prediksi untuk semua parameter merupakan prediksi akhir yang mengembalikan probabilitas variabel dependen untuk diklasifikasikan dalam setiap kelompok. Klasifikasi akhir diberikan kepada kelompok dengan probabilitas lebih tinggi.
@@ -751,7 +753,7 @@ Variabel ( $X$ ) yang berdistribusi normal terdistribusi secara kontinyu (variab
    - Tidak berlaku jika probabilitas kondisionalnya adalah nol, apabila nol maka probabilitas prediksi akan bernilai nol juga
    - Mengasumsikan variabel bebas
 
-4. Ada Boost
+**4. Ada Boost**
   
    Algoritma AdaBoost, singkatan dari Adaptive Boosting, adalah sebuah teknik Boosting yang digunakan sebagai metode ensemble dalam machine learning Algoritma AdaBoost bersifat iteratif atau berulang. Cara kerja algoritma ini dimulai dengan melatih sebuah weak classifier pada data pelatihan.
 
@@ -790,14 +792,62 @@ Variabel ( $X$ ) yang berdistribusi normal terdistribusi secara kontinyu (variab
      Jika dataset pelatihan sangat kecil, terdapat risiko overfitting pada Adaboost. Model yang terlalu kompleks dapat dengan mudah "menghafal" contoh-contoh pelatihan dan gagal dalam generalisasi pada data baru.
    - Waktu pelatihan yang lebih lama
      Adaboost melibatkan iterasi berulang untuk melatih weak learners dan memperbarui bobot contoh-contoh pelatihan. Oleh karena itu, waktu pelatihan algoritma ini cenderung lebih lama dibandingkan dengan beberapa algoritma machine learning lainnya.
+
+**5. XG Boost**
+  
+   XG Boost adalah salah satu implementasi dari algoritma Gradient Boosting. Gradient Boosting adalah sebuah teknik yang menggabungkan beberapa model yang lemah (weak model) menjadi sebuah model yang kuat. Model-model lemah ini sering disebut dengan weak learners, dan dapat berupa model regresi atau klasifikasi sederhana seperti Decision Tree. Pada setiap iterasi, Gradient Boosting akan menambahkan weak learner baru dan mengoreksi prediksi sebelumnya dengan memperhitungkan kesalahan pada prediksi tersebut.
+
+   Secara matematis, Gradient Boosting mengoptimalkan suatu fungsi objektif dengan mengevaluasi gradient pada setiap titik. Fungsi objektif yang umum digunakan dalam Gradient Boosting adalah fungsi Mean Squared Error (MSE) untuk regresi dan fungsi Log-Loss untuk klasifikasi. Dalam setiap iterasi, Gradient Boosting memperbarui residual error dengan mengurangi hasil prediksi dari target, lalu menambahkan weak learner baru yang menyelesaikan masalah residual error yang dihasilkan. Dengan cara ini, Gradient Boosting membangun sebuah model yang kuat dari beberapa model yang lemah.
+
+   Algoritma Gradient Boosting bekerja dengan menggabungkan beberapa model yang lemah menjadi sebuah model yang lebih kuat. Algoritma ini menggunakan pendekatan iteratif, di mana setiap iterasi bertujuan untuk meningkatkan model sebelumnya dengan menambahkan model baru. Proses ini dilakukan secara berulang-ulang hingga model yang dihasilkan memenuhi kriteria tertentu, seperti nilai loss function yang cukup kecil.
+
+   ![Ilustrasti XG Boost](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/fceb908635c277858ea80a10ca51abc0e1c156f3/Image/A-simple-example-of-visualizing-gradient-boosting.png 'XG Boost')
+
+   Proses iteratif dalam algoritma Gradient Boosting terdiri dari beberapa tahap, yaitu:
+   1. Inisialisasi model: Tahap pertama dalam algoritma Gradient Boosting adalah inisialisasi model. Pada tahap ini, model awal dibuat sebagai model konstan yang merupakan rata-rata atau median dari target variable.
+   2. Membuat weak model: Pada tahap ini, weak model dibuat sebagai model yang mampu memprediksi error dari model sebelumnya. Model lemah biasanya berupa decision tree yang dangkal dengan satu atau dua percabangan.
+   3. Menghitung residual error: Setelah model lemah dibuat, residual error dihitung sebagai selisih antara nilai prediksi dari model sebelumnya dan nilai asli dari target variable.\
+   4. Menyusun kembali data training: Pada tahap ini, data training diubah dengan menggunakan residual error sebagai target variable.
+   5. Membuat model baru: Pada tahap ini, model baru dibuat dengan memprediksi residual error yang dihasilkan dari model sebelumnya.
+   6. Menggabungkan model: Model baru yang dibuat pada tahap sebelumnya digabungkan dengan model sebelumnya untuk membentuk model yang lebih baik.
+   7. Iterasi berulang: Tahap-tahap di atas diulang berulang-ulang hingga mencapai kondisi berhenti yang ditentukan, seperti jumlah iterasi yang telah ditentukan atau ketika model tidak mengalami peningkatan yang signifikan lagi.
+     
+   Setelah iterasi selesai dilakukan, model yang dihasilkan akan digunakan untuk memprediksi nilai target pada data testing yang baru.
+
+   Berikut adalah kelebihan dan kekurangan dari algoritma Gradient Boosting:
+   **Kelebihan Gradient Boosting**
+   - Akurasi yang tinggi: Gradient Boosting sering menghasilkan model yang akurat dan kuat, terutama ketika digunakan pada data yang kompleks dan tidak terstruktur.
+   - Tidak memerlukan persyaratan data yang ketat: Algoritma ini dapat digunakan pada berbagai jenis data tanpa memerlukan asumsi yang ketat, seperti asumsi tentang distribusi data atau homoskedastisitas.
+   - Kecepatan komputasi yang cepat: Beberapa implementasi dari Gradient Boosting, seperti XGBoost dan LightGBM, dapat digunakan untuk mempercepat waktu komputasi dengan teknik-teknik seperti parallel computing dan caching.
+   **Kekurangan Gradient Boosting**
+   - Memerlukan tuning yang cermat: Algoritma ini memerlukan tuning parameter yang cermat untuk mendapatkan model yang optimal. Hal ini dapat memakan waktu dan mengharuskan penggunaan cross-validation dan teknik tuning parameter lainnya.
+   - Mudah overfitting: Gradient Boosting dapat cenderung overfit pada data training jika tidak dilakukan pengaturan parameter yang baik. Overfitting terjadi ketika model terlalu kompleks dan terlalu menyesuaikan dengan data training, sehingga tidak dapat melakukan generalisasi dengan baik pada data yang belum pernah dilihat sebelumnya.
+   - Memerlukan data yang besar: Gradient Boosting memerlukan jumlah data yang besar untuk memperoleh model yang akurat dan stabil. Jika jumlah data terlalu sedikit, algoritma ini dapat menjadi tidak stabil dan menghasilkan model yang tidak akurat.
    
+Setelah melakukan training model dengan kelima algoritma tersebut didapat model yang terbaik adalah **Model Random Forest**. Model Random Forest dipilih karena memiliki nilai acccuracy tertinggi yaitu 0.74. Adapun rangkuman nilai accuracy dari tiap tiap algoritma adalah sebagai berikut:
+
+| Index |        Model        | accuracy | precision | recall |  f1  |
+|:-----:|:-------------------:|:--------:|:---------:|:------:|:----:|
+|   0   |      Ada Boost      |   0.69   |    0.69   |  0.69  | 0.68 |
+|   1   |      GaussianNB     |   0.64   |    0.71   |  0.64  | 0.67 |
+|   2   | K-Nearest Neighbors |   0.71   |    0.69   |  0.71  | 0.70 |
+|   3   |    Random Forest    |   0.75   |    0.74   |  0.75  | 0.74 |
+|   4   |       XG Boost      |   0.70   |    0.71   |  0.70  | 0.70 |
+
+Maka model terbaik untuk data set ini adalah **Model Random Forest** dengan nilai metriks sebegai berikut:
+
+--------------------------------------------------
+BEST MULTICLASS CLASSIFIER MODEL PERFORMANCE
+--------------------------------------------------
+
+| Model:      | Random Forest |
+|-------------|:-------------:|
+| Accuracy:   |      0.75     |
+| Precision:  |      0.74     |
+| Recall:     |      0.75     |
+| F1:         |      0.74     |
 
 
-
- 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
 
 ## Evaluation
 Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
