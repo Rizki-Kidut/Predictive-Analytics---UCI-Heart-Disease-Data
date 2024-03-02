@@ -315,7 +315,7 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      Hasil dari kode diatas adalah sebagai berikut:
      
      | Fitur  | Missing Values|
-     | ------ | ------ |
+     |:------ |:------:|
      |age     |       0|
      |sex     |       0|
      |cp      |       0|
@@ -340,7 +340,7 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      ```
      Didapat Proporsi missing values sebegai berikut:
      | Fitur  | Persentase|
-     | ------ | ------ |
+     |:------ | ------:|
      |ca       |  66.4  |
      |thal     |   52.8 |
      |slope    |   33.6 |
@@ -374,7 +374,7 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      Setelah dilakukan proses Iterative Imputer tersebut, hasil pengecekan missing values mendapatkan hasil sebagai berikut:
 
      | Fitur  | Missing Values|
-     | ------ | ------ |
+     |:------ |:------:|
      |age     |       0|
      |sex     |       0|
      |cp      |       0|
@@ -422,7 +422,7 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      ```
      Hasil nya adalah sebagai berikut:
      | Fitur  | Outliers|
-     | ------ | ------ |
+     |:------ |:------:|
      |age      |    0  |
      |trestbps |    28 |
      |chol     |   185 | 
@@ -458,7 +458,7 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
         ```
         Info statistik dari fitur trestbps adalah:
         | Statistik | Nilai|
-        | ------ | ------ |
+        |:------ | ------:|
         |count   | 920.000000|
         |mean    | 132.494054|
         |std     |  18.534371|
@@ -479,7 +479,7 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
 
         Hasil setelah penanganan outliers:
         | Statistik | Nilai|
-        | ------ | ------ |
+        |:------ | ------:|
         |count   | 919.000000|
         |mean    | 132.638226|
         |std     |  18.020920|
@@ -499,7 +499,7 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
 
         Hasil dari penanganan outliers tersebut:
         |Statistik | Nilai|
-        | ------ | ------ |
+        |:------ | ------:|
         |count   | 914.000000|
         |mean    | 137.706718|
         |std     |  24.877042|
@@ -528,7 +528,7 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
 
         Info statistik dari fitur chol adalah:
         | Statistik | Nilai|
-        | ------ | ------ |
+        |:------ | ------:|
         |count   | 911.000000|
         |mean    | 200.296191|
         |std     | 108.268402|
@@ -556,7 +556,7 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
 
         Hasil dari penanganan outliers tersebut:
         |Statistik | Nilai|
-        | ------ | ------ |
+        |:------ | ------:|
         |count   | 728.000000|
         |mean    | 242.279986|
         |std     |  48.270612|
@@ -588,14 +588,213 @@ Dari kelima model ini akan dipilih model dengan akurasi tertinggi.
 
 Tahapan yang dilakukan untuk training model ini antara lain:
 1. Encoding Fitur Kategori
-2. Split data menjadi data train dan data test
-3. Train data dengan 5 model dengan menerapkan tuning hyperparameter menggunakan GridSearchCV
+   Fitur kategori pada dateset di encoding dengan menggunakan Label Encoder
 
-1. Encoding Fitur Kategori
-   Fitur kategori pada data set di encoding dengan menggunakan 
+   Data set sebelum dilakukan Label Encoder
+   | Index | age |   sex  |        cp       | trestbps |  chol |  fbs  |     restecg    | thalch | exang | oldpeak |    slope    |  ca |        thal       | num |
+   |:-----:|:---:|:------:|:---------------:|:--------:|:-----:|:-----:|:--------------:|:------:|:-----:|:-------:|:-----------:|:---:|:-----------------:|:---:|
+   |   0   |  63 |  Male  |  typical angina |  145.00  | 233.0 |  True | lv hypertrophy | 150.00 | False |  2.300  | downsloping | 0.0 |    fixed defect   |  0  |
+   |   1   |  67 |  Male  |   asymptomatic  |  160.00  | 286.0 | False | lv hypertrophy | 108.00 |  True |  1.500  |     flat    | 3.0 |       normal      |  2  |
+   |   2   |  67 |  Male  |   asymptomatic  |  120.00  | 229.0 | False | lv hypertrophy | 129.00 |  True |  2.600  |     flat    | 2.0 | reversable defect |  1  |
+   |   3   |  37 |  Male  |   non-anginal   |  130.00  | 250.0 | False |     normal     | 187.00 | False |  3.500  | downsloping | 0.0 |       normal      |  0  |
+   |   4   |  41 | Female | atypical angina |  130.00  | 204.0 | False | lv hypertrophy | 172.00 | False |  1.400  |  upsloping  | 0.0 |       normal      |  0  |
+
+   Code untuk proses Label Encoder
+   ```
+   categorical_cols = ['thal', 'ca', 'slope', 'exang', 'restecg','fbs', 'cp', 'sex', 'num']
+
+   label_encoder = LabelEncoder()
+
+   for col in heart_data.columns:
+       if heart_data[col].dtype == 'object' or heart_data[col].dtype == 'category':
+           heart_data[col] = label_encoder.fit_transform(heart_data[col])
+   ```
+  
+   Hasil dari Label Encoder adalah sebagai berikut:
+   | Index | age | sex | cp | trestbps |  chol | fbs | restecg | thalch | exang | oldpeak | slope |  ca | thal | num |
+   |:-----:|:---:|:---:|:--:|:--------:|:-----:|:---:|:-------:|:------:|:-----:|:-------:|:-----:|:---:|:----:|:---:|
+   |   0   |  63 |  1  |  3 |  145.00  | 233.0 |  1  |    0    | 150.00 |   0   |  2.300  |   0   | 0.0 |   0  |  0  |
+   |   1   |  67 |  1  |  0 |  160.00  | 286.0 |  0  |    0    | 108.00 |   1   |  1.500  |   1   | 3.0 |   1  |  2  |
+   |   2   |  67 |  1  |  0 |  120.00  | 229.0 |  0  |    0    | 129.00 |   1   |  2.600  |   1   | 2.0 |   2  |  1  |
+   |   3   |  37 |  1  |  2 |  130.00  | 250.0 |  0  |    1    | 187.00 |   0   |  3.500  |   0   | 0.0 |   1  |  0  |
+   |   4   |  41 |  0  |  1 |  130.00  | 204.0 |  0  |    0    | 172.00 |   0   |  1.400  |   2   | 0.0 |   1  |  0  |
+   
+2. Split data menjadi data train dan data test
+   Proses selanjutnya adalah proses split data menjadi data train dan data test dengan perbandingan 80:20 menggunakan fungsi "train_test_split"
+   ```
+   X = heart_data.drop(["num"],axis =1)
+   y = heart_data["num"]
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
+   ```
+
+3. Train data dengan 5 algortitma dengan menerapkan tuning hyperparameter menggunakan GridSearchCV
+   Proses selanjutnya adalah melakukan train data dengan menggunakan 5 algoritma serta melakukan tuning hyperparameter.
+   Model dan hyperparameter yang digunakan dimasukan kedalam dictionary seperti berikut:
+   ```
+   models = {
+        'Random Forest': {
+        'model'  : RandomForestClassifier(random_state=42),
+        'params' :
+        {'model__n_estimators': [50, 100, 200],
+         'model__max_depth': [None, 10, 20]}
+        },
+        'K-Nearest Neighbors': {
+        'model'  :KNeighborsClassifier(),
+        'params' :
+        {'model__n_neighbors': [3, 5]},
+        },
+        'GaussianNB': {
+        'model'  : GaussianNB(),
+        'params' :
+        {},
+        },
+        'Ada Boost': {
+        'model': AdaBoostClassifier(random_state=42),
+        'params': {
+        'model__n_estimators': [50, 100, 200],
+        'model__learning_rate': [0.05, 0.1, 0.5]
+        },
+        },
+        'XG Boost': {
+        'model': XGBClassifier(random_state=42),
+        'params':
+        {
+        'model__n_estimators': [50, 100, 200],
+        'model__learning_rate': [0.05, 0.1, 0.5]
+        },
+        },
+   }
+   ```
+   
+   - **Random FOrest**       : Untuk Random Forest, hyperparameter yang diguanakan adalah "model__n_estimators" dan "model__max_depth".
+   - **K-Nearest Neighbors** : Untuk KNN, hyperparameter yang digunakan adalah "model__n_neighbors"
+   - **GaussianNB**          : Untuk GaussianNB tidak ada hyperparameter yang digunakan
+   - **Ada Boost**           : Untuk Ada Boost, hyperparameter yang digunakan adalah "model__n_estimators" dan "model__learning_rate"
+   - **XG Boost**            : Untuk XG Boost, hyperparameter yang digunakan adalah "model__n_estimators" dan "model__learning_rate"
+  
+   Model dilatih menggunakan kelima algoritma diatas dengan bantuan GridSearchCV, untuk mendapatkan hasil tuning hyperparameter terbaik dari tiap tiap algoritma.
+   Matriks evaluasi yang digunakan adalah Accuracy, Precision, Recall,dan F1 Score.
 
    
 **Rubrik/Kriteria Tambahan (Opsional)**: 
+1. Random Forest
+
+   Algoritma Random Forest diperkenalkan oleh Leo Breiman dan Adele Cutler. Algoritma ini didasarkan pada konsep ensemble learning, yakni proses menggabungkan beberapa pengklasifikasi untuk memecahkan masalah yang kompleks dan untuk meningkatkan kinerja model.
+
+   Random Forest bekerja dalam dua fase. Fase pertama yaitu menggabungkan sejumlah N decision tree untuk membuat Random Forest. Kemudian fase kedua adalah membuat prediksi untuk setiap tree yang dibuat pada fase pertama.
+
+   ![Ilustrasti Random Forest](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/422ca5e4c4ae49cd1d7fc03ddf276622c285af73/Image/Illustration-of-random-forest-trees.png 'Random Forest')
+   
+   Cara kerja algoritma Random Forest dapat dijabarkan dalam langkah-langkah berikut:
+   - Algoritma memilih sampel acak dari dataset yang disediakan.
+   - Membuat decision tree untuk setiap sampel yang dipilih. Kemudian akan didapatkan hasil prediksi dari setiap decision tree yang telah dibuat.
+   - Dilakukan proses voting untuk setiap hasil prediksi. Untuk masalah klasifikasi menggunakan modus (nilai yg paling sering muncul), sedangkan untuk masalah regresi akan menggunakan mean (nilai rata-rata).
+   - Algoritma akan memilih hasil prediksi yang paling banyak dipilih (vote terbanyak) sebagai prediksi akhir.
+  
+   **Kelebihan Algoritma Random Forest**
+   Berikut adalah kelebihan dari algoritma Random Forest:
+
+   - Kuat terhadap data outlier (pencilan data).
+   - Bekerja dengan baik dengan data non-linear.
+   - Risiko overfitting lebih rendah.
+   - Berjalan secara efisien pada kumpulan data yang besar.
+   - Akurasi yang lebih baik daripada algoritma klasifikasi lainnya.
+     
+   **Kekurangan Algoritma Random Forest**
+   Adapun kelemahan algoritma Random Forest adalah sebagai berikut:
+
+   - Random Forest cenderung bias saat berhadapan dengan variabel kategorikal.
+   - Waktu komputasi pada dataset berskala besar relatif lambat
+   - Tidak cocok untuk metode linier dengan banyak fitur sparse
+     
+2. K-Nearest Neighbors (KNN)
+  
+   KNN adalah singkatan dari K-Nearest Neighbor, sebuah algoritma machine learning yang bekerja berdasarkan prinsip bahwa objek yang mirip cenderung berada dalam jarak yang dekat satu sama lain. Dengan kata lain, data yang memiliki karakteristik serupa akan cenderung saling bertetangga dalam ruang fitur (feature space).
+
+   Prinsip dasar algoritma KNN mengasumsikan bahwa objek yang mirip akan berada dalam jarak yang dekat satu sama lain. Dengan kata lain, data yang memiliki karakteristik serupa akan cenderung terletak berdekatan. KNN menggunakan seluruh data yang tersedia dalam pengambilan keputusan. Ketika ada data baru yang perlu diklasifikasikan, algoritma mengukur tingkat kemiripan atau fungsi jarak antara data baru tersebut dengan data yang sudah ada. Data baru kemudian ditempatkan dalam kelas yang paling banyak dimiliki oleh data tetangga terdekatnya.
+      
+   ![Ilustrasti KNN](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/8ea1beff7e19561eb0706af98e2481653aabeffa/Image/algoritma-knn.png 'KNN')
+     
+
+   **Kelebihan KNN**
+   - Kemudahan implementasi 
+   - Kemampuan beradaptasi 
+   - Hyperparameter yang sedikit
+
+   **Kekurangan KNN**
+   - Tidak cocok untuk dataset berukuran besar
+   - Tidak cocok untuk dimensi tinggi
+   - Penskalaan fitur diperlukan
+   - Sensitif terhadap noise, missing value, dan outlier
+
+3. GaussianNB
+  
+   Gaussian Naive Bayes (GNB) adalah teknik klasifikasi yang digunakan dalam pembelajaran mesin berdasarkan pendekatan probabilistik dan distribusi Gaussian. Gaussian Naive Bayes mengasumsikan bahwa setiap parameter, disebut juga fitur atau prediktor, memiliki kapasitas independen dalam memprediksi variabel keluaran.
+   Kombinasi prediksi untuk semua parameter merupakan prediksi akhir yang mengembalikan probabilitas variabel dependen untuk diklasifikasikan dalam setiap kelompok. Klasifikasi akhir diberikan kepada kelompok dengan probabilitas lebih tinggi.
+
+   Distribusi Gaussian disebut juga distribusi normal . Distribusi normal adalah model statistik yang menggambarkan sebaran variabel acak kontinu di alam dan ditentukan oleh kurva berbentuk lonceng. Dua ciri terpenting dari distribusi normal adalah mean ( $\mu$ ) dan  deviasi standar ( $\sigma$ ). Rata-rata adalah nilai rata-rata suatu distribusi, dan deviasi standar adalah “lebar” distribusi di sekitar rata-rata.
+Variabel ( $X$ ) yang berdistribusi normal terdistribusi secara kontinyu (variabel kontinu) dari $−\infty < X < +\infty$ , dan luas area di bawah kurva model adalah 1.
+
+   ![Ilustrasti GaussianNB](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/9b0959367f5d402a8c437c5aeb0c60f7b540b6a5/Image/1_gaussian-naive-bayes.jpg 'GaussianNB')
+   
+   **Kelebihan Gaussian Naive Bayes**
+   Berikut ini adalah beberapa kelebihan menggunakan pengklasifikasi Naive Bayes:
+   - Menangani kuantitatif dan data diskrit
+   - Kokoh untuk titik noise yang diisolasi, misalkan titik yang dirata – ratakan ketika mengestimasi peluang bersyarat data.
+   - Hanya memerlukan sejumlah kecil data pelatihan untuk mengestimasi parameter (rata – rata dan variansi dari variabel) yang dibutuhkan untuk klasifikasi.
+   - Menangani nilai yang hilang dengan mengabaikan instansi selama perhitungan estimasi peluang
+   - Cepat dan efisiensi ruang
+   - Kokoh terhadap atribut yang tidak relevan
+
+   **Kelemahan Gaussian Naive Bayes**
+   Berikut ini adalah beberapa kekurangan dari penggunaan pengklasifikasi Naive Bayes:
+   - Tidak berlaku jika probabilitas kondisionalnya adalah nol, apabila nol maka probabilitas prediksi akan bernilai nol juga
+   - Mengasumsikan variabel bebas
+
+4. Ada Boost
+  
+   Algoritma AdaBoost, singkatan dari Adaptive Boosting, adalah sebuah teknik Boosting yang digunakan sebagai metode ensemble dalam machine learning Algoritma AdaBoost bersifat iteratif atau berulang. Cara kerja algoritma ini dimulai dengan melatih sebuah weak classifier pada data pelatihan.
+
+   Weak classifier kemudian diberi bobot berdasarkan performanya. Selanjutnya, algoritma melatih weak classifier kedua menggunakan data yang telah diberi bobot. Weak classifier kedua kemudian diberi bobot berdasarkan performanya. Proses ini diulang sejumlah iterasi tertentu atau hingga tingkat kesalahan berada di bawah ambang batas yang ditentukan. Classifier akhir adalah rata-rata terbobot dari semua weak classifiers. Bobot ditentukan berdasarkan tingkat kesalahan dari masing-masing weak classifier. Semakin rendah tingkat kesalahan, semakin tinggi bobotnya.
+
+   ![Ilustrasti Ada Boost](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/01882ff98a8a57e28202fb4a2b7fc40c95971517/Image/Ada%20Boost.webp 'Ada Boost')
+
+   Secara runtun, cara kerja algoritma ini dapat dijabarkan sebagai berikut:
+   1. Inisialisasi bobot sampel pelatihan
+      Langkah pertama adalah memberikan bobot yang sama pada semua sampel pelatihan. Bobot ini digunakan untuk memberikan penekanan pada contoh-contoh yang salah diklasifikasikan pada iterasi-iterasi berikutnya.
+   2. Melatih weak classifier
+      Weak classifier dilatih pada data pelatihan yang telah diberi bobot pada setiap iterasi. Tujuan dari weak classifier adalah untuk mengklasifikasikan sampel sebagai positif atau negatif. Ada beberapa jenis weak classifier yang dapat digunakan, seperti decision tree, model linear, atau support vector machine.
+   3. Evaluasi performa weak classifier
+      Setelah weak classifier dilatih, performanya dievaluasi pada data pelatihan. Sampel-sampel yang salah diklasifikasikan diberikan bobot yang lebih tinggi untuk memberi prioritas pada iterasi berikutnya.
+   4. Memperbarui bobot sampel pelatihan
+      Bobot sampel pelatihan diperbarui berdasarkan klasifikasinya oleh weak classifier. Bobot sampel yang salah diklasifikasikan ditingkatkan, sedangkan bobot sampel yang benar diklasifikasikan dikurangi. Hal ini memastikan bahwa weak classifier fokus pada sampel yang lebih sulit.
+   5. Ulangi langkah 2-4 sesuai jumlah iterasi yang ditentukan
+      Langkah-langkah sebelumnya diulang sesuai jumlah iterasi yang ditentukan, atau hingga mencapai ambang batas tertentu. Bobot sampel pelatihan disesuaikan pada setiap iterasi untuk memberi prioritas pada sampel yang salah diklasifikasikan dan belajar dari kesalahan yang dilakukan oleh weak classifier.
+   6. Menggabungkan weak classifier menjadi sebuah model yang kuat
+      Setelah jumlah iterasi yang ditentukan, weak classifier digabungkan menjadi sebuah model yang kuat menggunakan jumlah tertimbang dari keluaran mereka. Model akhir dapat melakukan prediksi yang akurat pada data baru yang tidak terlihat sebelumnya.
+
+   **Kelebihan Algoritma AdaBoost**
+   Berikut beberapa kelebihan algoritma AdaBoost:
+   - Meningkatkan performa prediksi
+     Adaboost dapat secara signifikan meningkatkan akurasi prediksi dalam pemodelan machine learning. Dengan menggabungkan weak learners menjadi strong learner, Adaboost dapat mengatasi kesalahan klasifikasi dan meningkatkan kemampuan prediksi model.
+   - Penanganan data yang kompleks
+     Adaboost efektif dalam menangani data yang kompleks dan memiliki interaksi fitur yang rumit. Dalam kasus di mana hubungan antara fitur-fitur input dan variabel output tidak sederhana, Adaboost dapat menangkap pola yang lebih kompleks daripada weak learners individu.
+   - Mencegah overfitting
+     Dengan memberikan bobot pada contoh-contoh yang salah diklasifikasikan, Adaboost dapat mengurangi risiko overfitting. Hal ini membantu model untuk tidak terlalu fokus pada contoh-contoh pelatihan yang sulit dan memperbaiki generalisasi pada data uji.
+     
+   **Kelemahan Algoritma AdaBoost**
+   Algoritma Adaboost juga memiliki kelemahan seperti:
+   - Sensitif terhadap noise
+     Adaboost cenderung sensitif terhadap data yang mengandung noise atau outlier. Kehadiran contoh-contoh yang tidak representatif atau gangguan dapat mempengaruhi pembelajaran dan menghasilkan model yang kurang akurat.
+   - Risiko overfitting pada data pelatihan yang kecil
+     Jika dataset pelatihan sangat kecil, terdapat risiko overfitting pada Adaboost. Model yang terlalu kompleks dapat dengan mudah "menghafal" contoh-contoh pelatihan dan gagal dalam generalisasi pada data baru.
+   - Waktu pelatihan yang lebih lama
+     Adaboost melibatkan iterasi berulang untuk melatih weak learners dan memperbarui bobot contoh-contoh pelatihan. Oleh karena itu, waktu pelatihan algoritma ini cenderung lebih lama dibandingkan dengan beberapa algoritma machine learning lainnya.
+   
+
+
+
+ 
 - Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
 - Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
 - Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
