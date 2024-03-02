@@ -4,8 +4,6 @@
 
 Penyakit jantung koroner adalah salah satu penyebab utama kematian di seluruh dunia. Memprediksi penyakit jantung adalah salah satu tugas yang paling menantang di bidang analisis data klinis. Machine learning (ML) berguna dalam bantuan diagnostik dalam hal pengambilan keputusan dan prediksi berdasarkan data yang dihasilkan oleh sektor perawatan kesehatan secara global. Kami juga telah merasakan teknik ML yang digunakan dalam bidang medis untuk prediksi penyakit. Dalam hal ini, banyak studi penelitian telah ditunjukkan pada prediksi penyakit jantung menggunakan pengklasifikasi ML.
 
-
-
 **Rubrik/Kriteria Tambahan**:
 Menurut Organisasi Kesehatan Dunia [1], CVD adalah penyebab kematian terbesar di dunia, yang mengakibatkan kematian sekitar 17,9 juta orang setiap tahunnya. 
 
@@ -119,21 +117,484 @@ Fitur - fitur kategori pada dataset ini adalah : ['sex','cp','fbs','restecg','ex
 
 ##### Sex (Jenis kelamin)
 Barplot untuk fitur 'sex' adalah :
-![Barplot_sex]('https://drive.google.com/uc?export=download&id=1kKmgybz_wzX6Jj0G_tnpY014NVVureXr')
 
+![Barplot_sex](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/fb1174e91dd23b9631a2f1a53918ac1a7d3a3f3f/Image/bar_plot_sex.png 'Bar Plot - Sex')
 
+Dari plot diatas dapat diketahui bahwa dataset didominasi oleh pasien Pria, dengan jumlah 551 pasein dan perentase 75,7%.
+
+##### Cp (Jenis sakit jantung)
+Barplot untuk fitur 'cp' adalah :
+
+![Barplot_cp](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/fb1174e91dd23b9631a2f1a53918ac1a7d3a3f3f/Image/bar_plot_cp.png 'Bar Plot - cp')
+
+48,8% pasien memiliki sakit dada asymptomatic 22,9% pasien memiliki sakit dada non-anginal, 22,7%  pasien memiliki sakit dada atypical anginan, and sisanya meiliki sakit dada typical angina
+
+##### fbs (Kadar gula darah puasa)
+Barplot untuk fitur 'fbs' adalah:
+
+![Barplot_cp](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/27c164f499f3f97dc326a83c242a75bcaa06eb04/Image/bar_plot_fbs.png 'Bar Plot - fbs')
+
+Kebanyakan pasien tidak memiliki gula darah puasa > 120 mg/dl, dengan 83,7% pesentase.
+
+##### restecg (Hasil elevtrokardiografi saat istirahat)
+Barplot untuk fitur 'restecg' adalah:
+
+![Barplot_restecg](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/27c164f499f3f97dc326a83c242a75bcaa06eb04/Image/bar_plot_restecg.png 'Bar Plot - restecg')
+
+Setengah dari total pasien memiliki hasil normal, dimana 23,6% pasien lainnya memilki hasil Iv hypertrophy dan sisanya memiliki hasil st-t abnormality.
+
+##### exang (Angina akibat olah raga)
+Barplot untuk fitur 'exang' adalah:
+
+![Barplot_exang](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/e50cd5d6044dbeb19a1796d85cded6fd9105283e/Image/bar_plot_exang.png 'Bar Plot - exang')
+
+62,1% pasien tidak memiliki angina yang diakibatkan dari olehraga, sedangkan sisanya memilikinya.
+
+##### slope (kemiringan puncak latihan segmen ST)
+Barplot untuk fitur 'slope' adalah:
+
+![Barplot_slope](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/e50cd5d6044dbeb19a1796d85cded6fd9105283e/Image/bar_plot_slope.png 'Bar Plot - slope')
+
+Mayoritas pasien memiliki kemiringan puncak latihan segmen ST flat and upsloping dengan 47,9% dan 45,5% persentase, sedangkan sisanya memiliki kemiringan puncak latihan segmen ST downsloping.
+
+##### ca (jumlah pembuluh darah utama diwarnai oleh flouroskopi)
+Barplot untuk fitur 'ca' adalah:
+
+![Barplot_ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/e50cd5d6044dbeb19a1796d85cded6fd9105283e/Image/bar_plot_ca.png 'Bar Plot - ca')
+
+Kebanyakan dari pasien memiliki jumlah pembuluh darah utama 0 dengen 70,7% persentase, dimana sisanya 19% memiliki jumlah 1, 7,7% memiliki jumlah  2 and 2,6% memiliki jumlah 3 pembuluh darah utama.
+
+##### thal (Thalassemia)
+Barplot untuk fitur 'tal' adalah:
+
+![Barplot_thal](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/e50cd5d6044dbeb19a1796d85cded6fd9105283e/Image/bar_plot_thal.png 'Bar Plot - thal')
+
+Kebanyakan pasien memiliki thalasemia normal and reversible defect dengan 48,5% and 45,9% persentase, sisanya memilki thalasemia fixed defect
+
+#### Univeariate Analysis - Fitur Numerik
+Analisis ini dilakukan dengan menggunakan histogram untuk fitur numerik.
+Fitur - fitur numerik pada dataset ini adalah : ['age','trestbps','chol','thalch','oldpeak']
+
+Data histogram untuk fitur numerik adalah:
+
+![Histogram](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d129dfd39a2646f6c631ef152ce5948192d77c99/Image/histogram.png 'Histogram')
+
+Dari histogram diatas dapat disimpulkan:
+
+1. **Age  :** Puncak dari data berada di akhir 50 an sampai 60 an
+2. **Trest bps (Tekanan Darah) :** Data terkonsentrasi pada kisaran 120-140 mmHg
+3. **Chol (Serum Kolestrol)  :** Kebanyakan pasien memiliki nilai Kolestrol antara 200 - 300
+4. **Thalch (Detak jantung maksimal yang dicapai)  :** MMayoritas pasien memperoleh nilai detak jantung 125 - 175 bpm selama tes.
+5. **Oldpeak (ST depresi yang diakibatkan oleh latihan)  :** Kebanyakan nilai terkonsentrasi pada nilai 0, hal ini mengindikasikan bahwa pasien tidak mengalami ST depresi yang signifikan selama latihan
+
+### Bivariate Analysis
+
+Setelah melakukan univariate analyisis, selanjutnya dilakukan bivariate analayisis.
+1. Untuk data numerik: Mengguankan bar plots untuk menunjukkan nilai rata rata dari tiap fitur terhadap target, dan  KDE plots untuk memahami distribusi masing masing fitur terhadap target. Hal ini membantu dalam memahami bagaimana setiap fitur bervariasi antara dua hasil target.
+
+2. Untuk data kategori : Untuk melihat korelasi antara nilai kategori terhadap nilai target, digunakan Chi-square test of independence. Uji statistik ini menilai apakah terdapat hubungan yang signifikan antara dua variabel kategori.
+
+#### Bivariate Analysis - Data numerik vs Target
+
+Plot untuk Bivariate Analysis - Data numerik vs Target adalah sebagai berikut:
+
+![Numerik vs Target](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d129dfd39a2646f6c631ef152ce5948192d77c99/Image/continous%20features%20vs%20target.png 'Numerik vs Target')
+
+**Kesimpulan:**
+
+1. Usia (age): Distribusinya menunjukkan sedikit perubahan dengan rata-rata pasien yang menderita penyakit jantung sedikit lebih muda dibandingkan mereka yang tidak menderita penyakit jantung. Usia rata-rata pasien tanpa penyakit jantung lebih tinggi.
+2. Tekanan Darah Saat Istirahat (trestbps): Kedua kategori menampilkan distribusi yang tumpang tindih dalam plot KDE, dengan nilai rata-rata yang hampir sama, menunjukkan terbatasnya daya pembeda untuk fitur ini.
+3. Kolesterol Serum (chol): Distribusi kadar kolesterol untuk kedua kategori tersebut cukup dekat, namun rata-rata kadar kolesterol pada pasien penyakit jantung sedikit lebih rendah.
+4. Pencapaian Denyut Jantung Maksimum (thalach): Ada perbedaan nyata dalam distribusi. Pasien dengan penyakit jantung cenderung mencapai detak jantung maksimum yang lebih tinggi selama tes stres dibandingkan dengan mereka yang tidak menderita penyakit jantung.
+5. ST Depresi (oldpeak): Depresi ST yang disebabkan oleh olahraga relatif lebih rendah pada pasien dengan penyakit jantung. Sebarannya mencapai puncaknya mendekati nol, sedangkan kategori non-penyakit memiliki penyebaran yang lebih luas.
+------------------------
+Berdasarkan perbedaan visual dalam distribusi dan nilai rata-rata, Denyut Jantung Maksimum (thalach) tampaknya memiliki dampak paling besar terhadap status penyakit jantung, diikuti oleh ST Depresi (oldpeak) dan Usia (age).
+
+Selain menggunakan Bar Plot dan KDE Plot, digunakan juga Correlation Matrix untuk melihat korelasi antar data numerik.
+
+![Correlation Matrix](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/correlation%20matrix.png 'Correlation Matrix')
+
+**Kesimpulan:**
+
+Dari correlation matrix, ca (Number of major vessels (0-3) colored by fluoroscopy) adalah fitur pertama yang memiliki korelasi yang kuat dengan nilai target, dengan oldpeak (ST Depression) di urutan kedua dan age di urutan ketiga.
+
+#### Bivariate Analysis - Data kategori vs Target
+​Hasil Chi-square test of independence untuk data kategori adalah sebagai berikut:
+
+![Obbserved sex](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_sex.png 'Obbserved sex')
+
+Chi-square statistic for sex: 65.9822706513826
+
+p-value for sex: 1.5977088721905247e-13
+
+![Obbserved cp](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_sex.png 'Obbserved cp')
+
+Chi-square statistic for cp: 212.4106179794831
+
+p-value for cp: 8.869629556756493e-39
+
+![Obbserved fbs](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_fbs.png 'Obbserved fbs')
+
+Chi-square statistic for fbs: 28.39522630288068
+
+p-value for fbs: 1.03712317210912e-05
+
+![Obbserved restecg](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_restecg.png 'Obbserved rest ecg')
+
+Chi-square statistic for restecg: 41.2837747903622
+
+p-value for restecg: 1.8447365567425365e-06
+
+![Obbserved exang](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_exang.png 'Obbserved exang')
+
+Chi-square statistic for exang: 194.00745483156376
+
+p-value for exang: 7.295567046348765e-41
+
+![Obbserved slope](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_slope.png 'Obbserved slope')
+
+Chi-square statistic for slope: 281.339671416197
+
+p-value for slope: 3.833652276746616e-56
+
+![Obbserved ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_ca.png 'Obbserved ca')
+
+Chi-square statistic for ca: 299.2114011632948
+
+p-value for ca: 6.875267359872916e-57
+
+![Obbserved thal](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_thal.png 'Obbserved thal')
+
+Chi-square statistic for thal: 284.85474944248324
+
+p-value for thal: 6.860971388362645e-57
+
+**Kesimpulan:**
+
+1. Sex : Terdapat 170 pasien Pria dengan penyakit jantung Level 1, dan 20 pasien pria dengan penyakit jantung Level 4, sedangkan kebanyakan pasien Pria tidak memiliki penyakit jantung.
+2. Cp : Kebanyakan pasien Pria dengan sakit dada asymptomatic memiliki penyakit jantung, dengan 141 pasien dengan penyakit jantung Level 1, 53 pasien dengan penyakit jantung Level 2, 51 pasien dengan penyakit jantung Level 3, dan 17 pasien dengan penyakit jantung Level 4. Sementara kebanyakan pasien dengan sakit dada atypical angina tidak memiliki penyakit jantung.
+3. Fbs : Mayoritas pasien tanpa gula darah puasa > 120 mg/dl, tidak memiliki penyakit jantung,tetapi kebanyakan pasien dengan gula darah puasa > 120 mg/dl, memiliki penyakit jantung.
+4. Restecg (Hasil Resting Electrocardiographic) : Kebanyakan pasien dengan restecg normal tidak memiliki penyakit jantung sementara mayoritas pasien dengan IV Hyperthropy dan st-abnormality memiliki penyakit jantung.
+5. Exang (Angina yang timbul karena latihan) : Mayoritas pasien tanpa exang tidak memiliki penyakit jantung sementara pasien dengan exang memiliki penyakit jantung level 1 (116 pasien)
+6. Slope (kemiringan puncak latihan segmen ST) : Mayoritas pasien dengan slope flat memiliki penyakit jantung dari level 1 (142 pasien), level 2 & level 3 ( keduanya 44 pasien) dan level 4 (11 pasien), sementara sebagian pasien dengan upslopping tidak memiliki penyakit jantung
+7. Ca (jumlah pembuluh darah utama (0-3) diwarnai oleh flouroskopi) : Mayoritas pasien dengan pembuluh darah utama 0 tidak memiliki penyakit jantung, sementara pasien dengan pembuluh darah utama 1,2 dan 3 memiliki penyakit jantung
+8. Thal (Thalassemia) : Kebanyakan pasein dengan reversible defect memiliki penyakit jantung, sementara pasien dengan normal thal tidak memiliki penyakit jantung
 
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+Setelah dilakukan pengecekan pada data set, masih terdapat missing values dan otliers pada data set.
+Maka proses data preparation yang dilakukan adalah sebagai barikut:
+
+1. Menangani Missing values, tahapan proses yang dilakukan antara lain:
+   - Melakukan inspeksi missing values pada dataset
+   - Penangan missing values dengan metode Iterative Imputer
+   - Cek hasil penangan missing values
+2. Menangani Outliers, tahapan proses yang dilakukan antara lain:
+   - Melakukan inspeksi outliers dengan metode IQR
+   - Melakukan visualisasi outliers dengan Box Plot
+   - Melakukan penanganan outliers satu per satu pada fitur
+   - Cek hasil penanganan outliers
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
+Adapun detail dari proses-proses tersebut adalah sebagai berikut:
+
+1. Menangani Missing Values
+   - Inspeksi missing values pada dataset
+     Sebelum menangani missing values, missing values pada data perlu di inspeksi terlebih dahulu.
+     Missing values pada dataset dapat dilihat dengan fungsi di bawah ini
+     
+     ```
+     data.isnull()
+     ```
+     
+     Pada inspeksi kali ini, digunakan code berikut:
+     ```
+     heart_data.isnull().sum()
+     ```
+     Hal ini bertujuan untuk menjumalahkan nilai missing values, sehingga dapat diketahui total missing values pada data.
+     Hasil dari kode diatas adalah sebagai berikut:
+     
+     | Fitur  | Missing Values|
+     | ------ | ------ |
+     |age     |       0|
+     |sex     |       0|
+     |cp      |       0|
+     |trestbps|      59|
+     |chol    |      30|
+     |fbs     |      90|
+     |restecg |       2|
+     |thalch  |      55|
+     |exang   |      55|
+     |oldpeak |      62|
+     |slope   |     309|
+     |ca      |     611|
+     |thal    |     486|
+     |num     |       0|
+
+     dtype: int64
+
+     Dari hasil perhitungan kode diatas, dapat dilihat bahwa terdapat banyak missing values pada dataset yang perlu ditangani.
+     Untuk memastikan proporsi missing values pada dataset dapat digunakan kode berikut:
+     ```
+     round((heart_data.isnull().sum()[heart_data.isnull().sum()>0]/len(heart_data)*100),1).sort_values(ascending=False)
+     ```
+     Didapat Proporsi missing values sebegai berikut:
+     | Fitur  | Persentase|
+     | ------ | ------ |
+     |ca       |  66.4  |
+     |thal     |   52.8 |
+     |slope    |   33.6 |
+     |fbs      |    9.8 |
+     |oldpeak  |    6.7 |
+     |trestbps |    6.4 |
+     |thalch   |    6.0 |
+     |exang    |    6.0 |
+     |chol     |    3.3 |
+     |restecg  |    0.2 |
+     
+     dtype: float64
+     
+     Dari hasil inspeksi, diketahui:
+
+     - Terdapat 10 fitur dengan missing values.
+     - 7 fitur memiliki persentase missing values dibawah 10%.
+     - 3 fitur memiliki persentase missing values yang tinggi (30%, 50%, 60%).
+
+     Dikarenakan jumlah persentase missing values yang cukup tinggi, metode yang dipilih untuk menangani missing values tersebut adalah metode Iterative Imputer dengan menggunakan model machine learning Random Forest Classifier dan Random Forest Regressor.
+   - Penanganan missing values dengan metode Iterative Imputer
+   
+     Adapun metode Iterative Imputer mengacu pada proses di mana setiap fitur dimodelkan sebagai fungsi dari fitur lainnya, misalnya. masalah regresi di mana nilai yang hilang diperkirakan. Setiap fitur diperhitungkan secara berurutan, satu demi satu, sehingga nilai yang diperhitungkan sebelumnya dapat digunakan sebagai bagian dari model dalam memprediksi fitur berikutnya.
+
+     Hal ini bersifat iteratif karena proses ini diulang beberapa kali, sehingga estimasi nilai yang hilang dapat dihitung dengan lebih baik seiring dengan estimasi nilai yang hilang di seluruh fitur.
+
+     Algoritma regresi yang berbeda dapat digunakan untuk memperkirakan nilai yang hilang untuk setiap fitur, meskipun metode linier sering kali digunakan untuk kesederhanaan. Jumlah iterasi suatu prosedur seringkali dibuat kecil, misalnya 10. Terakhir, urutan fitur yang diproses secara berurutan dapat dipertimbangkan, seperti dari fitur dengan nilai yang hilang paling sedikit ke fitur dengan nilai yang hilang paling banyak.
+​
+   - Cek hasil penangan missing values
+   
+     Setelah dilakukan proses Iterative Imputer tersebut, hasil pengecekan missing values mendapatkan hasil sebagai berikut:
+
+     | Fitur  | Missing Values|
+     | ------ | ------ |
+     |age     |       0|
+     |sex     |       0|
+     |cp      |       0|
+     |trestbps|       0|
+     |chol    |       0|
+     |fbs     |       0|
+     |restecg |       0|
+     |thalch  |       0|
+     |exang   |       0|
+     |oldpeak |       0|
+     |slope   |       0|
+     |ca      |       0|
+     |thal    |       0|
+     |num     |       0|
+
+     dtype: int64
+
+     Missing values adalah masalah umum dalam proyek pembelajaran mesin dan ilmu data. Kegagalan dalam menangani data yang hilang dengan benar dapat mengganggu hasil model machine learning atau mengurangi akurasi model. Untuk mengatasi hambatan ini, perlu dilakukan penanganan nilai-nilai yang hilang secara hati-hati. Tujuan dari penanganan missing values adalah membuat kumpulan data lengkap yang akan menempatkan analisis pada landasan yang kokoh. Mengabaikan data yang hilang dapat secara langsung memengaruhi performa dan keandalan dari model .
+​
+2. Menangani Outliers,
+   - Melakukan inspeksi outliers dengan metode IQR
+     IQR adalah interquartile range atau rentang akar kuartil dari sekumpulan data. IQR digunakan dalam analisis statistik untuk membantu menarik kesimpulan mengenai sekumpulan data. IQR lebih sering digunakan daripada range karena IQR tidak menyertakan data paling luar.
+     Secara matematis, IQR dapat dirumuskan sebagai berikut:
+     <p align="center">
+     $IQR = Q3 - Q1$
+     </p>
+
+     Dengan Q1 adalah nilai di antara median dengan data terkecil atau dapat dikatakan *25th Percentile* sedang Q3 adalah nilai di antara median dengan data terbesar atau dapat dikatakan *75th Percentile*. Untuk menentukan outliers, perlu di tetapkan nilai batas atas dan batas bawah. Adapun rumus untuk batas atas dan batas bawah adalah:
+
+     <p align="center">
+     $Batas Atas = Q3 + 1.5 * IQR$
+     </p>
+     <p align="center">
+     $Batas Bawah = Q1 - 1.5 * IQR$
+     </p>
+
+     Maka untuk data set ini jumlah outliernya dapat ditentukan dengan kode berikut:
+     ```
+     Q1 = heart_data[num_cols].quantile(0.25)
+     Q3 = heart_data[num_cols].quantile(0.75)
+     IQR = Q3 - Q1
+     outliers_count_specified = ((heart_data[num_cols] < (Q1 - 1.5 * IQR)) | (heart_data[num_cols] > (Q3 + 1.5 * IQR))).sum()
+      
+     outliers_count_specified
+     ```
+     Hasil nya adalah sebagai berikut:
+     | Fitur  | Outliers|
+     | ------ | ------ |
+     |age      |    0  |
+     |trestbps |    28 |
+     |chol     |   185 | 
+     |thalch   |    2 | 
+     |oldpeak  |     3 |
+     |ca       |    22 | 
+     |num      |     0 |
+      
+     dtype: int64
+      
+   - Melakukan visualisasi outliers dengan Box Plot
+     Untuk melihat lebih detail sebaran outliers pada data set, dapat dilakukan visualisasi dengan menggunakan Box Plot.
+     Box plot juga dikenal sebagai box-and-whisker plot, adalah grafik yang menunjukkan sebaran data untuk variabel kontinu. Ini adalah metode non-parametrik yang menampilkan variasi sampel populasi statistik tanpa membuat asumsi apa pun tentang distribusi statistik yang mendasarinya.
+     Berikut adalah bagian dasar dari Box Plot:
+     1. Garis tengah dalam kotak menunjukkan median data. Setengah dari data berada di atas nilai ini, dan setengahnya lagi di bawah. Jika datanya simetris maka mediannya berada di tengah kotak. Jika datanya miring, mediannya akan lebih dekat ke atas atau ke bawah kotak.
+     2. Bagian bawah dan atas kotak menunjukkan kuantil atau persentil ke-25 dan ke-75. Kedua kuantil ini juga disebut kuartil karena masing-masing kuantil memotong seperempat (25%) data. Panjang kotak merupakan selisih antara kedua persentil tersebut dan disebut rentang interkuartil (IQR).
+     3. Garis yang memanjang dari kotak disebut whiskers. Whiskers mewakili variasi data yang diharapkan. Whiskers memanjang 1,5 kali IQR dari atas dan bawah kotak. Jika data tidak sampai ke ujung whiskers, maka whiskers meluas ke nilai data minimum dan maksimum.
+     4. Jika ada nilai yang berada di atas atau di bawah ujung whiskers, nilai tersebut diplot sebagai titik. Titik-titik ini sering disebut outlier. Pencilan lebih ekstrem dibandingkan variasi yang diharapkan. Poin data ini layak untuk ditinjau untuk menentukan apakah data tersebut merupakan outlier atau kesalahan; whiskers tidak akan menyertakan outlier ini.
+     Box plot untuk data yang mengandung outliers adalah sebagai berikut:
+     ![Box plot trestbps](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_trestbps.png 'Box plot trestbps')
+     ![Box plot chol](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_chol.png 'Box plot chol')
+     ![Box plot thalch](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_thalch.png 'Box plot thalch')
+     ![Box plot oldpeak](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_oldpeak.png 'Box plot oldpeak')
+     ![Box plot ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_ca.png 'Box plot ca')
+
+   - Melakukan penanganan outliers satu per satu pada fitur
+     Cara yang paling umum adalah dengan menghilangkan atau menghapus nilai nilai outliers yang berada di luar batas nilai IQR.
+     Hanya saja, dikarenakan data set yang digunakan hanya terdiri dari 900 data, dan jumlah outliersnya cukup banyak, maka Outliers pada data set ini diolah secara manual.
+     1. Penanganan Outliers pada fitur Tresbps
+        Sebelum melakukan penanganan, info statistik dari fitur di inspeksi dengan fitur describe().
+        ```
+        heart_data['trestbps'].describe()
+        ```
+        Info statistik dari fitur trestbps adalah:
+        | Statistik | Nilai|
+        | ------ | ------ |
+        |count   | 920.000000|
+        |mean    | 132.494054|
+        |std     |  18.534371|
+        |min     |   0.000000|
+        |25%     | 120.000000|
+        |50%     | 130.000000|
+        |75%     | 140.160000|
+        |max     | 200.000000|
+        
+        Name: trestbps, dtype: float64
+
+        Dari hasil terdapat data dengan nilai 0 di kolom trestbps, dikarenakan tekanan darah tidak mungkin memiliki nilai 0. Maka data dengan nilai 0 pada kolom ini bisa di drop
+        Dikarenakan hasil visual Box Plot untuk terstbps terdapat nilai 75 diluar batas bawah, maka nilai dibawah 80 bisa di drop.
+
+        ```
+        heart_data = heart_data[heart_data['trestbps'] >= 80]
+        ```
+
+        Hasil setelah penanganan outliers:
+        | Statistik | Nilai|
+        | ------ | ------ |
+        |count   | 919.000000|
+        |mean    | 132.638226|
+        |std     |  18.020920|
+        |min     |  80.000000|
+        |25%     | 120.000000|
+        |50%     | 130.000000|
+        |75%     | 140.240000|
+        |max     | 200.000000|
+        
+        Name: trestbps, dtype: float64
+     2. Penanganan Outliers Thalach
+        Berdasarkan informasi dari Box Plot,nilai pada kolom thalch dapat dimulai dari 71, sehingga nilai dibawah 71 dapat dihilangkan
+
+        ```
+        heart_data = heart_data[heart_data['thalch'] >= 71
+        ```
+
+        Hasil dari penanganan outliers tersebut:
+        |Statistik | Nilai|
+        | ------ | ------ |
+        |count   | 914.000000|
+        |mean    | 137.706718|
+        |std     |  24.877042|
+        |min     |  71.000000|
+        |25%     | 120.000000|
+        |50%     | 140.000000|
+        |75%     | 156.000000|
+        |max     | 202.000000|
+
+        Name: thalch, dtype: float64
+     3. Penanganan Outliers Oldpeak
+        Terdapat 3 outliers pada kolom oldpeak. Outtliers ditangani menggunakan metode IQR.
+        ```
+        Q1 = heart_data['oldpeak'].quantile(0.25)
+        Q3 = heart_data['oldpeak'].quantile(0.75)
+        IQR = Q3 - Q1
+        lower_bound = Q1 - 1.5 * IQR
+        upper_bound = Q3 + 1.5 * IQR
+        heart_data = heart_data[(heart_data['oldpeak'] >= lower_bound) & (heart_data['oldpeak'] <= upper_bound)]
+        ```
+     4. Penanganan Outliers Chol
+        Sebelum melakukan penanganan, info statistik dari fitur di inspeksi dengan fitur describe().
+        ```
+        heart_data['chol'].describe()
+        ```
+
+        Info statistik dari fitur chol adalah:
+        | Statistik | Nilai|
+        | ------ | ------ |
+        |count   | 911.000000|
+        |mean    | 200.296191|
+        |std     | 108.268402|
+        |min     |   0.000000|
+        |25%     | 177.500000|
+        |50%     | 223.000000|
+        |75%     | 267.000000|
+        |max     | 603.000000|
+        
+        Name: chol, dtype: float64
+
+        Terdapat beberapa nili 0 pada kolom cholestrol, sehingga nilai cholestrol tidak mungkin bernilai 0.
+        Jumlah nilai 0 pada kolom cholestrol dihitung jumlahnya dan dihilangkan dari data dengan menggunakan kode berikut:
+        ```
+        print("zero_counts :",(heart_data['chol'] == 0).sum())
+        heart_data = heart_data[heart_data['chol'] != 0]
+        ```
+        Terdapat 167 nilai 0 pada kolom chol.
+
+        Dari informasi pada Box Plot, Diputuskan untuk menyaring nilai chol antara 126 dan 400.
+        ```
+        heart_data = heart_data[heart_data['chol'] >= 126]
+        heart_data = heart_data[heart_data['chol'] <= 400]
+        ```
+
+        Hasil dari penanganan outliers tersebut:
+        |Statistik | Nilai|
+        | ------ | ------ |
+        |count   | 728.000000|
+        |mean    | 242.279986|
+        |std     |  48.270612|
+        |min     | 126.000000|
+        |25%     | 209.000000|
+        |50%     | 236.500000|
+        |75%     | 274.000000|
+        |max     | 394.000000|
+        
+        Name: chol, dtype: float64
+
+        Name: thalch, dtype: float64
+
+        Jumlah data setelah outliers ditangani adalah 728 data.
+
 - Menjelaskan proses data preparation yang dilakukan
 - Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+Model yang digunakan untuk menyelesaikan masalah Multiclass Classification ini adalah sebagai berikut:
+1. Random Forest Classifier
+2. K-Nearest Neighbors
+3. Gaussian Naive Bayes
+4. Ada Boost, and
+5. XG Boost
+Selain itu dilakukan juga tuning hyperparameter menggunakan GridSearchCV
 
+Dari kelima model ini akan dipilih model dengan akurasi tertinggi.
+
+Tahapan yang dilakukan untuk training model ini antara lain:
+1. Encoding Fitur Kategori
+2. Split data menjadi data train dan data test
+3. Train data dengan 5 model dengan menerapkan tuning hyperparameter menggunakan GridSearchCV
+
+1. Encoding Fitur Kategori
+   Fitur kategori pada data set di encoding dengan menggunakan 
+
+   
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
 - Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
