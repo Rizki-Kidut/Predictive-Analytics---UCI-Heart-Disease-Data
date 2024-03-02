@@ -835,7 +835,7 @@ Setelah melakukan training model dengan kelima algoritma tersebut didapat model 
 |   3   |    Random Forest    |   0.73   |    0.75   |  0.73  | 0.73 |
 |   4   |       XG Boost      |   0.70   |    0.72   |  0.70  | 0.70 |
 
-Maka model terbaik untuk data set ini adalah **Model Random Forest** dengan nilai metriks sebegai berikut:
+Maka model terbaik untuk data set ini adalah **Model Ada Boost** dengan nilai metriks sebegai berikut:
 
 --------------------------------------------------
 BEST MULTICLASS CLASSIFIER MODEL PERFORMANCE
@@ -853,6 +853,8 @@ BEST MULTICLASS CLASSIFIER MODEL PERFORMANCE
 ## Evaluation
 Metrik yang digunakan untuk permasalahan Multiclass Classification ini adalah Accuracy, Precision, Recall, dan F1 Score. Penjelasan untuk masing masing metrik adalah sebagai berikut:
 
+**Rubrik/Kriteria Tambahan (Opsional)**: 
+
 1. Accuracy
    
    Accuracy adalah metrik yang mengukur seberapa sering model machine learning memprediksi hasil dengan benar. Anda dapat menghitung akurasi dengan membagi jumlah prediksi yang benar dengan jumlah total prediksi.
@@ -860,7 +862,7 @@ Metrik yang digunakan untuk permasalahan Multiclass Classification ini adalah Ac
    Formula dari Accuracy adalah sebagi berikut:
 
    <p align="center">
-   $Accuracy = \frac{Prediksi Benar}{Total Prediksi}$
+   $Accuracy = \dfrac{Prediksi Benar}{Total Prediksi}$
    </p>
 
    Akurasi dapat diukur pada skala 0 hingga 1, atau sebagai persentase. Semakin tinggi akurasinya, semakin baik. Anda dapat mencapai akurasi sempurna 1,0 ketika setiap prediksi yang dibuat model benar.
@@ -897,7 +899,7 @@ Metrik yang digunakan untuk permasalahan Multiclass Classification ini adalah Ac
    Secara matematis metrik Precision dapat dihitung dengan persamaan berikut:
    
    <p align="center">
-   $Precision = \frac{True Positive}{True Positive + False Positive}$
+   $Precision = \dfrac{True Positive}{True Positive + False Positive}$
    </p>
 
    Precision dapat diukui menggunakan skala 0 hingga 1, atau sebagai persentase. Semakin tinggi presisi, semakin baik. Anda dapat mencapai presisi sempurna 1,0 ketika model selalu tepat ketika memprediksi kelas target: model tidak pernah menandai kesalahan apa pun.
@@ -942,7 +944,7 @@ Metrik yang digunakan untuk permasalahan Multiclass Classification ini adalah Ac
    Secara matematis metrik Precision dapat dihitung dengan persamaan berikut:
 
    <p align="center">
-   $Recall = \frac{True Positive}{True Positive + False Negative}$
+   $Recall = \dfrac{True Positive}{True Positive + False Negative}$
    </p>
 
    Recall dapat diukur menggunakan skala 0 hingga 1 atau sebagai persentase. Semakin tinggi recall, semakin baik. Anda dapat mencapai recall sempurna sebesar 1,0 ketika model dapat menemukan semua contoh kelas target dalam dataset.
@@ -974,14 +976,14 @@ Metrik yang digunakan untuk permasalahan Multiclass Classification ini adalah Ac
    Secara matematis F1 score dapat dihitung dengan persamaan berikut:
    
    <p align="center">
-   $F1 score = \frac{2}{\frac{1}{Precision} + \frac{1}{Recall}}$
+   $F1 score = \dfrac{2}{\dfrac{1}{Precision} + \dfrac{1}{Recall}}$
    </p>
 
    Mengapa skor F1 dihitung menggunakan rata-rata harmonik dan bukannya rata-rata aritmatika atau geometris sederhana? Sederhananya: rata-rata harmonik mendorong nilai yang sama untuk precision dan recall. Artinya, semakin jauh nilai precision dan recall menyimpang dari satu sama lain, semakin buruk nilai rata-rata harmoniknya.
    Dalam hal empat elemen dasar dari confusion matrix, dengan mengganti ekspresi untuk nilai precision dan recall pada persamaan di atas, nilai F1 juga dapat dituliskan sebagai berikut:
 
    <p align="center">
-   $F1 score = \frac{True Positive}{ True Poditive + \frac{1}{2} (False Positive + False Negative)}$
+   $F1 score = \dfrac{True Positive}{ True Positive + \dfrac{1}{2} (False Positive + False Negative)}$
    </p>
 
    Adapaun Kelebihan dan kekurangan F1 Score
@@ -1000,218 +1002,31 @@ Metrik yang digunakan untuk permasalahan Multiclass Classification ini adalah Ac
    - Skor F1 mungkin tidak sensitif terhadap pola tertentu dalam data: Ini adalah metrik umum yang tidak mempertimbangkan pola atau karakteristik tertentu dari data. Namun, dalam beberapa kasus, metrik yang lebih khusus mungkin diperlukan untuk menangkap sifat-sifat spesifik dari masalah.
    
 
-   
-   
+Dari hasil didapat model terbaik untuk menyelesaikan permasalahan Multiclass Classification untuk data set ini adalah **Model Ada Boost** dengan performa sebagai berikut:
 
-   
-   
-   
+| Model:      | Ada Boost     |
+|-------------|:-------------:|
+| Accuracy:   |      0.74     |
+| Precision:  |      0.74     |
+| Recall:     |      0.74     |
+| F1:         |      0.71     |
+
+Adapun perbandingan tiap tiap metrik untuk kelima algoritma terlihat pada bar plot berikut:
+
+![Model Metrik](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/a00186431e90d7cb9faafdb53b6c23b77bb7fecf/Image/model%20metrics.png 'Model Metric')
+
+Selain itu, dilakukan prediksi terhadap 5 nilai target dan dibandingakan dengan nilai target sesungguhnya. Hasilnya adalah sebagai berikut:
+
+| Index | y_true | prediksi_Random Forest | prediksi_K-Nearest Neighbors | prediksi_GaussianNB | prediksi_Ada Boost | prediksi_XG Boost |
+|:-----:|:------:|:----------------------:|:----------------------------:|:-------------------:|:------------------:|:-----------------:|
+|   39  |    0   |            0           |               0              |          1          |          0         |         0         |
+|  341  |    0   |            0           |               0              |          0          |          0         |         0         |
+|  332  |    0   |            0           |               0              |          0          |          0         |         0         |
+|  524  |    1   |            1           |               2              |          3          |          1         |         1         |
+|  562  |    1   |            1           |               1              |          1          |          1         |         1         |
+
+Dari hasil tersebut, dapat ditarik kesimpulan bahwa dari kelima algoritma yang digunakan Algoritma Random Forest, Ada Boost dan XG Boost dapat memprediksi kelima nilai target dengan benar. Sedangkan algoritma KNN dapat memprediksi 4 dari 5 nilai target dan GaussianNB hanya dapat memprediksi 3 dari 5 nilai target.
 
 
-   
-
-   
-
-
-   
-
-   
-   
-
-   
-   
-
-
-   
-
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
-
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
 
 **---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
-
-- Import a HTML file and watch it magically convert to Markdown
-- Drag and drop images (requires your Dropbox account be linked)
-- Import and save files from GitHub, Dropbox, Google Drive and One Drive
-- Drag and drop markdown and HTML files into Dillinger
-- Export documents as Markdown, HTML and PDF
-
-Markdown is a lightweight markup language based on the formatting conventions
-that people naturally use in email.
-As [John Gruber] writes on the [Markdown site][df1]
-
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable
-> as possible. The idea is that a
-> Markdown-formatted document should be
-> publishable as-is, as plain text, without
-> looking like it's been marked up with tags
-> or formatting instructions.
-
-This text you see here is *actually- written in Markdown! To get a feel
-for Markdown's syntax, type some text into the left window and
-watch the results in the right.
-
-## Tech
-
-Dillinger uses a number of open source projects to work properly:
-
-- [AngularJS] - HTML enhanced for web apps!
-- [Ace Editor] - awesome web-based text editor
-- [markdown-it] - Markdown parser done right. Fast and easy to extend.
-- [Twitter Bootstrap] - great UI boilerplate for modern web apps
-- [node.js] - evented I/O for the backend
-- [Express] - fast node.js network app framework [@tjholowaychuk]
-- [Gulp] - the streaming build system
-- [Breakdance](https://breakdance.github.io/breakdance/) - HTML
-to Markdown converter
-- [jQuery] - duh
-
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
-
-## Installation
-
-Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
-
-Install the dependencies and devDependencies and start the server.
-
-```sh
-cd dillinger
-npm i
-node app
-```
-
-For production environments...
-
-```sh
-npm install --production
-NODE_ENV=production node app
-```
-
-## Plugins
-
-Dillinger is currently extended with the following plugins.
-Instructions on how to use them in your own application are linked below.
-
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
-
-## Development
-
-Want to contribute? Great!
-
-Dillinger uses Gulp + Webpack for fast developing.
-Make a change in your file and instantaneously see your updates!
-
-Open your favorite Terminal and run these commands.
-
-First Tab:
-
-```sh
-node app
-```
-
-Second Tab:
-
-```sh
-gulp watch
-```
-
-(optional) Third:
-
-```sh
-karma test
-```
-
-#### Building for source
-
-For production release:
-
-```sh
-gulp build --prod
-```
-
-Generating pre-built zip archives for distribution:
-
-```sh
-gulp build dist --prod
-```
-
-## Docker
-
-Dillinger is very easy to install and deploy in a Docker container.
-
-By default, the Docker will expose port 8080, so change this within the
-Dockerfile if necessary. When ready, simply use the Dockerfile to
-build the image.
-
-```sh
-cd dillinger
-docker build -t <youruser>/dillinger:${package.json.version} .
-```
-
-This will create the dillinger image and pull in the necessary dependencies.
-Be sure to swap out `${package.json.version}` with the actual
-version of Dillinger.
-
-Once done, run the Docker image and map the port to whatever you wish on
-your host. In this example, we simply map port 8000 of the host to
-port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
-
-```sh
-docker run -d -p 8000:8080 --restart=always --cap-add=SYS_ADMIN --name=dillinger <youruser>/dillinger:${package.json.version}
-```
-
-> Note: `--capt-add=SYS-ADMIN` is required for PDF rendering.
-
-Verify the deployment by navigating to your server address in
-your preferred browser.
-
-```sh
-127.0.0.1:8000
-```
-
-## License
-
-MIT
-
-**Free Software, Hell Yeah!**
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [Ace Editor]: <http://ace.ajax.org>
-   [node.js]: <http://nodejs.org>
-   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
-   [jQuery]: <http://jquery.com>
-   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
-   [express]: <http://expressjs.com>
-   [AngularJS]: <http://angularjs.org>
-   [Gulp]: <http://gulpjs.com>
-
-   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
-   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
-   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
-   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
-   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
-   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
