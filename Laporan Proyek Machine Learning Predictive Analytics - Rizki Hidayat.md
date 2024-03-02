@@ -582,6 +582,7 @@ Model yang digunakan untuk menyelesaikan masalah Multiclass Classification ini a
 3. Gaussian Naive Bayes
 4. Ada Boost, and
 5. XG Boost
+
 Selain itu dilakukan juga tuning hyperparameter menggunakan GridSearchCV
 
 Dari kelima model ini akan dipilih model dengan akurasi tertinggi.
@@ -828,11 +829,11 @@ Setelah melakukan training model dengan kelima algoritma tersebut didapat model 
 
 | Index |        Model        | accuracy | precision | recall |  f1  |
 |:-----:|:-------------------:|:--------:|:---------:|:------:|:----:|
-|   0   |      Ada Boost      |   0.69   |    0.69   |  0.69  | 0.68 |
-|   1   |      GaussianNB     |   0.64   |    0.71   |  0.64  | 0.67 |
-|   2   | K-Nearest Neighbors |   0.71   |    0.69   |  0.71  | 0.70 |
-|   3   |    Random Forest    |   0.75   |    0.74   |  0.75  | 0.74 |
-|   4   |       XG Boost      |   0.70   |    0.71   |  0.70  | 0.70 |
+|   0   |      Ada Boost      |   0.74   |    0.74   |  0.74  | 0.71 |
+|   1   |      GaussianNB     |   0.62   |    0.70   |  0.62  | 0.65 |
+|   2   | K-Nearest Neighbors |   0.70   |    0.70   |  0.70  | 0.69 |
+|   3   |    Random Forest    |   0.73   |    0.75   |  0.73  | 0.73 |
+|   4   |       XG Boost      |   0.70   |    0.72   |  0.70  | 0.70 |
 
 Maka model terbaik untuk data set ini adalah **Model Random Forest** dengan nilai metriks sebegai berikut:
 
@@ -840,17 +841,188 @@ Maka model terbaik untuk data set ini adalah **Model Random Forest** dengan nila
 BEST MULTICLASS CLASSIFIER MODEL PERFORMANCE
 --------------------------------------------------
 
-| Model:      | Random Forest |
+| Model:      | Ada Boost     |
 |-------------|:-------------:|
-| Accuracy:   |      0.75     |
+| Accuracy:   |      0.74     |
 | Precision:  |      0.74     |
-| Recall:     |      0.75     |
-| F1:         |      0.74     |
+| Recall:     |      0.74     |
+| F1:         |      0.71     |
 
 
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+Metrik yang digunakan untuk permasalahan Multiclass Classification ini adalah Accuracy, Precision, Recall, dan F1 Score. Penjelasan untuk masing masing metrik adalah sebagai berikut:
+
+1. Accuracy
+   
+   Accuracy adalah metrik yang mengukur seberapa sering model machine learning memprediksi hasil dengan benar. Anda dapat menghitung akurasi dengan membagi jumlah prediksi yang benar dengan jumlah total prediksi.
+
+   Formula dari Accuracy adalah sebagi berikut:
+
+   <p align="center">
+   $Accuracy = \frac{Prediksi Benar}{Total Prediksi}$
+   </p>
+
+   Akurasi dapat diukur pada skala 0 hingga 1, atau sebagai persentase. Semakin tinggi akurasinya, semakin baik. Anda dapat mencapai akurasi sempurna 1,0 ketika setiap prediksi yang dibuat model benar.
+
+   **Cara kerja Accuracy**
+   Sebagai contoh, terdapat modeal machine learning untuk melakukan deteksi email spam.
+
+   Untuk setiap email di dalam dataset, sistem ini menghasilkan prediksi dan menetapkan salah satu dari dua kelas: "spam" atau "bukan spam". Berikut ini adalah bagaimana kita dapat memvisualisasikan label yang diprediksi:
+
+   ![Labeled Data](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/7c17f2ed0f5781e870d7de630531b5d253789bd9/Image/Accuracy%20-%20Labeled%20Data.png 'Labeled Data')
+
+   Setelah mendapatkan label data sebenarnya (mengetahui email mana yang merupakan spam dan mana yang bukan), dapat dilakukan evaluasi apakah prediksi model sudah tepat. Visualisasi hasil prediksi yang benar dan salah oleh model :
+
+   ![Prediksi](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/7c17f2ed0f5781e870d7de630531b5d253789bd9/Image/Accuracy%20-%20Hasil%20Prediksi.png 'Prediksi')
+
+   Maka, accuracy dapat dihitung dengan cara membagi jumlah prediksi yang benar oleh model dengan total prediksi. Pada contoh kasus ini 52 dari 60 prediksi (ditandai dengan tanda centang hijau) adalah prediksi benar. Artinya model memiliki akurasi 87%.
+
+   ![Perhitungan](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/7c17f2ed0f5781e870d7de630531b5d253789bd9/Image/Accuracy%20-%20Perhitungan%20Akurasi.png 'Perhitungan')
+   
+   Berikut adalah kelebihan dan kekurangan dari Metrik Accuracy
+   
+   **Kelebihan**
+   - Akurasi adalah metrik yang sangat membantu ketika Anda berurusan dengan kelas-kelas yang seimbang dan peduli dengan "ketepatan" model secara keseluruhan, dan bukan kemampuan untuk memprediksi kelas tertentu.
+   - Akurasi mudah dijelaskan dan dikomunikasikan.
+  
+   **Kekurangan**
+   - Jika Anda memiliki kelas yang tidak seimbang, akurasi kurang berguna karena memberikan bobot yang sama pada kemampuan model untuk memprediksi semua kategori.
+   - Mengkomunikasikan akurasi dalam kasus seperti itu dapat menyesatkan dan menyamarkan kinerja yang rendah pada kelas target.
+
+2. Precision
+
+   Precision adalah metrik yang mengukur seberapa sering model machine learning memprediksi kelas positif dengan benar. Anda dapat menghitung presisi dengan membagi jumlah prediksi positif yang benar (true positive) dengan jumlah total contoh yang diprediksi oleh model sebagai positif (true dan false positive).
+
+   Secara matematis metrik Precision dapat dihitung dengan persamaan berikut:
+   
+   <p align="center">
+   $Precision = \frac{True Positive}{True Positive + False Positive}$
+   </p>
+
+   Precision dapat diukui menggunakan skala 0 hingga 1, atau sebagai persentase. Semakin tinggi presisi, semakin baik. Anda dapat mencapai presisi sempurna 1,0 ketika model selalu tepat ketika memprediksi kelas target: model tidak pernah menandai kesalahan apa pun.
+
+   **Cara Kerja**
+   Contoh kasus jika terdapat masalah yang tidak seimbang, seperti spam yang hanya terjadi pada 5% dari semua email, dari 60 email, hanya 3 email yang benar benar spam.
+
+   Berikut ini adalah visualisasi label yang sebenarnya (pembagian yang sebenarnya antara email spam dan non-spam).
+
+   ![Label Data](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/97971bec65ffe3754507c9ac076a11ba6f04c42f/Image/Precision%20-%20Labeled%20Data.png 'Label Data')
+
+   Dikarenakan jumlah email spam yang sedikit, asumsikan model mendeteksi semua email bukan spam dan tidak dapat mendeteksi spam. Maka jika menggunakan metrik Accuracy, nilainya adalah 95% (Model benar menebak 57 dari 60 email, tetapi nilai Precision adalah 0.
+
+    ![Hasil Prediksi](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/97971bec65ffe3754507c9ac076a11ba6f04c42f/Image/Precision%20-%20Hasil%20Prediksi.png 'Hasil Prediksi')   
+
+   Untuk menghitung Precision, perlu dilakukan pembagian jumlah email spam yang diprediksi dengan benar dengan jumlah totalnya. Namun, jumlah email spam yang diidentifikasi dengan benar adalah 0. Ada 3 email spam dalam dataset, dan model melewatkan semuanya. Semua prediksi yang benar adalah tentang email bukan spam.
+
+   Dengan cara ini, metrik Precision mengoreksi kelemahan utama dari Accuracy. Hal ini dengan jelas mengkomunikasikan bahwa model tidak dapat menyelesaikan masalah.
+
+   Selanjutnya, diasumsikan model dapat mengidentifikasi beberapa email sebagai spam, kemudian membandingkan prediksi model terhadap label yang sebenarnya dan mendapatkan hasil sebagai berikut:
+
+    ![Hasil Prediksi 2](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/97971bec65ffe3754507c9ac076a11ba6f04c42f/Image/Precision%20-%20Hasil%20Prediksi%202.png 'Hasil Prediksi 2')
+
+   Nilai Precisionnya adalah Jumlah spam email yang diprediksi dengan benar (3) dibagi total prediksi positive (6).
+
+   ![Perhitungan](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/97971bec65ffe3754507c9ac076a11ba6f04c42f/Image/Precision%20-%20Perhitungan.png 'Perhitungan')
+
+   Nilai Precisionnya adalah 50%. Model ini melabeli 6 email sebagai spam dan benar separuhnya. 3 dari 6 email yang dilabeli sebagai spam, pada kenyataannya, adalah spam (positif benar). Tiga lainnya meleset (positif palsu). Ketepatannya adalah 3/(3+3) = 50%.
+
+   Berikut adalah kelebihan dan kekurangan dari Metrik Precision
+   **Kelebihan**
+   - Metrik ini bekerja dengan baik untuk masalah dengan kelas yang tidak seimbang karena menunjukkan ketepatan model dalam mengidentifikasi kelas target.
+   - Precision berguna ketika biaya False Negative tinggi.
+  
+   **Kekurangan**
+   Precision tidak mempertimbangkan False Negative. Artinya: tidak memperhitungkan kasus-kasus ketika kita melewatkan target event.
+
+3. Recall
+   
+   Recall adalah metrik yang mengukur seberapa sering model pembelajaran mesin mengidentifikasi contoh positif (true positive) dengan benar dari semua sampel positif yang sebenarnya dalam kumpulan data. Anda dapat menghitung recall dengan membagi jumlah true positive dengan jumlah contoh positif. Yang terakhir ini mencakup hasil positif yang benar (kasus yang berhasil diidentifikasi) dan hasil negatif yang salah (kasus yang terlewatkan).
+
+   Secara matematis metrik Precision dapat dihitung dengan persamaan berikut:
+
+   <p align="center">
+   $Recall = \frac{True Positive}{True Positive + False Negative}$
+   </p>
+
+   Recall dapat diukur menggunakan skala 0 hingga 1 atau sebagai persentase. Semakin tinggi recall, semakin baik. Anda dapat mencapai recall sempurna sebesar 1,0 ketika model dapat menemukan semua contoh kelas target dalam dataset.
+
+   **Cara Kerja**
+   Dengan menggunakan kasus data tidak imbang pada prediksi email spam berikut:
+   ![Hasil Prediksi 2](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/97971bec65ffe3754507c9ac076a11ba6f04c42f/Image/Precision%20-%20Hasil%20Prediksi%202.png 'Hasil Prediksi 2')
+
+   Untuk kasus ini telah diketahui model Accuracy adalah 95% (model dengan benar melabeli 57 dari 60 email) dan model Precision sebesar 50% (model dengan benar melabeli 3 dari 6 email spam).
+
+   Untuk menghitung Recall, jumlah email spam yang ditemukan dibagi dengan jumlah total email spam dalam dataset.
+   
+   ![Perhitungan](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/219ffae9bc46c4063788bd890b5e3e9e5159880e/Image/Recall%20-%20Perhitungan.png 'Perhitungan')
+
+   Maka nilai Recall adalah 100%. Ada 3 email spam di dalam dataset, dan model menemukan semuanya! Recall menghitungnya sebagai 3/(3+0). Tidak ada False Negative karena model tidak melewatkan spam.
+
+   Berikut adalah kelebihan dan kekurangan dari Metrik Recall
+   **Kelebihan**
+   - Bekerja dengan baik untuk masalah dengan kelas yang tidak seimbang karena difokuskan pada kemampuan model untuk menemukan objek dari kelas target.
+   - Recall berguna ketika biaya false negative tinggi. Dalam kasus ini, Anda biasanya ingin menemukan semua objek dari kelas target, meskipun hal ini menghasilkan beberapa false positive (memprediksi positif padahal sebenarnya negatif).
+  
+   **Kekurangan**
+   Recall tidak memperhitungkan biaya untuk False Positive
+
+5. F1 score
+
+   F1 score adalah matrik machine learning yang mengukur akurasi model. Skor ini menggabungkan skor precision dan recall dari sebuah model. F1 score menggabungkan presisi dan recall menggunakan rata-rata harmoniknya, dan memaksimalkan skor F1 berarti secara bersamaan memaksimalkan presisi dan recall. Oleh karena itu, skor F1 telah menjadi pilihan para peneliti untuk mengevaluasi model mereka bersama dengan akurasi.
+
+   Secara matematis F1 score dapat dihitung dengan persamaan berikut:
+   
+   <p align="center">
+   $F1 score = \frac{2}{\frac{1}{Precision} + \frac{1}{Recall}}$
+   </p>
+
+   Mengapa skor F1 dihitung menggunakan rata-rata harmonik dan bukannya rata-rata aritmatika atau geometris sederhana? Sederhananya: rata-rata harmonik mendorong nilai yang sama untuk precision dan recall. Artinya, semakin jauh nilai precision dan recall menyimpang dari satu sama lain, semakin buruk nilai rata-rata harmoniknya.
+   Dalam hal empat elemen dasar dari confusion matrix, dengan mengganti ekspresi untuk nilai precision dan recall pada persamaan di atas, nilai F1 juga dapat dituliskan sebagai berikut:
+
+   <p align="center">
+   $F1 score = \frac{True Positive}{ True Poditive + \frac{1}{2} (False Positive + False Negative)}$
+   </p>
+
+   Adapaun Kelebihan dan kekurangan F1 Score
+   
+   **Kelebihan**
+   - Menyeimbangkan precision dan recall: Ini mempertimbangkan presisi dan recall dan memberikan nilai tunggal yang menyeimbangkan pertukaran antara metrik ini. Hal ini berguna untuk mengevaluasi model dengan pertukaran yang berbeda antara precision dan recall, tergantung pada masalah dan konteks tertentu.
+   - Mudah ditafsirkan: Ini adalah metrik yang sederhana dan intuitif yang berkisar antara 0 hingga 1, dengan nilai yang lebih tinggi menunjukkan kinerja yang lebih baik. Sangat mudah untuk dipahami dan ditafsirkan, bahkan untuk pemangku kepentingan non-teknis.
+   - Kuat terhadap ketidakseimbangan kelas: Kuat terhadap ketidakseimbangan kelas, yang merupakan masalah umum dalam tugas klasifikasi biner di mana satu kelas jauh lebih sering daripada yang lain. Ini memberikan evaluasi yang seimbang terhadap kinerja model di kedua kelas.
+   - Berlaku untuk dataset kecil dan besar: Ini berlaku untuk dataset kecil dan besar dan dapat memberikan evaluasi cepat terhadap kinerja model tanpa memerlukan metrik yang lebih kompleks.
+   - Dapat digunakan untuk pemilihan model: Dapat digunakan sebagai kriteria untuk pemilihan model atau penyetelan hyperparameter, sehingga memungkinkan perbandingan yang adil antara model atau pengaturan yang berbeda.
+
+   **Kekurangan**
+   - Nilai F1 tidak memberikan informasi tentang distribusi kesalahan: Nilai ini memberikan nilai tunggal yang merangkum kinerja model di seluruh precision dan recall. Namun, nilai ini tidak memberikan informasi apa pun tentang distribusi kesalahan, yang dapat menjadi penting untuk aplikasi tertentu.
+   - Nilai F1 mengasumsikan bahwa precision dan recall sama pentingnya: Skor ini memberikan bobot yang sama pada precision dan recall, dengan asumsi keduanya memiliki kepentingan yang sama. Namun, precision dan recall mungkin memiliki biaya atau signifikansi yang berbeda di beberapa aplikasi, dan metrik lain mungkin lebih tepat.
+   - Skor F1 mungkin tidak optimal untuk klasifikasi multikelas: Skor ini dirancang untuk masalah klasifikasi biner dan mungkin tidak dapat diterapkan secara langsung pada masalah klasifikasi multikelas. Metrik lain, seperti akurasi atau skor F1 mikro/makro, mungkin lebih tepat.
+   - Skor F1 mungkin tidak sensitif terhadap pola tertentu dalam data: Ini adalah metrik umum yang tidak mempertimbangkan pola atau karakteristik tertentu dari data. Namun, dalam beberapa kasus, metrik yang lebih khusus mungkin diperlukan untuk menangkap sifat-sifat spesifik dari masalah.
+   
+
+   
+   
+
+   
+   
+   
+
+
+   
+
+   
+
+
+   
+
+   
+   
+
+   
+   
+
+
+   
 
 Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
 - Penjelasan mengenai metrik yang digunakan
