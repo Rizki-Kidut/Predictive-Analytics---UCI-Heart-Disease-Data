@@ -2,9 +2,10 @@
 
 ## Domain Proyek
 
-Penyakit jantung koroner adalah salah satu penyebab utama kematian di seluruh dunia. Memprediksi penyakit jantung adalah salah satu tugas yang paling menantang di bidang analisis data klinis. Machine learning (ML) berguna dalam bantuan diagnostik dalam hal pengambilan keputusan dan prediksi berdasarkan data yang dihasilkan oleh sektor perawatan kesehatan secara global. Kami juga telah merasakan teknik ML yang digunakan dalam bidang medis untuk prediksi penyakit. Dalam hal ini, banyak studi penelitian telah ditunjukkan pada prediksi penyakit jantung menggunakan pengklasifikasi ML.
+Penyakit jantung koroner adalah salah satu penyebab utama kematian di seluruh dunia. Memprediksi penyakit jantung adalah salah satu tugas yang paling menantang di bidang analisis data klinis. *Machine learning (ML)* berguna dalam bantuan diagnostik dalam hal pengambilan keputusan dan prediksi berdasarkan data yang dihasilkan oleh sektor perawatan kesehatan secara global. Teknik ML sudah banyak digunakan dalam bidang medis untuk prediksi penyakit. Dalam hal ini, banyak studi penelitian telah ditunjukkan pada prediksi penyakit jantung menggunakan pengklasifikasi ML.
 
 **Rubrik/Kriteria Tambahan**:
+
 Menurut Organisasi Kesehatan Dunia [1], CVD adalah penyebab kematian terbesar di dunia, yang mengakibatkan kematian sekitar 17,9 juta orang setiap tahunnya. 
 
 Industri perawatan kesehatan menghasilkan banyak data mengenai pasien, penyakit, dan diagnosis, tetapi tidak dianalisis dengan benar, sehingga tidak memiliki dampak yang sama seperti yang seharusnya pada kesehatan pasien[1]
@@ -13,13 +14,9 @@ CVD meliputi arteri koroner, penyakit jantung rematik, penyakit pembuluh darah, 
 
 Jenis kelamin, merokok, usia, riwayat keluarga, pola makan yang buruk, kolesterol, kurangnya aktivitas fisik, tekanan darah tinggi, kelebihan berat badan, dan penggunaan alkohol adalah pengaruh risiko utama penyakit jantung. Penyakit jantung juga disebabkan oleh faktor risiko keturunan seperti diabetes dan tekanan darah tinggi [3].
 
- Kelelahan, jantung berdebar, berkeringat, nyeri punggung, nyeri dada, nyeri bahu dan lengan, sesak napas, dan kelemahan secara keseluruhan adalah gejala yang paling umum. Tanda yang paling sering muncul dari kurangnya aliran darah ke jantung adalah nyeri dada. Dalam istilah medis, nyeri dada jenis ini dikenal sebagai Angina [4]. Ada beberapa pemeriksaan yang tersedia untuk membantu mendiagnosis penyakit ini, seperti sinar-X, pemindaian MRI, dan angiografi. Namun, ada kalanya terjadi kekurangan sumber daya dalam keadaan darurat karena tidak tersedianya peralatan medis. Pada penyakit kardiovaskular, waktu sama pentingnya dengan setiap momen dalam mendiagnosis dan mengobati penyakit [4].
+Kelelahan, jantung berdebar, berkeringat, nyeri punggung, nyeri dada, nyeri bahu dan lengan, sesak napas, dan kelemahan secara keseluruhan adalah gejala yang paling umum. Tanda yang paling sering muncul dari kurangnya aliran darah ke jantung adalah nyeri dada. Dalam istilah medis, nyeri dada jenis ini dikenal sebagai Angina [4]. Ada beberapa pemeriksaan yang tersedia untuk membantu mendiagnosis penyakit ini, seperti sinar-X, pemindaian MRI, dan angiografi. Namun, ada kalanya terjadi kekurangan sumber daya dalam keadaan darurat karena tidak tersedianya peralatan medis. Pada penyakit kardiovaskular, waktu sama pentingnya dengan setiap momen dalam mendiagnosis dan mengobati penyakit [4].
  
- Sehingga perlu dilakukan upaya untuk mengolah data kesehatan terkait penyakit jantung ini, agar dapat dilakukan prediksi dini untuk menentukan apakah pasien memiliki resiko penyakit jantung atau tidak.
- 
- Perkembangan pesat teknologi AI dan Machine Learning membuat prediksi dini tersebut dapat dilakukan dengan menggunakan Model Machine Learning.
- 
- Pengembangan Model Machine Learning untuk melakukan prediksi resiko penyakit jantung ini telah banyak dilakukan oleh peneliti
+Sehingga perlu dilakukan upaya untuk mengolah data kesehatan terkait penyakit jantung ini, agar dapat dilakukan prediksi dini untuk menentukan apakah pasien memiliki resiko penyakit jantung atau tidak. Perkembangan pesat teknologi AI dan Machine Learning membuat prediksi dini tersebut dapat dilakukan dengan menggunakan Model Machine Learning. Pengembangan Model Machine Learning untuk melakukan prediksi resiko penyakit jantung ini telah banyak dilakukan oleh peneliti
   
   Format Referensi: 
   1. [World Health Organization Cardiovascular Diseases (CVDs)](https://www.who.int/health-topics/cardiovascular-diseases/#tab=tab_1) 
@@ -44,25 +41,25 @@ Berdasarkan kondisi tersebut maka perlu dikembangkan sistem prediksi untuk dapat
 
 ### Goals
 
-Untuk menjawab pertanyaan tersebut akan dibuatkan Model Predictive Analysis untuk malasah Klasifikasi dengan tujuan sebagai berikut :
+Untuk menjawab pertanyaan tersebut akan dibuatkan Model *Predictive Analysis* untuk malasah Klasifikasi dengan tujuan sebagai berikut :
 - Mengetahui fitur yang paling berpengaruh terhadap risiko penyakit jantung
-- Membuat model machine learning yang dapat mendeteksi risiko penyakit jantung dengan akurasi terbaik
+- Membuat model *machine learning* yang dapat mendeteksi risiko penyakit jantung dengan akurasi terbaik
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 
 ### Solution statements
 
-Untuk dapat menyelesaikan masalah tersebut saya akan melakukan modeling dengan menggunakan 5 base model dan melakukan Hyperparameter tuning degan bantuan fungsi GridSearchCV.
+Untuk dapat menyelesaikan masalah tersebut dilakukan *modeling* dengan menggunakan 5 algoritma dan melakukan *tuning Hyperparameter* degan bantuan fungsi *GridSearchCV*.
 
-5 model yang saya gunakan antara lain:
-1. Random Forest Calssifier
-2. K-Nearest Neighbors
-3. Gaussian Naive Bayes
-4. Ada Boost, and
-5. XG Boost
+5 algoritma yang digunakan antara lain:
+1. *Random Forest Calssifier*
+2. *K-Nearest Neighbors*
+3. *Gaussian Naive Bayes*
+4. *Ada Boost*, dan
+5. *XG Boost*
 
 ## Data Understanding
-Dataset yang digunakan untuk Tugas kali ini adalah UCI Heart Disease Dataset dari Kaggle.
+Dataset yang digunakan untuk Tugas kali ini adalah *UCI Heart Disease Dataset* dari Kaggle.
 
 Dataset tersebut mengacu pada data dari UCI Machine Learning Repository
 
@@ -83,25 +80,83 @@ Para pembuat database meminta agar setiap publikasi yang dihasilkan dari penggun
 Link Dataset:
  1. [Kaggle UCI Heart Disease Data](https://www.kaggle.com/datasets/redwankarimsony/heart-disease-data).
  2. [Original UCI Heart Disease Data](https://archive.ics.uci.edu/dataset/45/heart+disease)
+    
+
+Dataset terdiri dari 920 baris dengan 16 kolom (fitur) dan terdiri 2 jenis data yaitu data numerik dan data kategori. Jumlah fitur numerik adalah 8 fitur dengan 4 fitur memiliki type data int64 dan 4 fitur memiliki type data float64, sedangkan jumlah fitur kategori adalah 8 fitur dengan type data object. Dari 16 fitur tersebut terdapat 13 fitur parameter medis yang akan menjadi inputan model (mengecualikan kolom id, dataset, dan target (*num*). Detail dari variabel yang terdapat dalam dataset adalah sebagai berikut:
+
+### Variabel-variabel *UCI Heart Disesase dataset* adalah sebagai berikut:
+1. id : Nomor Identitas unik untuk setiap pasien
+2. age : Usia dari pasien dalam tahun
+3. sex : Jenis kelamin dari pasien. Terdiri 2 data yaitu *Male* atau jenis kelamin Pria dan *Female* atau jenis kelamin Wanita
+4. dataset : Lokasi dari studi yang dilakukan. Terdiri dari 4 lokasi studi yaitu *Cleveland*, *Hungary*, *Switzerland*, dan *VA Long Beach*
+5. cp : Jenis dari sakit dada. Terdiri dari 4 data yaitu *typical angina*, *atypical angina*, *non-anginal*, *asymptomatic*
+6. trestbps : Tekanan darah saat istirahat. Nilai dalam satuan mm Hg
+7. chol : Kolestrol serum. Nilai dalam satuan  mg/dl
+8. fbs : Kadar Gula darah puasa > 120 mg/dl. Terdiri dari 2 data yaitu *True* jika pasien memiliki gula darah puasa > 120 mg/dl, dan *Flase* jika pasien tidak memilikinya
+9. restecg : Hasil electrocardiographic istirahat. Terdiri dari 3 data yaitu normal, *st-t abnormality*, dan *lv hypertrophy*
+10. thalach : Detak jantung maksimal yang diperoleh
+11. exang : *Angina* yang disebabkan oleh latihan. Terdiri 2 data yaitu *True* jika pasien memilikinya dan *False* jika pasien tidak memilikinya
+12. oldpeak : Depresi ST yang disebabkan oleh olahraga relatif terhadap istirahat
+13. slope : Kemiringan dari puncak segmen *exercise ST*. Terdiri dari 3 data yaitu *upsloping*, *flat*, dan *downsloping*
+14. ca : Jumlah dari pembuluh darah *major* (0-3) diwarnai oleh *fluoroscopy*
+15. thal : *Thalassemia*. Terdiri dari 3 data yaitu normal, *fixed defect* dan *reversible defect*
+16. num: atribut target prediksi terdiri dari 5 data. Terdiri dari 5 data 0 mengindikasi tidak mengalami penyakit jantung, dan 1,2,3,4 mengindikasikan tingkatan penyakit jantung
 
 
-### Variabel-variabel UCI Heart Disesase dataset adalah sebagai berikut:
-1. id : Unique id for each patient
-2. age : Age of the patient in years
-3. sex : Gender (Male/Female)
-4. dataset : Place of study (Cleveland, Hungary, Switzerland, VA Long Beach)
-5. cp : chest pain type (typical angina, atypical angina, non-anginal, asymptomatic)
-6. trestbps : resting blood pressure (resting blood pressure (in mm Hg on admission to the hospital))
-7. chol : serum cholesterol in mg/dl
-8. fbs : if fasting blood sugar > 120 mg/dl (True/ Flase)
-9. restecg : resting electrocardiographic results (normal, stt abnormality, lv hypertrophy)
-10. thalach : maximum heart rate achieved
-11. exang : exercise-induced angina (True/ False)
-12. oldpeak : ST depression induced by exercise relative to rest
-13. slope : the slope of the peak exercise ST segment (upsloping, flat, downsloping)
-14. ca : number of major vessels (0-3) colored by fluoroscopy
-15. thal : Thalassemia (normal; fixed defect; reversible defect)
-16. num: the predicted attribute (0: no heart disease, 1,2,3,4: stage of heart disease)
+Dari info dataset yang diperoleh terdapat beberapa fitur yang tidak memiliki jumlah data 920 baris, hal ini mengindikasikan bahwa terdapat *missing values* pada dataset. Karena kolom id dan dataset bukan merupakan parameter medis, maka kedua kolom tersebut dihapus.
+
+
+Gambaran dari data set adalah sebagai berikut
+
+
+Tabel 1. Dataset awal 
+
+|     | age |    sex |              cp | trestbps |  chol |   fbs |          restecg | thalch | exang | oldpeak |       slope |  ca |              thal | num |
+|----:|----:|-------:|----------------:|---------:|------:|------:|-----------------:|-------:|------:|--------:|------------:|----:|------------------:|----:|
+|   0 |  63 |   Male |  typical angina |    145.0 | 233.0 |  True |   lv hypertrophy |  150.0 | False |     2.3 | downsloping | 0.0 |      fixed defect |   0 |
+|   1 |  67 |   Male |    asymptomatic |    160.0 | 286.0 | False |   lv hypertrophy |  108.0 |  True |     1.5 |        flat | 3.0 |            normal |   2 |
+|   2 |  67 |   Male |    asymptomatic |    120.0 | 229.0 | False |   lv hypertrophy |  129.0 |  True |     2.6 |        flat | 2.0 | reversable defect |   1 |
+|   3 |  37 |   Male |     non-anginal |    130.0 | 250.0 | False |           normal |  187.0 | False |     3.5 | downsloping | 0.0 |            normal |   0 |
+|   4 |  41 | Female | atypical angina |    130.0 | 204.0 | False |   lv hypertrophy |  172.0 | False |     1.4 |   upsloping | 0.0 |            normal |   0 |
+| ... | ... |    ... |             ... |      ... |   ... |   ... |              ... |    ... |   ... |     ... |         ... | ... |               ... | ... |
+| 915 |  54 | Female |    asymptomatic |    127.0 | 333.0 |  True | st-t abnormality |  154.0 | False |     0.0 |         NaN | NaN |               NaN |   1 |
+| 916 |  62 |   Male |  typical angina |      NaN | 139.0 | False | st-t abnormality |    NaN |   NaN |     NaN |         NaN | NaN |               NaN |   0 |
+| 917 |  55 |   Male |    asymptomatic |    122.0 | 223.0 |  True | st-t abnormality |  100.0 | False |     0.0 |         NaN | NaN |      fixed defect |   2 |
+| 918 |  58 |   Male |    asymptomatic |      NaN | 385.0 |  True |   lv hypertrophy |    NaN |   NaN |     NaN |         NaN | NaN |               NaN |   0 |
+| 919 |  62 |   Male | atypical angina |    120.0 | 254.0 | False |   lv hypertrophy |   93.0 |  True |     0.0 |         NaN | NaN |               NaN |   1 |
+
+Pada Tabel 1. terlihat bahwa terdapat beberapa kolom dengan data "NaN" yang menandakan bahwa pada kolom tersebut terdapat *missing values*. 
+
+Adapun informasi statistik untuk dataset ini adalah:
+
+Tabel 2. Informasi Statistik dataset
+
+|       |        age |   trestbps |       chol |     thalch |    oldpeak |         ca |        num |
+|------:|-----------:|-----------:|-----------:|-----------:|-----------:|-----------:|-----------:|
+| count | 920.000000 | 861.000000 | 890.000000 | 865.000000 | 858.000000 | 309.000000 | 920.000000 |
+|  mean |  53.510870 | 132.132404 | 199.130337 | 137.545665 |   0.878788 |   0.676375 |   0.995652 |
+|   std |   9.424685 |  19.066070 | 110.780810 |  25.926276 |   1.091226 |   0.935653 |   1.142693 |
+|   min |  28.000000 |   0.000000 |   0.000000 |  60.000000 |  -2.600000 |   0.000000 |   0.000000 |
+|   25% |  47.000000 | 120.000000 | 175.000000 | 120.000000 |   0.000000 |   0.000000 |   0.000000 |
+|   50% |  54.000000 | 130.000000 | 223.000000 | 140.000000 |   0.500000 |   0.000000 |   1.000000 |
+|   75% |  60.000000 | 140.000000 | 268.000000 | 157.000000 |   1.500000 |   1.000000 |   2.000000 |
+|   max |  77.000000 | 200.000000 | 603.000000 | 202.000000 |   6.200000 |   3.000000 |   4.000000 |
+
+Dari Tabel 2 terlihat bahwa:
+1. *Age*:
+   - Usia minimal pada dataset adalah 28
+   - Rata - rata usia pasien adalah 54
+   - Usia maksimal pada dataset adalah 77
+
+2. *tretbps*:
+   Nilai minimal adalah 0, hal tersebut mengindikasikan adanya *missing valeues* atau *outliers* pada fitur ini
+
+3. *chol*:
+   Nilai minimal adalah 0, hal tersebut mengindikasikan adanya *missing valeues* atau *outliers* pada fitur ini
+
+4. *oldpeak*:
+   Nilai minimal adalah -2.6, hal tersebut mengindikasikan *outliers* pada fitur ini
+
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 Untuk lebih memahami dataset yang digunakan, dilakukan Exploratory Data Analysis pada data sebagai berikut:
@@ -111,64 +166,79 @@ Tahap yang pertama adalah melakukan Univariate Analysis untuk fitur kategori dan
 
 Setelah melakuakn Univariate Analysis, selanjutnya melakukan Bivariate Analysis dengan menbandingkan fitur kategori dan fitur numerik dengan target
 
-#### Univariate Analysis - Fitur Kategori
+#### *Univariate Analysis* - Fitur Kategori
 Analisis ini dilakukan dengan menggunakan bar plot untuk fitur kategori.
-Fitur - fitur kategori pada dataset ini adalah : ['sex','cp','fbs','restecg','exang','slope','ca','thal']
+Fitur - fitur kategori pada dataset ini adalah : [*'sex'*,'cp','fbs',*'restecg'*,*'exang'*,*'slope'*,'ca','thal']
 
-##### Sex (Jenis kelamin)
-Barplot untuk fitur 'sex' adalah :
+##### *Sex* (Jenis kelamin)
+Barplot untuk fitur *'sex'* adalah :
 
-![bar-plot-sex](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/599e5797-5f2f-4b42-bdf5-da53caf7acae)
+![bar-plot-sex](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/c6810fd7-1669-4581-b729-316b7b244292)
+
+Gambar 1. Barplot fitur *sex*
 
 
-Dari plot diatas dapat diketahui bahwa dataset didominasi oleh pasien Pria, dengan jumlah 551 pasein dan perentase 75,7%.
+Dari Gambar 1 dapat diketahui bahwa dataset didominasi oleh pasien Pria, dengan jumlah 551 pasein dan perentase 75,7%.
 
-##### Cp (Jenis sakit jantung)
+##### Cp (Jenis sakit dada)
 Barplot untuk fitur 'cp' adalah :
 
-![Barplot_cp](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/fb1174e91dd23b9631a2f1a53918ac1a7d3a3f3f/Image/bar_plot_cp.png 'Bar Plot - cp')
+![bar-plot-cp](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/a96d2922-b657-4456-8c1c-335239bc6a95)
 
-48,8% pasien memiliki sakit dada asymptomatic 22,9% pasien memiliki sakit dada non-anginal, 22,7%  pasien memiliki sakit dada atypical anginan, and sisanya meiliki sakit dada typical angina
+Gambar 2. Barplot fitur cp
+
+Pada Gambar 2, 48,8% pasien memiliki sakit dada *asymptomatic* 22,9% pasien memiliki sakit dada *non-anginal*, 22,7%  pasien memiliki sakit dada *atypical anginan*, dan sisanya meiliki sakit dada *typical angina*
 
 ##### fbs (Kadar gula darah puasa)
 Barplot untuk fitur 'fbs' adalah:
 
-![Barplot_cp](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/27c164f499f3f97dc326a83c242a75bcaa06eb04/Image/bar_plot_fbs.png 'Bar Plot - fbs')
+![bar-plot-fbs](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/87e71170-88bb-4e7f-b377-8768c6ced4db)
 
-Kebanyakan pasien tidak memiliki gula darah puasa > 120 mg/dl, dengan 83,7% pesentase.
+Gambar 3. Barplot fitur fbs
 
-##### restecg (Hasil elevtrokardiografi saat istirahat)
+Dari Gambar 3 dapat diketahui bahwa kebanyakan pasien tidak memiliki gula darah puasa > 120 mg/dl, dengan 83,7% pesentase.
+
+##### *restecg* (Hasil elevtrokardiografi saat istirahat)
 Barplot untuk fitur 'restecg' adalah:
 
-![Barplot_restecg](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/27c164f499f3f97dc326a83c242a75bcaa06eb04/Image/bar_plot_restecg.png 'Bar Plot - restecg')
+![bar-plot-restecg](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/8e37eb19-985e-47b9-8563-a9fa249db28f)
 
-Setengah dari total pasien memiliki hasil normal, dimana 23,6% pasien lainnya memilki hasil Iv hypertrophy dan sisanya memiliki hasil st-t abnormality.
+Gambar 4. Barplot fitur *restecg*
 
-##### exang (Angina akibat olah raga)
-Barplot untuk fitur 'exang' adalah:
+Dari Gamber 4 dapat diketahui bahwa setengah dari total pasien memiliki hasil normal, dimana 23,6% pasien lainnya memilki hasil *Iv hypertrophy* dan sisanya memiliki hasil *st-t abnormality*.
 
-![Barplot_exang](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/e50cd5d6044dbeb19a1796d85cded6fd9105283e/Image/bar_plot_exang.png 'Bar Plot - exang')
+##### *exang* (*Angina* akibat olah raga)
+Barplot untuk fitur '*exang*' adalah:
 
-62,1% pasien tidak memiliki angina yang diakibatkan dari olehraga, sedangkan sisanya memilikinya.
+![bar-plot-exang](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/45520db1-b295-416a-9212-042fe87ed879)
 
-##### slope (kemiringan puncak latihan segmen ST)
+Gambar 5. Barplot fitur *Exang*
+
+Pada Gambar 5 terlihat bahwa 62,1% pasien tidak memiliki *angina* yang diakibatkan dari olehraga, sedangkan sisanya memilikinya.
+
+##### *slope* (kemiringan puncak latihan segmen ST)
 Barplot untuk fitur 'slope' adalah:
 
-![Barplot_slope](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/e50cd5d6044dbeb19a1796d85cded6fd9105283e/Image/bar_plot_slope.png 'Bar Plot - slope')
+![bar-plot-slope](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/67a6b810-fe1f-4016-aa01-48c0e966f072)
 
-Mayoritas pasien memiliki kemiringan puncak latihan segmen ST flat and upsloping dengan 47,9% dan 45,5% persentase, sedangkan sisanya memiliki kemiringan puncak latihan segmen ST downsloping.
+Gambar 6. Barplot fitur *slope*
+
+Pada Gambar 6 terlihat bahwa mayoritas pasien memiliki kemiringan puncak latihan segmen ST *flat* and *upsloping* dengan 47,9% dan 45,5% persentase, sedangkan sisanya memiliki kemiringan puncak latihan segmen ST *downsloping*.
 
 ##### ca (jumlah pembuluh darah utama diwarnai oleh flouroskopi)
 Barplot untuk fitur 'ca' adalah:
 
-![Barplot_ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/e50cd5d6044dbeb19a1796d85cded6fd9105283e/Image/bar_plot_ca.png 'Bar Plot - ca')
+![bar-plot-ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/b4a5e5ba-d631-4fcf-86fe-bb359631564b)
+
+Gambar 
 
 Kebanyakan dari pasien memiliki jumlah pembuluh darah utama 0 dengen 70,7% persentase, dimana sisanya 19% memiliki jumlah 1, 7,7% memiliki jumlah  2 and 2,6% memiliki jumlah 3 pembuluh darah utama.
 
 ##### thal (Thalassemia)
 Barplot untuk fitur 'tal' adalah:
 
-![Barplot_thal](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/e50cd5d6044dbeb19a1796d85cded6fd9105283e/Image/bar_plot_thal.png 'Bar Plot - thal')
+![bar-plot-thal](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/b7bf20ce-50da-4fe3-bb03-e90241604db1)
+
 
 Kebanyakan pasien memiliki thalasemia normal and reversible defect dengan 48,5% and 45,9% persentase, sisanya memilki thalasemia fixed defect
 
@@ -178,7 +248,7 @@ Fitur - fitur numerik pada dataset ini adalah : ['age','trestbps','chol','thalch
 
 Data histogram untuk fitur numerik adalah:
 
-![Histogram](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d129dfd39a2646f6c631ef152ce5948192d77c99/Image/histogram.png 'Histogram')
+![histogram](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/f4a20956-1d75-4593-bb55-e93179eb7e34)
 
 Dari histogram diatas dapat disimpulkan:
 
@@ -199,7 +269,8 @@ Setelah melakukan univariate analyisis, selanjutnya dilakukan bivariate analayis
 
 Plot untuk Bivariate Analysis - Data numerik vs Target adalah sebagai berikut:
 
-![Numerik vs Target](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d129dfd39a2646f6c631ef152ce5948192d77c99/Image/continous%20features%20vs%20target.png 'Numerik vs Target')
+![continous-features-vs-target](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/414e7861-b7d2-4448-8e3f-52edf75b4e30)
+
 
 **Kesimpulan:**
 
@@ -222,7 +293,7 @@ Dari correlation matrix, ca (Number of major vessels (0-3) colored by fluoroscop
 #### Bivariate Analysis - Data kategori vs Target
 ​Hasil Chi-square test of independence untuk data kategori adalah sebagai berikut:
 
-![Obbserved sex](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_sex.png 'Obbserved sex')
+![observed-counts-sex](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/b44a07b8-cff5-444e-a42c-4e97f5db6aa7)
 
 Chi-square statistic for sex: 65.9822706513826
 
