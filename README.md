@@ -18,14 +18,6 @@ Kelelahan, jantung berdebar, berkeringat, nyeri punggung, nyeri dada, nyeri bahu
  
 Sehingga perlu dilakukan upaya untuk mengolah data kesehatan terkait penyakit jantung ini, agar dapat dilakukan prediksi dini untuk menentukan apakah pasien memiliki resiko penyakit jantung atau tidak. Perkembangan pesat teknologi AI dan Machine Learning membuat prediksi dini tersebut dapat dilakukan dengan menggunakan Model Machine Learning. Pengembangan Model Machine Learning untuk melakukan prediksi resiko penyakit jantung ini telah banyak dilakukan oleh peneliti
   
-  Format Referensi: 
-  1. [World Health Organization Cardiovascular Diseases (CVDs)](https://www.who.int/health-topics/cardiovascular-diseases/#tab=tab_1) 
-  2. [AFRO.WHO Cardiovascular Diseases (CVDs)](https://www.afro.who.int/health-topics/cardiovascular-diseases) 
-  3. [Heart.org Why High Blood Pressure is a silent killer]( https://www.heart.org/en/health-topics/high-blood-pressure/why-high-blood-pressure-is-a-silent-killer/know-your-risk-factors-for-high-blood-pressure) 
-  4. [Balla C., Pavasini R., Ferrari R. Treatment of Angina: Where Are We? *Cardiology*. 2018;140:52–67. doi: 10.1159/000487936. ](https://pubmed.ncbi.nlm.nih.gov/29874661/) 
-  5. [Rumsfeld J.S., Joynt K.E., Maddox T.M. Big data analytics to improve cardiovascular care: Promise and challenges. Nat. Rev. Cardiol. 2016;13:350–359. doi: 10.1038/nrcardio.2016.42.](https://pubmed.ncbi.nlm.nih.gov/27009423/)
-  6. [Maryam A., Mahmoud Q., Mohammad H. Machine Learning Classification Techniques for Heart Disease Prediction: A Review. Int. J. Eng. Technol. 2018;7:5373–5379. doi: 10.14419/ijet.v7i4.28646.](https://scholar.google.com/scholar_lookup?journal=Int.+J.+Eng.+Technol.&title=Machine+Learning+Classification+Techniques+for+Heart+Disease+Prediction:+A+Review&author=A.+Maryam&author=Q.+Mahmoud&author=H.+Mohammad&volume=7&publication_year=2018&pages=5373-5379&doi=10.14419/ijet.v7i4.28646&)
-
 ## Business Understanding
 Berdasarkan informasi dari WHO, terdapat banyak faktor yang dapat mempengaruhi risiko seseorang terkena penyakit jantung atau tidak.
 
@@ -873,72 +865,80 @@ Variabel ( $X$ ) yang berdistribusi normal terdistribusi secara kontinyu (variab
 
    *Weak classifier* kemudian diberi bobot berdasarkan performanya. Selanjutnya, algoritma melatih *weak classifier* kedua menggunakan data yang telah diberi bobot. *Weak classifier* kedua kemudian diberi bobot berdasarkan performanya. Proses ini diulang sejumlah iterasi tertentu atau hingga tingkat kesalahan berada di bawah ambang batas yang ditentukan. *Classifier* akhir adalah rata-rata terbobot dari semua *weak classifiers*. Bobot ditentukan berdasarkan tingkat kesalahan dari masing-masing *weak classifier*. Semakin rendah tingkat kesalahan, semakin tinggi bobotnya.
 
-   
+   ![Ada-Boost](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/92e44689-6fb7-4ff0-bde6-57c8e480ed5a)
+
+   Gambar 28. Ilustrasi algoritma *Ada Boost*
+
 
    Secara runtun, cara kerja algoritma ini dapat dijabarkan sebagai berikut:
    1. Inisialisasi bobot sampel pelatihan
       Langkah pertama adalah memberikan bobot yang sama pada semua sampel pelatihan. Bobot ini digunakan untuk memberikan penekanan pada contoh-contoh yang salah diklasifikasikan pada iterasi-iterasi berikutnya.
-   2. Melatih weak classifier
-      Weak classifier dilatih pada data pelatihan yang telah diberi bobot pada setiap iterasi. Tujuan dari weak classifier adalah untuk mengklasifikasikan sampel sebagai positif atau negatif. Ada beberapa jenis weak classifier yang dapat digunakan, seperti decision tree, model linear, atau support vector machine.
-   3. Evaluasi performa weak classifier
-      Setelah weak classifier dilatih, performanya dievaluasi pada data pelatihan. Sampel-sampel yang salah diklasifikasikan diberikan bobot yang lebih tinggi untuk memberi prioritas pada iterasi berikutnya.
+   2. Melatih *weak classifier*
+      *Weak classifier* dilatih pada data pelatihan yang telah diberi bobot pada setiap iterasi. Tujuan dari *weak classifie*r adalah untuk mengklasifikasikan sampel sebagai positif atau negatif. Ada beberapa jenis *weak classifier* yang dapat digunakan, seperti *decision tree*, model linear, atau *support vector machine*.
+   3. Evaluasi performa *weak classifier*
+      Setelah *weak classifier* dilatih, performanya dievaluasi pada data pelatihan. Sampel-sampel yang salah diklasifikasikan diberikan bobot yang lebih tinggi untuk memberi prioritas pada iterasi berikutnya.
    4. Memperbarui bobot sampel pelatihan
-      Bobot sampel pelatihan diperbarui berdasarkan klasifikasinya oleh weak classifier. Bobot sampel yang salah diklasifikasikan ditingkatkan, sedangkan bobot sampel yang benar diklasifikasikan dikurangi. Hal ini memastikan bahwa weak classifier fokus pada sampel yang lebih sulit.
+      Bobot sampel pelatihan diperbarui berdasarkan klasifikasinya oleh *weak classifier*. Bobot sampel yang salah diklasifikasikan ditingkatkan, sedangkan bobot sampel yang benar diklasifikasikan dikurangi. Hal ini memastikan bahwa *weak classifier* fokus pada sampel yang lebih sulit.
    5. Ulangi langkah 2-4 sesuai jumlah iterasi yang ditentukan
-      Langkah-langkah sebelumnya diulang sesuai jumlah iterasi yang ditentukan, atau hingga mencapai ambang batas tertentu. Bobot sampel pelatihan disesuaikan pada setiap iterasi untuk memberi prioritas pada sampel yang salah diklasifikasikan dan belajar dari kesalahan yang dilakukan oleh weak classifier.
-   6. Menggabungkan weak classifier menjadi sebuah model yang kuat
-      Setelah jumlah iterasi yang ditentukan, weak classifier digabungkan menjadi sebuah model yang kuat menggunakan jumlah tertimbang dari keluaran mereka. Model akhir dapat melakukan prediksi yang akurat pada data baru yang tidak terlihat sebelumnya.
+      Langkah-langkah sebelumnya diulang sesuai jumlah iterasi yang ditentukan, atau hingga mencapai ambang batas tertentu. Bobot sampel pelatihan disesuaikan pada setiap iterasi untuk memberi prioritas pada sampel yang salah diklasifikasikan dan belajar dari kesalahan yang dilakukan oleh *weak classifier*.
+   6. Menggabungkan *weak classifier* menjadi sebuah model yang kuat
+      Setelah jumlah iterasi yang ditentukan, *weak classifier* digabungkan menjadi sebuah model yang kuat menggunakan jumlah tertimbang dari keluaran mereka. Model akhir dapat melakukan prediksi yang akurat pada data baru yang tidak terlihat sebelumnya.
 
-   **Kelebihan Algoritma AdaBoost**
-   Berikut beberapa kelebihan algoritma AdaBoost:
+   **Kelebihan Algoritma *AdaBoost***
+   Berikut beberapa kelebihan algoritma *AdaBoost*:
    - Meningkatkan performa prediksi
-     Adaboost dapat secara signifikan meningkatkan akurasi prediksi dalam pemodelan machine learning. Dengan menggabungkan weak learners menjadi strong learner, Adaboost dapat mengatasi kesalahan klasifikasi dan meningkatkan kemampuan prediksi model.
+     *Adaboost* dapat secara signifikan meningkatkan akurasi prediksi dalam pemodelan *machine learnin*g. Dengan menggabungkan *weak learners* menjadi *strong learner*, *Adaboost* dapat mengatasi kesalahan klasifikasi dan meningkatkan kemampuan prediksi model.
    - Penanganan data yang kompleks
-     Adaboost efektif dalam menangani data yang kompleks dan memiliki interaksi fitur yang rumit. Dalam kasus di mana hubungan antara fitur-fitur input dan variabel output tidak sederhana, Adaboost dapat menangkap pola yang lebih kompleks daripada weak learners individu.
-   - Mencegah overfitting
-     Dengan memberikan bobot pada contoh-contoh yang salah diklasifikasikan, Adaboost dapat mengurangi risiko overfitting. Hal ini membantu model untuk tidak terlalu fokus pada contoh-contoh pelatihan yang sulit dan memperbaiki generalisasi pada data uji.
+     *Adaboost* efektif dalam menangani data yang kompleks dan memiliki interaksi fitur yang rumit. Dalam kasus di mana hubungan antara fitur-fitur input dan variabel output tidak sederhana, *Adaboost* dapat menangkap pola yang lebih kompleks daripada *weak learners* individu.
+   - Mencegah *overfitting*
+     Dengan memberikan bobot pada contoh-contoh yang salah diklasifikasikan, *Adaboost* dapat mengurangi risiko *overfitting*. Hal ini membantu model untuk tidak terlalu fokus pada contoh-contoh pelatihan yang sulit dan memperbaiki generalisasi pada data uji.
      
-   **Kelemahan Algoritma AdaBoost**
-   Algoritma Adaboost juga memiliki kelemahan seperti:
-   - Sensitif terhadap noise
-     Adaboost cenderung sensitif terhadap data yang mengandung noise atau outlier. Kehadiran contoh-contoh yang tidak representatif atau gangguan dapat mempengaruhi pembelajaran dan menghasilkan model yang kurang akurat.
-   - Risiko overfitting pada data pelatihan yang kecil
-     Jika dataset pelatihan sangat kecil, terdapat risiko overfitting pada Adaboost. Model yang terlalu kompleks dapat dengan mudah "menghafal" contoh-contoh pelatihan dan gagal dalam generalisasi pada data baru.
+   **Kelemahan Algoritma *AdaBoost***
+   Algoritma *Adaboost* juga memiliki kelemahan seperti:
+   - Sensitif terhadap *noise*
+     *Adaboost* cenderung sensitif terhadap data yang mengandung *noise* atau *outlier*. Kehadiran contoh-contoh yang tidak representatif atau gangguan dapat mempengaruhi pembelajaran dan menghasilkan model yang kurang akurat.
+   - Risiko *overfitting* pada data pelatihan yang kecil
+     Jika dataset pelatihan sangat kecil, terdapat risiko *overfitting* pada *Adaboost*. Model yang terlalu kompleks dapat dengan mudah "menghafal" contoh-contoh pelatihan dan gagal dalam generalisasi pada data baru.
    - Waktu pelatihan yang lebih lama
-     Adaboost melibatkan iterasi berulang untuk melatih weak learners dan memperbarui bobot contoh-contoh pelatihan. Oleh karena itu, waktu pelatihan algoritma ini cenderung lebih lama dibandingkan dengan beberapa algoritma machine learning lainnya.
+     *Adaboost* melibatkan iterasi berulang untuk melatih *weak learners* dan memperbarui bobot contoh-contoh pelatihan. Oleh karena itu, waktu pelatihan algoritma ini cenderung lebih lama dibandingkan dengan beberapa algoritma machine learning lainnya.
 
-**5. XG Boost**
+**5. *XG Boost***
   
-   XG Boost adalah salah satu implementasi dari algoritma Gradient Boosting. Gradient Boosting adalah sebuah teknik yang menggabungkan beberapa model yang lemah (weak model) menjadi sebuah model yang kuat. Model-model lemah ini sering disebut dengan weak learners, dan dapat berupa model regresi atau klasifikasi sederhana seperti Decision Tree. Pada setiap iterasi, Gradient Boosting akan menambahkan weak learner baru dan mengoreksi prediksi sebelumnya dengan memperhitungkan kesalahan pada prediksi tersebut.
+   *XG Boost* adalah salah satu implementasi dari algoritma *Gradient Boosting*. *Gradient Boosting* adalah sebuah teknik yang menggabungkan beberapa model yang lemah (*weak model*) menjadi sebuah model yang kuat. Model-model lemah ini sering disebut dengan *weak learners*, dan dapat berupa model regresi atau klasifikasi sederhana seperti *Decision Tree*. Pada setiap iterasi, *Gradient Boosting* akan menambahkan *weak learner* baru dan mengoreksi prediksi sebelumnya dengan memperhitungkan kesalahan pada prediksi tersebut.
 
-   Secara matematis, Gradient Boosting mengoptimalkan suatu fungsi objektif dengan mengevaluasi gradient pada setiap titik. Fungsi objektif yang umum digunakan dalam Gradient Boosting adalah fungsi Mean Squared Error (MSE) untuk regresi dan fungsi Log-Loss untuk klasifikasi. Dalam setiap iterasi, Gradient Boosting memperbarui residual error dengan mengurangi hasil prediksi dari target, lalu menambahkan weak learner baru yang menyelesaikan masalah residual error yang dihasilkan. Dengan cara ini, Gradient Boosting membangun sebuah model yang kuat dari beberapa model yang lemah.
+   Secara matematis, *Gradient Boosting* mengoptimalkan suatu fungsi objektif dengan mengevaluasi *gradient* pada setiap titik. Fungsi objektif yang umum digunakan dalam *Gradient Boosting* adalah fungsi *Mean Squared Error (MSE)* untuk regresi dan fungsi *Log-Loss* untuk klasifikasi. Dalam setiap iterasi, *Gradient Boosting* memperbarui *residual error* dengan mengurangi hasil prediksi dari target, lalu menambahkan *weak learner* baru yang menyelesaikan masalah *residual erro*r yang dihasilkan. Dengan cara ini, *Gradient Boosting* membangun sebuah model yang kuat dari beberapa model yang lemah.
 
-   Algoritma Gradient Boosting bekerja dengan menggabungkan beberapa model yang lemah menjadi sebuah model yang lebih kuat. Algoritma ini menggunakan pendekatan iteratif, di mana setiap iterasi bertujuan untuk meningkatkan model sebelumnya dengan menambahkan model baru. Proses ini dilakukan secara berulang-ulang hingga model yang dihasilkan memenuhi kriteria tertentu, seperti nilai loss function yang cukup kecil.
+   Algoritma *Gradient Boosting* bekerja dengan menggabungkan beberapa model yang lemah menjadi sebuah model yang lebih kuat. Algoritma ini menggunakan pendekatan iteratif, di mana setiap iterasi bertujuan untuk meningkatkan model sebelumnya dengan menambahkan model baru. Proses ini dilakukan secara berulang-ulang hingga model yang dihasilkan memenuhi kriteria tertentu, seperti nilai loss function yang cukup kecil.
 
-   ![Ilustrasti XG Boost](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/fceb908635c277858ea80a10ca51abc0e1c156f3/Image/A-simple-example-of-visualizing-gradient-boosting.png 'XG Boost')
+   ![A-simple-example-of-visualizing-gradient-boosting](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/0535309f-f1a2-408f-bf8a-ed021111c8dc)
 
-   Proses iteratif dalam algoritma Gradient Boosting terdiri dari beberapa tahap, yaitu:
-   1. Inisialisasi model: Tahap pertama dalam algoritma Gradient Boosting adalah inisialisasi model. Pada tahap ini, model awal dibuat sebagai model konstan yang merupakan rata-rata atau median dari target variable.
-   2. Membuat weak model: Pada tahap ini, weak model dibuat sebagai model yang mampu memprediksi error dari model sebelumnya. Model lemah biasanya berupa decision tree yang dangkal dengan satu atau dua percabangan.
-   3. Menghitung residual error: Setelah model lemah dibuat, residual error dihitung sebagai selisih antara nilai prediksi dari model sebelumnya dan nilai asli dari target variable.\
-   4. Menyusun kembali data training: Pada tahap ini, data training diubah dengan menggunakan residual error sebagai target variable.
-   5. Membuat model baru: Pada tahap ini, model baru dibuat dengan memprediksi residual error yang dihasilkan dari model sebelumnya.
+   Gambar 29. Ilustrasi Algortima *XG Boost*
+
+
+   Proses iteratif dalam algoritma *Gradient Boosting* terdiri dari beberapa tahap, yaitu:
+   1. Inisialisasi model: Tahap pertama dalam algoritma *Gradient Boosting* adalah inisialisasi model. Pada tahap ini, model awal dibuat sebagai model konstan yang merupakan rata-rata atau *median* dari target variable.
+   2. Membuat weak model: Pada tahap ini, weak model dibuat sebagai model yang mampu memprediksi error dari model sebelumnya. Model lemah biasanya berupa *decision tree* yang dangkal dengan satu atau dua percabangan.
+   3. Menghitung *residual error*: Setelah model lemah dibuat, *residual error* dihitung sebagai selisih antara nilai prediksi dari model sebelumnya dan nilai asli dari target variable.
+   4. Menyusun kembali data *training*: Pada tahap ini, data *training* diubah dengan menggunakan *residual error* sebagai target variable.
+   5. Membuat model baru: Pada tahap ini, model baru dibuat dengan memprediksi *residual error* yang dihasilkan dari model sebelumnya.
    6. Menggabungkan model: Model baru yang dibuat pada tahap sebelumnya digabungkan dengan model sebelumnya untuk membentuk model yang lebih baik.
    7. Iterasi berulang: Tahap-tahap di atas diulang berulang-ulang hingga mencapai kondisi berhenti yang ditentukan, seperti jumlah iterasi yang telah ditentukan atau ketika model tidak mengalami peningkatan yang signifikan lagi.
      
    Setelah iterasi selesai dilakukan, model yang dihasilkan akan digunakan untuk memprediksi nilai target pada data testing yang baru.
 
-   Berikut adalah kelebihan dan kekurangan dari algoritma Gradient Boosting:
-   **Kelebihan Gradient Boosting**
-   - Akurasi yang tinggi: Gradient Boosting sering menghasilkan model yang akurat dan kuat, terutama ketika digunakan pada data yang kompleks dan tidak terstruktur.
+   Berikut adalah kelebihan dan kekurangan dari algoritma *Gradient Boosting*:
+   **Kelebihan *Gradient Boosting***
+   - Akurasi yang tinggi: *Gradient Boosting* sering menghasilkan model yang akurat dan kuat, terutama ketika digunakan pada data yang kompleks dan tidak terstruktur.
    - Tidak memerlukan persyaratan data yang ketat: Algoritma ini dapat digunakan pada berbagai jenis data tanpa memerlukan asumsi yang ketat, seperti asumsi tentang distribusi data atau homoskedastisitas.
-   - Kecepatan komputasi yang cepat: Beberapa implementasi dari Gradient Boosting, seperti XGBoost dan LightGBM, dapat digunakan untuk mempercepat waktu komputasi dengan teknik-teknik seperti parallel computing dan caching.
-   **Kekurangan Gradient Boosting**
-   - Memerlukan tuning yang cermat: Algoritma ini memerlukan tuning parameter yang cermat untuk mendapatkan model yang optimal. Hal ini dapat memakan waktu dan mengharuskan penggunaan cross-validation dan teknik tuning parameter lainnya.
-   - Mudah overfitting: Gradient Boosting dapat cenderung overfit pada data training jika tidak dilakukan pengaturan parameter yang baik. Overfitting terjadi ketika model terlalu kompleks dan terlalu menyesuaikan dengan data training, sehingga tidak dapat melakukan generalisasi dengan baik pada data yang belum pernah dilihat sebelumnya.
-   - Memerlukan data yang besar: Gradient Boosting memerlukan jumlah data yang besar untuk memperoleh model yang akurat dan stabil. Jika jumlah data terlalu sedikit, algoritma ini dapat menjadi tidak stabil dan menghasilkan model yang tidak akurat.
+   - Kecepatan komputasi yang cepat: Beberapa implementasi dari *Gradient Boosting*, seperti *XGBoost* dan *LightGBM*, dapat digunakan untuk mempercepat waktu komputasi dengan teknik-teknik seperti parallel computing dan caching.
+   **Kekurangan *Gradient Boosting***
+   - Memerlukan tuning yang cermat: Algoritma ini memerlukan tuning parameter yang cermat untuk mendapatkan model yang optimal. Hal ini dapat memakan waktu dan mengharuskan penggunaan *cross-validation* dan teknik tuning parameter lainnya.
+   - Mudah *overfitting*: *Gradient Boosting* dapat cenderung *overfit* pada data *training* jika tidak dilakukan pengaturan parameter yang baik. *Overfitting* terjadi ketika model terlalu kompleks dan terlalu menyesuaikan dengan data *training*, sehingga tidak dapat melakukan generalisasi dengan baik pada data yang belum pernah dilihat sebelumnya.
+   - Memerlukan data yang besar: *Gradient Boosting* memerlukan jumlah data yang besar untuk memperoleh model yang akurat dan stabil. Jika jumlah data terlalu sedikit, algoritma ini dapat menjadi tidak stabil dan menghasilkan model yang tidak akurat.
    
-Setelah melakukan training model dengan kelima algoritma tersebut didapat model yang terbaik adalah **Model Random Forest**. Model Random Forest dipilih karena memiliki nilai acccuracy tertinggi yaitu 0.74. Adapun rangkuman nilai accuracy dari tiap tiap algoritma adalah sebagai berikut:
+Setelah melakukan training model dengan kelima algoritma tersebut didapat model yang terbaik adalah **Model *Ada Boost***. Model Random Forest dipilih karena memiliki nilai acccuracy tertinggi yaitu 0.74. Adapun rangkuman nilai accuracy dari tiap tiap algoritma adalah sebagai berikut:
+
+Tabel 15. Hasil metric seluruh algoritma
 
 | Index |        Model        | accuracy | precision | recall |  f1  |
 |:-----:|:-------------------:|:--------:|:---------:|:------:|:----:|
@@ -948,11 +948,9 @@ Setelah melakukan training model dengan kelima algoritma tersebut didapat model 
 |   3   |    Random Forest    |   0.73   |    0.75   |  0.73  | 0.73 |
 |   4   |       XG Boost      |   0.70   |    0.72   |  0.70  | 0.70 |
 
-Maka model terbaik untuk data set ini adalah **Model Ada Boost** dengan nilai metriks sebegai berikut:
+Dari Tabel 15 dapat dilihat bahwa *Ada Boost* memiliki nilai accuracy yang tinggi yaitu 0,74. Maka model terbaik untuk data set ini adalah **Model Ada Boost** dengan nilai metriks sebegai berikut:
 
---------------------------------------------------
-BEST MULTICLASS CLASSIFIER MODEL PERFORMANCE
---------------------------------------------------
+Tabel 16. Nilai metrik untuk *Ada Boost*
 
 | Model:      | Ada Boost     |
 |-------------|:-------------:|
@@ -964,38 +962,47 @@ BEST MULTICLASS CLASSIFIER MODEL PERFORMANCE
 
 
 ## Evaluation
-Metrik yang digunakan untuk permasalahan Multiclass Classification ini adalah Accuracy, Precision, Recall, dan F1 Score. Penjelasan untuk masing masing metrik adalah sebagai berikut:
+Metrik yang digunakan untuk permasalahan *Multiclass Classification* ini adalah *Accuracy*, *Precision*, *Recall*, dan *F1 Score*. Penjelasan untuk masing masing metrik adalah sebagai berikut:
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 
-1. Accuracy
+1. *Accuracy*
    
-   Accuracy adalah metrik yang mengukur seberapa sering model machine learning memprediksi hasil dengan benar. Anda dapat menghitung akurasi dengan membagi jumlah prediksi yang benar dengan jumlah total prediksi.
+   *Accuracy* adalah metrik yang mengukur seberapa sering model *machine learning* memprediksi hasil dengan benar. Anda dapat menghitung akurasi dengan membagi jumlah prediksi yang benar dengan jumlah total prediksi.
 
-   Formula dari Accuracy adalah sebagi berikut:
+   Formula dari *Accuracy* adalah sebagi berikut:
 
-   <p align="center">
-   $Accuracy = \dfrac{Prediksi Benar}{Total Prediksi}$
-   </p>
-
-   Akurasi dapat diukur pada skala 0 hingga 1, atau sebagai persentase. Semakin tinggi akurasinya, semakin baik. Anda dapat mencapai akurasi sempurna 1,0 ketika setiap prediksi yang dibuat model benar.
-
-   **Cara kerja Accuracy**
-   Sebagai contoh, terdapat modeal machine learning untuk melakukan deteksi email spam.
-
-   Untuk setiap email di dalam dataset, sistem ini menghasilkan prediksi dan menetapkan salah satu dari dua kelas: "spam" atau "bukan spam". Berikut ini adalah bagaimana kita dapat memvisualisasikan label yang diprediksi:
-
-   ![Labeled Data](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/7c17f2ed0f5781e870d7de630531b5d253789bd9/Image/Accuracy%20-%20Labeled%20Data.png 'Labeled Data')
-
-   Setelah mendapatkan label data sebenarnya (mengetahui email mana yang merupakan spam dan mana yang bukan), dapat dilakukan evaluasi apakah prediksi model sudah tepat. Visualisasi hasil prediksi yang benar dan salah oleh model :
-
-   ![Prediksi](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/7c17f2ed0f5781e870d7de630531b5d253789bd9/Image/Accuracy%20-%20Hasil%20Prediksi.png 'Prediksi')
-
-   Maka, accuracy dapat dihitung dengan cara membagi jumlah prediksi yang benar oleh model dengan total prediksi. Pada contoh kasus ini 52 dari 60 prediksi (ditandai dengan tanda centang hijau) adalah prediksi benar. Artinya model memiliki akurasi 87%.
-
-   ![Perhitungan](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/7c17f2ed0f5781e870d7de630531b5d253789bd9/Image/Accuracy%20-%20Perhitungan%20Akurasi.png 'Perhitungan')
    
-   Berikut adalah kelebihan dan kekurangan dari Metrik Accuracy
+   $$Accuracy = \dfrac{Prediksi Benar}{Total Prediksi}$$
+   
+
+   *Accuracy* dapat diukur pada skala 0 hingga 1, atau sebagai persentase. Semakin tinggi akurasinya, semakin baik. Anda dapat mencapai akurasi sempurna 1,0 ketika setiap prediksi yang dibuat model benar.
+
+   **Cara kerja *Accuracy***
+   Sebagai contoh, terdapat model *machine learning* untuk melakukan deteksi *email spam*.
+
+   Untuk setiap *email* di dalam dataset, sistem ini menghasilkan prediksi dan menetapkan salah satu dari dua kelas: "*spam*" atau "bukan *spa*m". Berikut ini adalah bagaimana kita dapat memvisualisasikan label yang diprediksi:
+
+   ![Accuracy-Labeled-Data](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/e8cac743-2db4-4039-a721-3ededb907bb8)
+
+   Gambar 30. Data yang telah dilabeli
+
+
+   Setelah mendapatkan label data sebenarnya (mengetahui email mana yang merupakan *spam* dan mana yang bukan), dapat dilakukan evaluasi apakah prediksi model sudah tepat. Visualisasi hasil prediksi yang benar dan salah oleh model :
+
+   ![Accuracy-Hasil-Prediksi](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/5378bf2d-c06a-4118-b571-30c77819b1ba)
+
+   Gambar 31. Hasil Prediksi
+
+
+   Maka, *accuracy* dapat dihitung dengan cara membagi jumlah prediksi yang benar oleh model dengan total prediksi. Pada contoh kasus ini 52 dari 60 prediksi (ditandai dengan tanda centang hijau) adalah prediksi benar. Artinya model memiliki *accuracy* 87%.
+
+   ![Accuracy-Perhitungan-Akurasi](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/390841f0-6b77-4607-90be-8959e2662d89)
+
+   Gambar 32. Perhitungan *Accuracy*
+
+   
+   Berikut adalah kelebihan dan kekurangan dari Metrik *Accuracy*
    
    **Kelebihan**
    - Akurasi adalah metrik yang sangat membantu ketika Anda berurusan dengan kelas-kelas yang seimbang dan peduli dengan "ketepatan" model secara keseluruhan, dan bukan kemampuan untuk memprediksi kelas tertentu.
@@ -1005,130 +1012,138 @@ Metrik yang digunakan untuk permasalahan Multiclass Classification ini adalah Ac
    - Jika Anda memiliki kelas yang tidak seimbang, akurasi kurang berguna karena memberikan bobot yang sama pada kemampuan model untuk memprediksi semua kategori.
    - Mengkomunikasikan akurasi dalam kasus seperti itu dapat menyesatkan dan menyamarkan kinerja yang rendah pada kelas target.
 
-2. Precision
+2. *Precision*
 
-   Precision adalah metrik yang mengukur seberapa sering model machine learning memprediksi kelas positif dengan benar. Anda dapat menghitung presisi dengan membagi jumlah prediksi positif yang benar (true positive) dengan jumlah total contoh yang diprediksi oleh model sebagai positif (true dan false positive).
+   *Precision* adalah metrik yang mengukur seberapa sering model *machine learning* memprediksi kelas positif dengan benar. Anda dapat menghitung presisi dengan membagi jumlah prediksi positif yang benar (*true positive*) dengan jumlah total contoh yang diprediksi oleh model sebagai positif (*true dan false positive*).
 
    Secara matematis metrik Precision dapat dihitung dengan persamaan berikut:
    
-   <p align="center">
-   $Precision = \dfrac{True Positive}{True Positive + False Positive}$
-   </p>
+   $$Precision = \dfrac{True Positive}{True Positive + False Positive}$$
+   
 
    Precision dapat diukui menggunakan skala 0 hingga 1, atau sebagai persentase. Semakin tinggi presisi, semakin baik. Anda dapat mencapai presisi sempurna 1,0 ketika model selalu tepat ketika memprediksi kelas target: model tidak pernah menandai kesalahan apa pun.
 
    **Cara Kerja**
-   Contoh kasus jika terdapat masalah yang tidak seimbang, seperti spam yang hanya terjadi pada 5% dari semua email, dari 60 email, hanya 3 email yang benar benar spam.
+   Contoh kasus jika terdapat masalah yang tidak seimbang, seperti *spam* yang hanya terjadi pada 5% dari semua *email*, dari 60 email, hanya 3 email yang benar benar *spam*.
 
-   Berikut ini adalah visualisasi label yang sebenarnya (pembagian yang sebenarnya antara email spam dan non-spam).
+   Berikut ini adalah *visualisasi* label yang sebenarnya (pembagian yang sebenarnya antara email *spam* dan *non-spam*).
 
-   ![Label Data](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/97971bec65ffe3754507c9ac076a11ba6f04c42f/Image/Precision%20-%20Labeled%20Data.png 'Label Data')
+   ![Precision-Labeled-Data](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/762f2c74-9ab7-44db-978f-024a93885fe6)
 
-   Dikarenakan jumlah email spam yang sedikit, asumsikan model mendeteksi semua email bukan spam dan tidak dapat mendeteksi spam. Maka jika menggunakan metrik Accuracy, nilainya adalah 95% (Model benar menebak 57 dari 60 email, tetapi nilai Precision adalah 0.
+    Gambar 33. Data email spam tidak seimbang 
 
-    ![Hasil Prediksi](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/97971bec65ffe3754507c9ac076a11ba6f04c42f/Image/Precision%20-%20Hasil%20Prediksi.png 'Hasil Prediksi')   
 
-   Untuk menghitung Precision, perlu dilakukan pembagian jumlah email spam yang diprediksi dengan benar dengan jumlah totalnya. Namun, jumlah email spam yang diidentifikasi dengan benar adalah 0. Ada 3 email spam dalam dataset, dan model melewatkan semuanya. Semua prediksi yang benar adalah tentang email bukan spam.
+   Dikarenakan jumlah *email spam* yang sedikit, asumsikan model mendeteksi semua *email* bukan *spam* dan tidak dapat mendeteksi *spam*. Maka jika menggunakan metrik *Accuracy*, nilainya adalah 95% (Model benar menebak 57 dari 60 email, tetapi nilai *Precision* adalah 0.
 
-   Dengan cara ini, metrik Precision mengoreksi kelemahan utama dari Accuracy. Hal ini dengan jelas mengkomunikasikan bahwa model tidak dapat menyelesaikan masalah.
+    ![Precision-Hasil-Prediksi](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/fdae07a1-aaef-4699-863f-ae8a9a12e0c3)
 
-   Selanjutnya, diasumsikan model dapat mengidentifikasi beberapa email sebagai spam, kemudian membandingkan prediksi model terhadap label yang sebenarnya dan mendapatkan hasil sebagai berikut:
+   Gambar 34. Hasil prediksi data email tidak seimbang
 
-    ![Hasil Prediksi 2](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/97971bec65ffe3754507c9ac076a11ba6f04c42f/Image/Precision%20-%20Hasil%20Prediksi%202.png 'Hasil Prediksi 2')
+   Untuk menghitung *Precision*, perlu dilakukan pembagian jumlah *email spam* yang diprediksi dengan benar dengan jumlah totalnya. Namun, jumlah *email spam* yang diidentifikasi dengan benar adalah 0. Ada 3 *email spam* dalam dataset, dan model melewatkan semuanya. Semua prediksi yang benar adalah tentang *email* bukan *spam*.
 
-   Nilai Precisionnya adalah Jumlah spam email yang diprediksi dengan benar (3) dibagi total prediksi positive (6).
+   Dengan cara ini, metrik *Precision* mengoreksi kelemahan utama dari *Accuracy*. Hal ini dengan jelas mengkomunikasikan bahwa model tidak dapat menyelesaikan masalah.
 
-   ![Perhitungan](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/97971bec65ffe3754507c9ac076a11ba6f04c42f/Image/Precision%20-%20Perhitungan.png 'Perhitungan')
+   Selanjutnya, diasumsikan model dapat mengidentifikasi beberapa *email* sebagai *spam*, kemudian membandingkan prediksi model terhadap label yang sebenarnya dan mendapatkan hasil sebagai berikut:
 
-   Nilai Precisionnya adalah 50%. Model ini melabeli 6 email sebagai spam dan benar separuhnya. 3 dari 6 email yang dilabeli sebagai spam, pada kenyataannya, adalah spam (positif benar). Tiga lainnya meleset (positif palsu). Ketepatannya adalah 3/(3+3) = 50%.
+   ![Precision-Hasil-Prediksi-2](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/019f3dff-d143-4bed-8b50-188480fb9577)
 
-   Berikut adalah kelebihan dan kekurangan dari Metrik Precision
+   Gambar 35. Hasil prediksi kedua untuk data *email* tidak seimbang
+
+
+   Nilai *Precisionnya* adalah Jumlah *email spam* yang diprediksi dengan benar (3) dibagi total prediksi *positive* (6).
+
+   ![Precision-Perhitungan](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/5667308e-4364-4e7b-aa28-0c03a3782554)
+
+   Gambar 36. Perhitungan *Precision*
+
+
+   Nilai Precisionnya adalah 50% sesuai dengan Gambar 36. Model ini melabeli 6 *email* sebagai *spam* dan benar separuhnya. 3 dari 6 email yang dilabeli sebagai *spam*, pada kenyataannya, adalah *spam* (*true positive*). Tiga lainnya meleset (*false positive*). Ketepatannya adalah 3/(3+3) = 50%.
+
+   Berikut adalah kelebihan dan kekurangan dari Metrik *Precision*
    **Kelebihan**
    - Metrik ini bekerja dengan baik untuk masalah dengan kelas yang tidak seimbang karena menunjukkan ketepatan model dalam mengidentifikasi kelas target.
-   - Precision berguna ketika biaya False Negative tinggi.
+   - *Precision* berguna ketika biaya *False Negative* tinggi.
   
    **Kekurangan**
-   Precision tidak mempertimbangkan False Negative. Artinya: tidak memperhitungkan kasus-kasus ketika kita melewatkan target event.
+   *Precision* tidak mempertimbangkan *False Negative*. Artinya: tidak memperhitungkan kasus-kasus ketika kita melewatkan target event.
 
-3. Recall
+4. *Recall*
    
-   Recall adalah metrik yang mengukur seberapa sering model pembelajaran mesin mengidentifikasi contoh positif (true positive) dengan benar dari semua sampel positif yang sebenarnya dalam kumpulan data. Anda dapat menghitung recall dengan membagi jumlah true positive dengan jumlah contoh positif. Yang terakhir ini mencakup hasil positif yang benar (kasus yang berhasil diidentifikasi) dan hasil negatif yang salah (kasus yang terlewatkan).
+   *Recall* adalah metrik yang mengukur seberapa sering model *machine learning* mengidentifikasi contoh positif (*true positive*) dengan benar dari semua sampel positif yang sebenarnya dalam kumpulan data. Anda dapat menghitung *recall* dengan membagi jumlah *true positive* dengan jumlah contoh positif. Yang terakhir ini mencakup hasil *true positive* (kasus yang berhasil diidentifikasi) dan hasil *false negative* (kasus yang terlewatkan).
 
-   Secara matematis metrik Precision dapat dihitung dengan persamaan berikut:
+   Secara matematis metrik *recall* dapat dihitung dengan persamaan berikut:
 
-   <p align="center">
-   $Recall = \dfrac{True Positive}{True Positive + False Negative}$
-   </p>
+   
+   $$Recall = \dfrac{True Positive}{True Positive + False Negative}$$
+   
 
-   Recall dapat diukur menggunakan skala 0 hingga 1 atau sebagai persentase. Semakin tinggi recall, semakin baik. Anda dapat mencapai recall sempurna sebesar 1,0 ketika model dapat menemukan semua contoh kelas target dalam dataset.
+   *Recall* dapat diukur menggunakan skala 0 hingga 1 atau sebagai persentase. Semakin tinggi *recall*, semakin baik. Anda dapat mencapai recall sempurna sebesar 1,0 ketika model dapat menemukan semua contoh kelas target dalam dataset.
 
    **Cara Kerja**
-   Dengan menggunakan kasus data tidak imbang pada prediksi email spam berikut:
-   ![Hasil Prediksi 2](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/97971bec65ffe3754507c9ac076a11ba6f04c42f/Image/Precision%20-%20Hasil%20Prediksi%202.png 'Hasil Prediksi 2')
-
-   Untuk kasus ini telah diketahui model Accuracy adalah 95% (model dengan benar melabeli 57 dari 60 email) dan model Precision sebesar 50% (model dengan benar melabeli 3 dari 6 email spam).
-
-   Untuk menghitung Recall, jumlah email spam yang ditemukan dibagi dengan jumlah total email spam dalam dataset.
+   Dengan menggunakan prediksi kasus data tidak imbang pada prediksi email spam sesuai Gambar 35 berikut:
    
-   ![Perhitungan](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/219ffae9bc46c4063788bd890b5e3e9e5159880e/Image/Recall%20-%20Perhitungan.png 'Perhitungan')
+   Untuk kasus ini telah diketahui model *Accuracy* adalah 95% (model dengan benar melabeli 57 dari 60 email) dan model *Precision* sebesar 50% (model dengan benar melabeli 3 dari 6 *email spam*).
 
-   Maka nilai Recall adalah 100%. Ada 3 email spam di dalam dataset, dan model menemukan semuanya! Recall menghitungnya sebagai 3/(3+0). Tidak ada False Negative karena model tidak melewatkan spam.
+   Untuk menghitung *Recall*, jumlah email spam yang ditemukan dibagi dengan jumlah total *email spam* dalam dataset.
+   
+   ![Recall-Perhitungan](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/9924c978-a14f-4f07-9107-9ce3272dfef8)
 
-   Berikut adalah kelebihan dan kekurangan dari Metrik Recall
+   Gambar 37. Perhitungan *recall*
+
+
+   Maka nilai *Recall* adalah 100%. Ada 3 *email spam* di dalam dataset, dan model menemukan semuanya! *Recall* menghitungnya sebagai 3/(3+0). Tidak ada *False Negative* karena model tidak melewatkan spam.
+
+   Berikut adalah kelebihan dan kekurangan dari Metrik *Recall*
    **Kelebihan**
    - Bekerja dengan baik untuk masalah dengan kelas yang tidak seimbang karena difokuskan pada kemampuan model untuk menemukan objek dari kelas target.
-   - Recall berguna ketika biaya false negative tinggi. Dalam kasus ini, Anda biasanya ingin menemukan semua objek dari kelas target, meskipun hal ini menghasilkan beberapa false positive (memprediksi positif padahal sebenarnya negatif).
+   - *Recall* berguna ketika biaya *false negative* tinggi. Dalam kasus ini, Anda biasanya ingin menemukan semua objek dari kelas target, meskipun hal ini menghasilkan beberapa *false positive* (memprediksi positif padahal sebenarnya negatif).
   
    **Kekurangan**
-   Recall tidak memperhitungkan biaya untuk False Positive
+   Recall tidak memperhitungkan biaya untuk *False Positive*
 
-5. F1 score
+6. *F1 score*
 
-   F1 score adalah matrik machine learning yang mengukur akurasi model. Skor ini menggabungkan skor precision dan recall dari sebuah model. F1 score menggabungkan presisi dan recall menggunakan rata-rata harmoniknya, dan memaksimalkan skor F1 berarti secara bersamaan memaksimalkan presisi dan recall. Oleh karena itu, skor F1 telah menjadi pilihan para peneliti untuk mengevaluasi model mereka bersama dengan akurasi.
+   *F1 score* adalah matrik *machine learning* yang mengukur akurasi model. Skor ini menggabungkan skor *precision* dan *recall* dari sebuah model. *F1 score* menggabungkan *precision* dan *recall* menggunakan rata-rata harmoniknya, dan memaksimalkan *F1 score* berarti secara bersamaan memaksimalkan *precision* dan *recall*. Oleh karena itu, *F1 score* telah menjadi pilihan para peneliti untuk mengevaluasi model mereka bersama dengan akurasi.
 
-   Secara matematis F1 score dapat dihitung dengan persamaan berikut:
+   Secara matematis *F1 score* dapat dihitung dengan persamaan berikut:
    
-   <p align="center">
-   $F1 score = \dfrac{2}{\dfrac{1}{Precision} + \dfrac{1}{Recall}}$
-   </p>
+   $$F1 score = \dfrac{2}{\dfrac{1}{Precision} + \dfrac{1}{Recall}}$$
+   
 
-   Mengapa skor F1 dihitung menggunakan rata-rata harmonik dan bukannya rata-rata aritmatika atau geometris sederhana? Sederhananya: rata-rata harmonik mendorong nilai yang sama untuk precision dan recall. Artinya, semakin jauh nilai precision dan recall menyimpang dari satu sama lain, semakin buruk nilai rata-rata harmoniknya.
-   Dalam hal empat elemen dasar dari confusion matrix, dengan mengganti ekspresi untuk nilai precision dan recall pada persamaan di atas, nilai F1 juga dapat dituliskan sebagai berikut:
+   Mengapa *F1 score* dihitung menggunakan rata-rata harmonik dan bukannya rata-rata aritmatika atau geometris sederhana? Sederhananya: rata-rata harmonik mendorong nilai yang sama untuk *precision* dan *recall*. Artinya, semakin jauh nilai *precision* dan *recall* menyimpang dari satu sama lain, semakin buruk nilai rata-rata harmoniknya.
+   Dalam hal empat elemen dasar dari *confusion matrix*, dengan mengganti ekspresi untuk nilai *precision* dan *recall* pada persamaan di atas, *F1 score* juga dapat dituliskan sebagai berikut:
 
-   <p align="center">
-   $F1 score = \dfrac{True Positive}{ True Positive + \dfrac{1}{2} (False Positive + False Negative)}$
-   </p>
+   
+   $$F1 score = \dfrac{True Positive}{ True Positive + \dfrac{1}{2} (False Positive + False Negative)}$$
+   
 
-   Adapaun Kelebihan dan kekurangan F1 Score
+   Adapaun Kelebihan dan kekurangan *F1 Score*
    
    **Kelebihan**
-   - Menyeimbangkan precision dan recall: Ini mempertimbangkan presisi dan recall dan memberikan nilai tunggal yang menyeimbangkan pertukaran antara metrik ini. Hal ini berguna untuk mengevaluasi model dengan pertukaran yang berbeda antara precision dan recall, tergantung pada masalah dan konteks tertentu.
+   - Menyeimbangkan *precision* dan *recall*: Ini mempertimbangkan *precision* dan *recall* dan memberikan nilai tunggal yang menyeimbangkan pertukaran antara metrik ini. Hal ini berguna untuk mengevaluasi model dengan pertukaran yang berbeda antara *precision* dan *recall*, tergantung pada masalah dan konteks tertentu.
    - Mudah ditafsirkan: Ini adalah metrik yang sederhana dan intuitif yang berkisar antara 0 hingga 1, dengan nilai yang lebih tinggi menunjukkan kinerja yang lebih baik. Sangat mudah untuk dipahami dan ditafsirkan, bahkan untuk pemangku kepentingan non-teknis.
    - Kuat terhadap ketidakseimbangan kelas: Kuat terhadap ketidakseimbangan kelas, yang merupakan masalah umum dalam tugas klasifikasi biner di mana satu kelas jauh lebih sering daripada yang lain. Ini memberikan evaluasi yang seimbang terhadap kinerja model di kedua kelas.
    - Berlaku untuk dataset kecil dan besar: Ini berlaku untuk dataset kecil dan besar dan dapat memberikan evaluasi cepat terhadap kinerja model tanpa memerlukan metrik yang lebih kompleks.
-   - Dapat digunakan untuk pemilihan model: Dapat digunakan sebagai kriteria untuk pemilihan model atau penyetelan hyperparameter, sehingga memungkinkan perbandingan yang adil antara model atau pengaturan yang berbeda.
+   - Dapat digunakan untuk pemilihan model: Dapat digunakan sebagai kriteria untuk pemilihan model atau penyetelan *hyperparameter*, sehingga memungkinkan perbandingan yang adil antara model atau pengaturan yang berbeda.
 
    **Kekurangan**
-   - Nilai F1 tidak memberikan informasi tentang distribusi kesalahan: Nilai ini memberikan nilai tunggal yang merangkum kinerja model di seluruh precision dan recall. Namun, nilai ini tidak memberikan informasi apa pun tentang distribusi kesalahan, yang dapat menjadi penting untuk aplikasi tertentu.
-   - Nilai F1 mengasumsikan bahwa precision dan recall sama pentingnya: Skor ini memberikan bobot yang sama pada precision dan recall, dengan asumsi keduanya memiliki kepentingan yang sama. Namun, precision dan recall mungkin memiliki biaya atau signifikansi yang berbeda di beberapa aplikasi, dan metrik lain mungkin lebih tepat.
-   - Skor F1 mungkin tidak optimal untuk klasifikasi multikelas: Skor ini dirancang untuk masalah klasifikasi biner dan mungkin tidak dapat diterapkan secara langsung pada masalah klasifikasi multikelas. Metrik lain, seperti akurasi atau skor F1 mikro/makro, mungkin lebih tepat.
-   - Skor F1 mungkin tidak sensitif terhadap pola tertentu dalam data: Ini adalah metrik umum yang tidak mempertimbangkan pola atau karakteristik tertentu dari data. Namun, dalam beberapa kasus, metrik yang lebih khusus mungkin diperlukan untuk menangkap sifat-sifat spesifik dari masalah.
+   - *F1 score* tidak memberikan informasi tentang distribusi kesalahan: Nilai ini memberikan nilai tunggal yang merangkum kinerja model di seluruh *precision* dan *recall*. Namun, nilai ini tidak memberikan informasi apa pun tentang distribusi kesalahan, yang dapat menjadi penting untuk aplikasi tertentu.
+   - *F1 score* mengasumsikan bahwa *precision* dan *recall* sama pentingnya: Skor ini memberikan bobot yang sama pada *precision* dan *recall*, dengan asumsi keduanya memiliki kepentingan yang sama. Namun, *precision* dan *recall* mungkin memiliki biaya atau signifikansi yang berbeda di beberapa aplikasi, dan metrik lain mungkin lebih tepat.
+   - *F1 score* mungkin tidak optimal untuk klasifikasi multikelas: Skor ini dirancang untuk masalah klasifikasi biner dan mungkin tidak dapat diterapkan secara langsung pada masalah klasifikasi multikelas. Metrik lain, seperti akurasi atau *F1 scoare mikro/makro*, mungkin lebih tepat.
+   - *F1 score* mungkin tidak sensitif terhadap pola tertentu dalam data: Ini adalah metrik umum yang tidak mempertimbangkan pola atau karakteristik tertentu dari data. Namun, dalam beberapa kasus, metrik yang lebih khusus mungkin diperlukan untuk menangkap sifat-sifat spesifik dari masalah.
    
 
-Dari hasil didapat model terbaik untuk menyelesaikan permasalahan Multiclass Classification untuk data set ini adalah **Model Ada Boost** dengan performa sebagai berikut:
-
-| Model:      | Ada Boost     |
-|-------------|:-------------:|
-| Accuracy:   |      0.74     |
-| Precision:  |      0.74     |
-| Recall:     |      0.74     |
-| F1:         |      0.71     |
+Dari hasil didapat model terbaik untuk menyelesaikan permasalahan *Multiclass Classification* untuk data set ini adalah **Model Ada Boost** dengan performa seperti pada Tabel 16.
 
 Adapun perbandingan tiap tiap metrik untuk kelima algoritma terlihat pada bar plot berikut:
 
-![Model Metrik](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/a00186431e90d7cb9faafdb53b6c23b77bb7fecf/Image/model%20metrics.png 'Model Metric')
+![model-metrics](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/065ec581-736d-4856-8a5c-ac24ec3ecaec)
+
+Gambar 38. Barplot metrik seluruh algoritma
 
 Selain itu, dilakukan prediksi terhadap 5 nilai target dan dibandingakan dengan nilai target sesungguhnya. Hasilnya adalah sebagai berikut:
+
+Tabel 17. Hasil prediksi algoritma 
 
 | Index | y_true | prediksi_Random Forest | prediksi_K-Nearest Neighbors | prediksi_GaussianNB | prediksi_Ada Boost | prediksi_XG Boost |
 |:-----:|:------:|:----------------------:|:----------------------------:|:-------------------:|:------------------:|:-----------------:|
@@ -1138,7 +1153,14 @@ Selain itu, dilakukan prediksi terhadap 5 nilai target dan dibandingakan dengan 
 |  524  |    1   |            1           |               2              |          3          |          1         |         1         |
 |  562  |    1   |            1           |               1              |          1          |          1         |         1         |
 
-Dari hasil tersebut, dapat ditarik kesimpulan bahwa dari kelima algoritma yang digunakan Algoritma Random Forest, Ada Boost dan XG Boost dapat memprediksi kelima nilai target dengan benar. Sedangkan algoritma KNN dapat memprediksi 4 dari 5 nilai target dan GaussianNB hanya dapat memprediksi 3 dari 5 nilai target.
+Dari Tabel 17, dapat ditarik kesimpulan bahwa dari kelima algoritma yang digunakan Algoritma Random Forest, Ada Boost dan XG Boost dapat memprediksi kelima nilai target dengan benar. Sedangkan algoritma KNN dapat memprediksi 4 dari 5 nilai target dan GaussianNB hanya dapat memprediksi 3 dari 5 nilai target.
+
+
+  Format Referensi: 
+  1. [World Health Organization Cardiovascular Diseases (CVDs)](https://www.who.int/health-topics/cardiovascular-diseases/#tab=tab_1) 
+  2. [AFRO.WHO Cardiovascular Diseases (CVDs)](https://www.afro.who.int/health-topics/cardiovascular-diseases) 
+  3. [Heart.org Why High Blood Pressure is a silent killer]( https://www.heart.org/en/health-topics/high-blood-pressure/why-high-blood-pressure-is-a-silent-killer/know-your-risk-factors-for-high-blood-pressure) 
+  4. [Balla C., Pavasini R., Ferrari R. Treatment of Angina: Where Are We? *Cardiology*. 2018;140:52–67. doi: 10.1159/000487936. ](https://pubmed.ncbi.nlm.nih.gov/29874661/) 
 
 
 
