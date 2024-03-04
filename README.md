@@ -293,103 +293,119 @@ Selain menggunakan Bar Plot dan KDE Plot, digunakan juga *Correlation Matrix* un
 
 Gambar 11. *Correlation Matrix* data numerik dengan target
 
-Dari Gambar 11 dapat ditarik kesimpulan, bahwa ca (Number of major vessels (0-3) colored by fluoroscopy) adalah fitur pertama yang memiliki korelasi yang kuat dengan nilai target, dengan oldpeak (ST Depression) di urutan kedua dan age di urutan ketiga.
+Dari Gambar 11 dapat ditarik kesimpulan, bahwa ca ( Jumlah pembuluh darah mayor (0-3) diwarnai oleh *fluoroscopy*) adalah fitur pertama yang memiliki korelasi yang kuat dengan nilai target, dengan *oldpeak* (ST Depression) di urutan kedua dan *age* di urutan ketiga.
 
-#### Bivariate Analysis - Data kategori vs Target
-​Hasil Chi-square test of independence untuk data kategori adalah sebagai berikut:
-
-![observed-counts-sex](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/b44a07b8-cff5-444e-a42c-4e97f5db6aa7)
+#### *Bivariate Analysis* - Data kategori vs Target
+​Hasil *Chi-square test of independence* untuk data kategori adalah sebagai berikut:
 
 Chi-square statistic for sex: 65.9822706513826
 
 p-value for sex: 1.5977088721905247e-13
 
-![Obbserved cp](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_sex.png 'Obbserved cp')
+![observed-counts-sex](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/b44a07b8-cff5-444e-a42c-4e97f5db6aa7)
+
+Gambar 12. *Observed count* untuk fitur *sex*
+
+Dari Gambar 12, dapat ditarik kesimpulan bahwa terdapat 170 pasien Pria dengan penyakit jantung Level 1, dan 20 pasien pria dengan penyakit jantung Level 4, sedangkan kebanyakan pasien Pria tidak memiliki penyakit jantung.
+
 
 Chi-square statistic for cp: 212.4106179794831
 
 p-value for cp: 8.869629556756493e-39
 
-![Obbserved fbs](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_fbs.png 'Obbserved fbs')
+![observed-counts-cp](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/cf826fd3-f048-4490-bd58-c46827c23ee5)
+
+Gambar 13. *Observed count* untuk fitur *cp*
+
+Dari Gambar 13 dapat ditarik kesimpulan bahwa kebanyakan pasien Pria dengan sakit dada *asymptomatic* memiliki penyakit jantung, dengan 141 pasien dengan penyakit jantung Level 1, 53 pasien dengan penyakit jantung Level 2, 51 pasien dengan penyakit jantung Level 3, dan 17 pasien dengan penyakit jantung Level 4. Sementara kebanyakan pasien dengan sakit dada *atypical angina* tidak memiliki penyakit jantung.
+
 
 Chi-square statistic for fbs: 28.39522630288068
 
 p-value for fbs: 1.03712317210912e-05
 
-![Obbserved restecg](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_restecg.png 'Obbserved rest ecg')
+![observed-counts-fbs](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/5dc6bbc1-b5f4-4543-b853-0d7fe6d461fc)
+
+Gambar 14. *Observed count* untuk fitur *fbs*
+
+Dari Gambar 14 diketahui bahwa mayoritas pasien tanpa gula darah puasa > 120 mg/dl, tidak memiliki penyakit jantung, tetapi kebanyakan pasien dengan gula darah puasa > 120 mg/dl, memiliki penyakit jantung.
+
 
 Chi-square statistic for restecg: 41.2837747903622
 
 p-value for restecg: 1.8447365567425365e-06
 
-![Obbserved exang](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_exang.png 'Obbserved exang')
+![observed-counts-restecg](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/8f06ffbc-f7dd-44b2-bef5-84539934b168)
+
+Gambar 15. *Observed count* untuk fitur *restecg*
+
+Dari Gambar 15 diketahui bahwa kebanyakan pasien dengan *restecg* (Hasil Resting Electrocardiographic) normal tidak memiliki penyakit jantung sementara mayoritas pasien dengan *IV Hyperthropy* dan *st-abnormality* memiliki penyakit jantung.
 
 Chi-square statistic for exang: 194.00745483156376
 
 p-value for exang: 7.295567046348765e-41
 
-![Obbserved slope](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_slope.png 'Obbserved slope')
+![observed-counts-exang](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/908a2496-adbb-4d39-aebc-6d425cc33aa1)
+
+Gambar 16. *Observed count* untuk fitur *exang*
+
+Dari Gambar 16 dapat disimpulkan bahwa mayoritas pasien tanpa *exang* (Angina yang timbul karena latihan) tidak memiliki penyakit jantung sementara pasien dengan *exang* memiliki penyakit jantung level 1 (116 pasien)
 
 Chi-square statistic for slope: 281.339671416197
 
 p-value for slope: 3.833652276746616e-56
 
-![Obbserved ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_ca.png 'Obbserved ca')
+![observed-counts-slope](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/4ec1b9a5-728f-466b-8878-d22a9a42a158)
+
+Gambar 17. *Observed count* untuk fitur *slope*
+
+Dari Gambar 17 dapat disimpulkan bahwa mayoritas pasien dengan *slope* (kemiringan puncak latihan segmen ST) *flat* memiliki penyakit jantung dari level 1 (142 pasien), level 2 & level 3 ( keduanya 44 pasien) dan level 4 (11 pasien), sementara sebagian pasien dengan *upslopping* tidak memiliki penyakit jantung.
 
 Chi-square statistic for ca: 299.2114011632948
 
 p-value for ca: 6.875267359872916e-57
 
-![Obbserved thal](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/observed_counts_thal.png 'Obbserved thal')
+![observed-counts-ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/42178c5b-4100-4d14-a75e-4a56cab59f21)
+
+Gambar 18. *Observed count* untuk fitur *ca*
+
+Dari Gambar 18, dapat disimpulkan bahwa mayoritas pasien dengan pembuluh darah utama 0 tidak memiliki penyakit jantung, sementara pasien dengan pembuluh darah utama 1,2 dan 3 memiliki penyakit jantung
+
 
 Chi-square statistic for thal: 284.85474944248324
 
 p-value for thal: 6.860971388362645e-57
 
-**Kesimpulan:**
+![observed-counts-thal](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/bce93097-7dee-4ed2-a5bf-37d35e0be8f9)
 
-1. Sex : Terdapat 170 pasien Pria dengan penyakit jantung Level 1, dan 20 pasien pria dengan penyakit jantung Level 4, sedangkan kebanyakan pasien Pria tidak memiliki penyakit jantung.
-2. Cp : Kebanyakan pasien Pria dengan sakit dada asymptomatic memiliki penyakit jantung, dengan 141 pasien dengan penyakit jantung Level 1, 53 pasien dengan penyakit jantung Level 2, 51 pasien dengan penyakit jantung Level 3, dan 17 pasien dengan penyakit jantung Level 4. Sementara kebanyakan pasien dengan sakit dada atypical angina tidak memiliki penyakit jantung.
-3. Fbs : Mayoritas pasien tanpa gula darah puasa > 120 mg/dl, tidak memiliki penyakit jantung,tetapi kebanyakan pasien dengan gula darah puasa > 120 mg/dl, memiliki penyakit jantung.
-4. Restecg (Hasil Resting Electrocardiographic) : Kebanyakan pasien dengan restecg normal tidak memiliki penyakit jantung sementara mayoritas pasien dengan IV Hyperthropy dan st-abnormality memiliki penyakit jantung.
-5. Exang (Angina yang timbul karena latihan) : Mayoritas pasien tanpa exang tidak memiliki penyakit jantung sementara pasien dengan exang memiliki penyakit jantung level 1 (116 pasien)
-6. Slope (kemiringan puncak latihan segmen ST) : Mayoritas pasien dengan slope flat memiliki penyakit jantung dari level 1 (142 pasien), level 2 & level 3 ( keduanya 44 pasien) dan level 4 (11 pasien), sementara sebagian pasien dengan upslopping tidak memiliki penyakit jantung
-7. Ca (jumlah pembuluh darah utama (0-3) diwarnai oleh flouroskopi) : Mayoritas pasien dengan pembuluh darah utama 0 tidak memiliki penyakit jantung, sementara pasien dengan pembuluh darah utama 1,2 dan 3 memiliki penyakit jantung
-8. Thal (Thalassemia) : Kebanyakan pasein dengan reversible defect memiliki penyakit jantung, sementara pasien dengan normal thal tidak memiliki penyakit jantung
+Gambar 19. *Observed count* untuk fitur *thal*
+
+Dari Gambar 19 dapat disimpulkan bahwa kebanyakan pasein dengan *reversible defect* memiliki penyakit jantung, sementara pasien dengan *normal thal* tidak memiliki penyakit jantung
 
 
 ## Data Preparation
-Setelah dilakukan pengecekan pada data set, masih terdapat missing values dan otliers pada data set.
+Setelah dilakukan pengecekan pada data set, masih terdapat *missing values* dan *outliers* pada data set.
 Maka proses data preparation yang dilakukan adalah sebagai barikut:
 
-1. Menangani Missing values, tahapan proses yang dilakukan antara lain:
-   - Melakukan inspeksi missing values pada dataset
-   - Penangan missing values dengan metode Iterative Imputer
-   - Cek hasil penangan missing values
-2. Menangani Outliers, tahapan proses yang dilakukan antara lain:
-   - Melakukan inspeksi outliers dengan metode IQR
-   - Melakukan visualisasi outliers dengan Box Plot
-   - Melakukan penanganan outliers satu per satu pada fitur
-   - Cek hasil penanganan outliers
+1. Menangani *Missing values*, tahapan proses yang dilakukan antara lain:
+   - Melakukan inspeksi *missing values* pada dataset
+   - Penangan *missing values* dengan metode *Iterative Imputer*
+   - Cek hasil penangan *missing values*
+2. Menangani *Outliers*, tahapan proses yang dilakukan antara lain:
+   - Melakukan inspeksi *outliers* dengan metode IQR
+   - Melakukan visualisasi *outliers* dengan *Boxplot*
+   - Melakukan penanganan *outliers* satu per satu pada fitur
+   - Cek hasil penanganan *outliers*
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 Adapun detail dari proses-proses tersebut adalah sebagai berikut:
 
-1. Menangani Missing Values
-   - Inspeksi missing values pada dataset
-     Sebelum menangani missing values, missing values pada data perlu di inspeksi terlebih dahulu.
-     Missing values pada dataset dapat dilihat dengan fungsi di bawah ini
+1. Menangani *Missing Values*
+   - Inspeksi *missing values* pada dataset
+     Sebelum menangani *missing values*, *missing values* pada data perlu di inspeksi terlebih dahulu.
+     *Missing values* pada dataset dapat dilihat dengan fungsi *isnull()*. Jumlah *missing values* pada dataset terdapat pada tabel di bawah ini.
      
-     ```
-     data.isnull()
-     ```
-     
-     Pada inspeksi kali ini, digunakan code berikut:
-     ```
-     heart_data.isnull().sum()
-     ```
-     Hal ini bertujuan untuk menjumalahkan nilai missing values, sehingga dapat diketahui total missing values pada data.
-     Hasil dari kode diatas adalah sebagai berikut:
+     Tabel 3. Jumlah *missing values* pada dataset
      
      | Fitur  | Missing Values|
      |:------ |:------:|
@@ -410,12 +426,12 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
 
      dtype: int64
 
-     Dari hasil perhitungan kode diatas, dapat dilihat bahwa terdapat banyak missing values pada dataset yang perlu ditangani.
-     Untuk memastikan proporsi missing values pada dataset dapat digunakan kode berikut:
-     ```
-     round((heart_data.isnull().sum()[heart_data.isnull().sum()>0]/len(heart_data)*100),1).sort_values(ascending=False)
-     ```
-     Didapat Proporsi missing values sebegai berikut:
+     Dari Tabel 3 diatas, dapat dilihat bahwa terdapat banyak missing values pada dataset yang perlu ditangani. Tiga fitur dengan jumlah *missing values* terbanyak adalah fitur *ca* dengan 611 *missing values*, fitur *thal* dengan 486 *missing values* dan fitur *slope* dengan 309 *missing values*.
+     
+     Adapun proporsi jumlah *missing values* untuk tiap tiap fitur adalah sebagai berikut:
+     
+     Tabel 4. Proporsi *missing values* pada dataset
+     
      | Fitur  | Persentase|
      |:------ | ------:|
      |ca       |  66.4  |
@@ -431,24 +447,26 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      
      dtype: float64
      
-     Dari hasil inspeksi, diketahui:
+     Dari Tabel 4 diatas dapat diketahui bahwa:
 
-     - Terdapat 10 fitur dengan missing values.
-     - 7 fitur memiliki persentase missing values dibawah 10%.
-     - 3 fitur memiliki persentase missing values yang tinggi (30%, 50%, 60%).
+     - Terdapat 10 fitur dengan *missing values*.
+     - 7 fitur memiliki persentase *missing values* dibawah 10%.
+     - 3 fitur memiliki persentase *missing values* yang tinggi (30%, 50%, 60%).
 
-     Dikarenakan jumlah persentase missing values yang cukup tinggi, metode yang dipilih untuk menangani missing values tersebut adalah metode Iterative Imputer dengan menggunakan model machine learning Random Forest Classifier dan Random Forest Regressor.
-   - Penanganan missing values dengan metode Iterative Imputer
+     Dikarenakan jumlah persentase *missing values* yang cukup tinggi, metode yang dipilih untuk menangani *missing values* tersebut adalah metode *terative Imputer* dengan menggunakan model *machine learning* *Random Forest Classifier* dan *Random Forest Regressor*.
+   - Penanganan *missing values* dengan metode *Iterative Imputer*
    
-     Adapun metode Iterative Imputer mengacu pada proses di mana setiap fitur dimodelkan sebagai fungsi dari fitur lainnya, misalnya. masalah regresi di mana nilai yang hilang diperkirakan. Setiap fitur diperhitungkan secara berurutan, satu demi satu, sehingga nilai yang diperhitungkan sebelumnya dapat digunakan sebagai bagian dari model dalam memprediksi fitur berikutnya.
+     Adapun metode *Iterative Imputer* mengacu pada proses di mana setiap fitur dimodelkan sebagai fungsi dari fitur lainnya, misalnya. masalah regresi di mana nilai yang hilang diperkirakan. Setiap fitur diperhitungkan secara berurutan, satu demi satu, sehingga nilai yang diperhitungkan sebelumnya dapat digunakan sebagai bagian dari model dalam memprediksi fitur berikutnya.
 
      Hal ini bersifat iteratif karena proses ini diulang beberapa kali, sehingga estimasi nilai yang hilang dapat dihitung dengan lebih baik seiring dengan estimasi nilai yang hilang di seluruh fitur.
 
      Algoritma regresi yang berbeda dapat digunakan untuk memperkirakan nilai yang hilang untuk setiap fitur, meskipun metode linier sering kali digunakan untuk kesederhanaan. Jumlah iterasi suatu prosedur seringkali dibuat kecil, misalnya 10. Terakhir, urutan fitur yang diproses secara berurutan dapat dipertimbangkan, seperti dari fitur dengan nilai yang hilang paling sedikit ke fitur dengan nilai yang hilang paling banyak.
 ​
-   - Cek hasil penangan missing values
+   - Cek hasil penanganan *missing values*
    
-     Setelah dilakukan proses Iterative Imputer tersebut, hasil pengecekan missing values mendapatkan hasil sebagai berikut:
+     Setelah dilakukan proses *Iterative Imputer* tersebut, hasil pengecekan *missing values* mendapatkan hasil sebagai berikut:
+  
+     Tabel 5. Jumlah *missing values* setelah dilakukan proses *Iterative imputer*
 
      | Fitur  | Missing Values|
      |:------ |:------:|
@@ -469,15 +487,15 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
 
      dtype: int64
 
-     Missing values adalah masalah umum dalam proyek pembelajaran mesin dan ilmu data. Kegagalan dalam menangani data yang hilang dengan benar dapat mengganggu hasil model machine learning atau mengurangi akurasi model. Untuk mengatasi hambatan ini, perlu dilakukan penanganan nilai-nilai yang hilang secara hati-hati. Tujuan dari penanganan missing values adalah membuat kumpulan data lengkap yang akan menempatkan analisis pada landasan yang kokoh. Mengabaikan data yang hilang dapat secara langsung memengaruhi performa dan keandalan dari model .
+     *Missing values* adalah masalah umum dalam proyek *machine learning* dan ilmu data. Kegagalan dalam menangani *missing values* dengan benar dapat mengganggu hasil model *machine learning* atau mengurangi akurasi model. Untuk mengatasi hambatan ini, perlu dilakukan penanganan nilai-nilai yang hilang secara hati-hati. Tujuan dari penanganan *missing values* adalah membuat kumpulan data lengkap yang akan menempatkan analisis pada landasan yang kokoh. Mengabaikan data yang hilang dapat secara langsung memengaruhi performa dan keandalan dari model .
 ​
-2. Menangani Outliers,
+2. Menangani *Outliers*,
    - Melakukan inspeksi outliers dengan metode IQR
-     IQR adalah interquartile range atau rentang akar kuartil dari sekumpulan data. IQR digunakan dalam analisis statistik untuk membantu menarik kesimpulan mengenai sekumpulan data. IQR lebih sering digunakan daripada range karena IQR tidak menyertakan data paling luar.
+     IQR adalah *interquartile rang*e atau rentang akar kuartil dari sekumpulan data. IQR digunakan dalam analisis statistik untuk membantu menarik kesimpulan mengenai sekumpulan data. IQR lebih sering digunakan daripada range karena IQR tidak menyertakan data paling luar.
      Secara matematis, IQR dapat dirumuskan sebagai berikut:
-     <p align="center">
-     $IQR = Q3 - Q1$
-     </p>
+
+     $$IQR = Q3 - Q1$$
+
 
      Dengan Q1 adalah nilai di antara median dengan data terkecil atau dapat dikatakan *25th Percentile* sedang Q3 adalah nilai di antara median dengan data terbesar atau dapat dikatakan *75th Percentile*. Untuk menentukan outliers, perlu di tetapkan nilai batas atas dan batas bawah. Adapun rumus untuk batas atas dan batas bawah adalah:
 
