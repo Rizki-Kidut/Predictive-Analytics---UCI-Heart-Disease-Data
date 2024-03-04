@@ -497,25 +497,18 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      $$IQR = Q3 - Q1$$
 
 
-     Dengan Q1 adalah nilai di antara median dengan data terkecil atau dapat dikatakan *25th Percentile* sedang Q3 adalah nilai di antara median dengan data terbesar atau dapat dikatakan *75th Percentile*. Untuk menentukan outliers, perlu di tetapkan nilai batas atas dan batas bawah. Adapun rumus untuk batas atas dan batas bawah adalah:
+     Dengan Q1 adalah nilai di antara median dengan data terkecil atau dapat dikatakan *25th Percentile* sedang Q3 adalah nilai di antara median dengan data terbesar atau dapat dikatakan *75th Percentile*. Untuk menentukan *outliers*, perlu di tetapkan nilai batas atas dan batas bawah. Adapun rumus untuk batas atas dan batas bawah adalah:
 
-     <p align="center">
-     $Batas Atas = Q3 + 1.5 * IQR$
-     </p>
-     <p align="center">
-     $Batas Bawah = Q1 - 1.5 * IQR$
-     </p>
+    
+     $$Batas Atas = Q3 + 1.5 * IQR$$
+     
+     $$Batas Bawah = Q1 - 1.5 * IQR$$
+   
 
-     Maka untuk data set ini jumlah outliernya dapat ditentukan dengan kode berikut:
-     ```
-     Q1 = heart_data[num_cols].quantile(0.25)
-     Q3 = heart_data[num_cols].quantile(0.75)
-     IQR = Q3 - Q1
-     outliers_count_specified = ((heart_data[num_cols] < (Q1 - 1.5 * IQR)) | (heart_data[num_cols] > (Q3 + 1.5 * IQR))).sum()
-      
-     outliers_count_specified
-     ```
-     Hasil nya adalah sebagai berikut:
+     Maka dengan menggunakan perhitungan IQR tersebut, didapat *outliers* pada dataset ini adalah sebagai berikut:
+     
+     Tabel 6. Jumlah *Outliiers* pada dataset
+     
      | Fitur  | Outliers|
      |:------ |:------:|
      |age      |    0  |
@@ -527,31 +520,55 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      |num      |     0 |
       
      dtype: int64
-      
-   - Melakukan visualisasi outliers dengan Box Plot
-     Untuk melihat lebih detail sebaran outliers pada data set, dapat dilakukan visualisasi dengan menggunakan Box Plot.
-     Box plot juga dikenal sebagai box-and-whisker plot, adalah grafik yang menunjukkan sebaran data untuk variabel kontinu. Ini adalah metode non-parametrik yang menampilkan variasi sampel populasi statistik tanpa membuat asumsi apa pun tentang distribusi statistik yang mendasarinya.
-     Berikut adalah bagian dasar dari Box Plot:
-     1. Garis tengah dalam kotak menunjukkan median data. Setengah dari data berada di atas nilai ini, dan setengahnya lagi di bawah. Jika datanya simetris maka mediannya berada di tengah kotak. Jika datanya miring, mediannya akan lebih dekat ke atas atau ke bawah kotak.
-     2. Bagian bawah dan atas kotak menunjukkan kuantil atau persentil ke-25 dan ke-75. Kedua kuantil ini juga disebut kuartil karena masing-masing kuantil memotong seperempat (25%) data. Panjang kotak merupakan selisih antara kedua persentil tersebut dan disebut rentang interkuartil (IQR).
-     3. Garis yang memanjang dari kotak disebut whiskers. Whiskers mewakili variasi data yang diharapkan. Whiskers memanjang 1,5 kali IQR dari atas dan bawah kotak. Jika data tidak sampai ke ujung whiskers, maka whiskers meluas ke nilai data minimum dan maksimum.
-     4. Jika ada nilai yang berada di atas atau di bawah ujung whiskers, nilai tersebut diplot sebagai titik. Titik-titik ini sering disebut outlier. Pencilan lebih ekstrem dibandingkan variasi yang diharapkan. Poin data ini layak untuk ditinjau untuk menentukan apakah data tersebut merupakan outlier atau kesalahan; whiskers tidak akan menyertakan outlier ini.
-     Box plot untuk data yang mengandung outliers adalah sebagai berikut:
-     ![Box plot trestbps](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_trestbps.png 'Box plot trestbps')
-     ![Box plot chol](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_chol.png 'Box plot chol')
-     ![Box plot thalch](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_thalch.png 'Box plot thalch')
-     ![Box plot oldpeak](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_oldpeak.png 'Box plot oldpeak')
-     ![Box plot ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/d8e2d5cd08905dd7c396fd713787e7ce6805f185/Image/boxplot_ca.png 'Box plot ca')
 
-   - Melakukan penanganan outliers satu per satu pada fitur
-     Cara yang paling umum adalah dengan menghilangkan atau menghapus nilai nilai outliers yang berada di luar batas nilai IQR.
-     Hanya saja, dikarenakan data set yang digunakan hanya terdiri dari 900 data, dan jumlah outliersnya cukup banyak, maka Outliers pada data set ini diolah secara manual.
-     1. Penanganan Outliers pada fitur Tresbps
-        Sebelum melakukan penanganan, info statistik dari fitur di inspeksi dengan fitur describe().
-        ```
-        heart_data['trestbps'].describe()
-        ```
-        Info statistik dari fitur trestbps adalah:
+     Dari Tabel 6 dapat diketahui bahwa terdapat *outliers* pada 5 fitur antara lain:
+     1. Fitur *chol* memiliki 185 *outliers*
+     2. Fitur *trestbps* memiliki 28 *outliers*
+     3. Fitur *ca* memiliki 22 *outliers*
+     4. Fitur *oldpeak* memiliki 3 *outliers*
+     5. Fitur *thalch* memiliki 2 *outliers
+      
+   - Melakukan visualisasi *outliers* dengan Boxplot
+     Untuk melihat lebih detail sebaran *outliers* pada dataset, dapat dilakukan visualisasi dengan menggunakan *Boxplot*.
+     *Boxplot* juga dikenal sebagai *box-and-whisker plot*, adalah grafik yang menunjukkan sebaran data untuk variabel kontinu. Ini adalah metode non-parametrik yang menampilkan variasi sampel populasi statistik tanpa membuat asumsi apa pun tentang distribusi statistik yang mendasarinya.
+     Berikut adalah bagian dasar dari *Boxplot*:
+     1. Garis tengah dalam kotak menunjukkan median data. Setengah dari data berada di atas nilai ini, dan setengahnya lagi di bawah. Jika datanya simetris maka mediannya berada di tengah kotak. Jika datanya miring, mediannya akan lebih dekat ke atas atau ke bawah kotak.
+     2. Bagian bawah dan atas kotak menunjukkan kuantil atau persentil ke-25 dan ke-75. Kedua kuantil ini juga disebut kuartil karena masing-masing kuantil memotong seperempat (25%) data. Panjang kotak merupakan selisih antara kedua persentil tersebut dan disebut *Interquartile Range* (IQR).
+     3. Garis yang memanjang dari kotak disebut *whiskers*. *Whiskers* mewakili variasi data yang diharapkan. *Whiskers* memanjang 1,5 kali IQR dari atas dan bawah kotak. Jika data tidak sampai ke ujung *whiskers*, maka *whiskers* meluas ke nilai data minimum dan maksimum.
+     4. Jika ada nilai yang berada di atas atau di bawah ujung *whiskers*, nilai tersebut diplot sebagai titik. Titik-titik ini sering disebut *outlier*. Pencilan lebih ekstrem dibandingkan variasi yang diharapkan. Poin data ini layak untuk ditinjau untuk menentukan apakah data tersebut merupakan *outlier* atau kesalahan; *whiskers* tidak akan menyertakan *outlier* ini.
+        
+     *Boxplot* untuk data yang mengandung outliers adalah sebagai berikut:
+     
+     ![boxplot-trestbps](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/f3d5c9b0-6e76-48a9-8d5f-d56f0f6a89ce)
+  
+     Gambar 20. *Boxplot* untuk fitur *trestbps*
+
+     ![boxplot-chol](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/c169f712-d4ac-425d-9e85-42a6c30b7671)
+
+     Gambar 21. *Boxplot* untuk fitur *chol*
+  
+     ![boxplot-thalch](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/ab9a382f-6be5-44b6-8b7d-dfa0dd43cc3f)
+
+     Gambar 22. *Boxplot* untuk fitur *thalch*
+     
+     ![boxplot-oldpeak](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/02bbc002-3946-4b2d-96c5-45699b494603)
+  
+     Gambar 23. *Boxplot* untuk fitur *oldpeak*
+
+     ![boxplot-ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/3129a007-a703-475b-8ebe-6d6004b466ac)
+
+     Gambar 24. *Boxplot* untuk fitur *ca*
+
+
+   - Melakukan penanganan *outliers* satu per satu pada fitur
+     Cara yang paling umum adalah dengan menghilangkan atau menghapus nilai nilai *outliers* yang berada di luar batas nilai IQR.
+     Hanya saja, dikarenakan data set yang digunakan hanya terdiri dari 900 data, dan jumlah *outliersnya* cukup banyak, maka *Outliers* pada data set ini diolah secara manual.
+     1. Penanganan *Outliers* pada fitur *Tresbps*
+        
+        Sebelum melakukan penanganan, info statistik dari fitur di inspeksi dengan fitur *describe()*. Info statistik dari fitur *trestbps* adalah:
+        
+        Tabel 7. Info statistik fitur *trestbps* sebelum *outliers* ditangani
+     
         | Statistik | Nilai|
         |:------ | ------:|
         |count   | 920.000000|
@@ -565,14 +582,12 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
         
         Name: trestbps, dtype: float64
 
-        Dari hasil terdapat data dengan nilai 0 di kolom trestbps, dikarenakan tekanan darah tidak mungkin memiliki nilai 0. Maka data dengan nilai 0 pada kolom ini bisa di drop
-        Dikarenakan hasil visual Box Plot untuk terstbps terdapat nilai 75 diluar batas bawah, maka nilai dibawah 80 bisa di drop.
+        Dari Tabel 7 dapat dilihat bahwa terdapat data dengan nilai 0 di kolom *trestbps*, dikarenakan tekanan darah tidak mungkin memiliki nilai 0. Maka data dengan nilai 0 pada kolom ini bisa di *drop*. Dikarenakan hasil visual Boxplot pada Gambar 20 terdapat nilai 75 diluar batas bawah, maka nilai dibawah 80 bisa di *drop*.
 
-        ```
-        heart_data = heart_data[heart_data['trestbps'] >= 80]
-        ```
-
-        Hasil setelah penanganan outliers:
+        Info statistik fitur *trestbps* setelah *outliers* ditangani adalah sebagai berikut:
+        
+        Tabel 8. Info statistik fitur *trestbps* setelah *outliers* ditangani
+        
         | Statistik | Nilai|
         |:------ | ------:|
         |count   | 919.000000|
@@ -585,14 +600,17 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
         |max     | 200.000000|
         
         Name: trestbps, dtype: float64
-     2. Penanganan Outliers Thalach
-        Berdasarkan informasi dari Box Plot,nilai pada kolom thalch dapat dimulai dari 71, sehingga nilai dibawah 71 dapat dihilangkan
+        
+        Jika dilihat pada Tabel 8, nilai minimal data sudah berubah dari 0 menjadi 80. Jumlah dataset setelah penanganan berkurang dari 920 menjadi 919 data.
+        
+     2. Penanganan *Outliers Thalch*
+    
+        Berdasarkan informasi dari Gambar 22,nilai pada kolom *thalch* dapat dimulai dari 71, sehingga nilai dibawah 71 dapat dihilangkan
 
-        ```
-        heart_data = heart_data[heart_data['thalch'] >= 71
-        ```
-
-        Hasil dari penanganan outliers tersebut:
+        Hasil dari penanganan *outliers* untuk fitur *thalch* adalah sebagai berikut:
+        
+        Tabel 9. Info statistik fitur *thalc* setelah *outliers* ditangani
+        
         |Statistik | Nilai|
         |:------ | ------:|
         |count   | 914.000000|
@@ -605,23 +623,17 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
         |max     | 202.000000|
 
         Name: thalch, dtype: float64
-     3. Penanganan Outliers Oldpeak
-        Terdapat 3 outliers pada kolom oldpeak. Outtliers ditangani menggunakan metode IQR.
-        ```
-        Q1 = heart_data['oldpeak'].quantile(0.25)
-        Q3 = heart_data['oldpeak'].quantile(0.75)
-        IQR = Q3 - Q1
-        lower_bound = Q1 - 1.5 * IQR
-        upper_bound = Q3 + 1.5 * IQR
-        heart_data = heart_data[(heart_data['oldpeak'] >= lower_bound) & (heart_data['oldpeak'] <= upper_bound)]
-        ```
-     4. Penanganan Outliers Chol
-        Sebelum melakukan penanganan, info statistik dari fitur di inspeksi dengan fitur describe().
-        ```
-        heart_data['chol'].describe()
-        ```
-
-        Info statistik dari fitur chol adalah:
+        
+        Dari Tabel 9 diatas, data minimal untuk fitur *thalc* adalah 71. Jumlah dataset berkurang dari 919 menjadi 914 data.
+        
+     5. Penanganan *Outliers Oldpeak*
+        Dari Gambar 23, terdapat 3 outliers pada kolom *oldpeak*. *Outliers* ditangani menggunakan metode IQR, dengan *drop* data yang termasuk kedalam *Outliers*
+     
+     6. Penanganan *Outliers Chol*
+        Sebelum melakukan penanganan, info statistik dari fitur di inspeksi dengan fitur *describe()*. Info statistik untuk fitur *chol* adalah sebagai berikut:
+        
+        Tabel 10. Info statistik fitur *chol* sebelum *outliers* ditangani
+        
         | Statistik | Nilai|
         |:------ | ------:|
         |count   | 911.000000|
@@ -635,21 +647,14 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
         
         Name: chol, dtype: float64
 
-        Terdapat beberapa nili 0 pada kolom cholestrol, sehingga nilai cholestrol tidak mungkin bernilai 0.
-        Jumlah nilai 0 pada kolom cholestrol dihitung jumlahnya dan dihilangkan dari data dengan menggunakan kode berikut:
-        ```
-        print("zero_counts :",(heart_data['chol'] == 0).sum())
-        heart_data = heart_data[heart_data['chol'] != 0]
-        ```
-        Terdapat 167 nilai 0 pada kolom chol.
+        Dari Tabel 10, terdapat beberapa nili 0 pada kolom *cholestrol*, sehingga nilai cholestrol tidak mungkin bernilai 0.Jumlah nilai 0 pada kolom *cholestrol* dihitung jumlahnya. Hasilnya terdapat 167 nilai 0 pada kolom chol.
 
-        Dari informasi pada Box Plot, Diputuskan untuk menyaring nilai chol antara 126 dan 400.
-        ```
-        heart_data = heart_data[heart_data['chol'] >= 126]
-        heart_data = heart_data[heart_data['chol'] <= 400]
-        ```
-
-        Hasil dari penanganan outliers tersebut:
+        Dari informasi pada Gambar 21, Diputuskan untuk menyaring nilai *chol* antara 126 dan 400. Dan meghapus data dibawah 126 dan diatas 400.
+        
+        Info statistik fitur *chol* setelah *outliers* ditangani adalah sebagai berikut:
+        
+        Tabel 11. Info statistik fitur *chol* setelah *outliers* ditangani
+        
         |Statistik | Nilai|
         |:------ | ------:|
         |count   | 728.000000|
@@ -662,31 +667,44 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
         |max     | 394.000000|
         
         Name: chol, dtype: float64
+    
+        Dari Tabel 11, dapat diketahui bahwa nilai minimal untuk fitur *chol* adalah 126 dengan nilai maksimal 394. Jumlah dataset setelah dilakukan penanganan berkurang menjadi 728 data.
+        *Summary* info statistik untuk semua fitur setelah dilakukan penanganan *outliers* adalah sebagai berikut:
+        
+        Tabel 12. *Summary* info statistik untuk semua fitur 
 
-        Name: thalch, dtype: float64
+        |       |        age |   trestbps |       chol |     thalch |    oldpeak |        ca |        num |
+|------:|-----------:|-----------:|-----------:|-----------:|-----------:|----------:|-----------:|
+| count | 728.000000 | 728.000000 | 728.000000 | 728.000000 | 728.000000 | 728.00000 | 728.000000 |
+| mean  |  52.894231 | 132.993365 | 242.408475 | 141.038214 |   0.962451 |   0.43956 |   0.828297 |
+| std   |   9.511945 |  17.340035 |  48.105657 |  24.328196 |   1.086853 |   0.77027 |   1.101167 |
+| min   |  28.000000 |  94.000000 | 126.000000 |  71.000000 |   0.000000 |   0.00000 |   0.000000 |
+| 25%   |  46.000000 | 120.000000 | 209.000000 | 124.135000 |   0.000000 |   0.00000 |   0.000000 |
+| 50%   |  54.000000 | 130.000000 | 236.500000 | 142.000000 |   0.600000 |   0.00000 |   0.000000 |
+| 75%   |  59.000000 | 140.000000 | 274.000000 | 160.000000 |   1.800000 |   1.00000 |   1.000000 |
+| max   |  77.000000 | 200.000000 | 394.000000 | 202.000000 |   4.400000 |   3.00000 |   4.000000 |
 
-        Jumlah data setelah outliers ditangani adalah 728 data.
-
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
-
+    
 ## Modeling
-Model yang digunakan untuk menyelesaikan masalah Multiclass Classification ini adalah sebagai berikut:
-1. Random Forest Classifier
-2. K-Nearest Neighbors
-3. Gaussian Naive Bayes
-4. Ada Boost, and
-5. XG Boost
+Algoritma yang digunakan untuk menyelesaikan masalah *Multiclass Classification* ini adalah sebagai berikut:
+1. *Random Forest Classifier*
+2. *K-Nearest Neighbors*
+3. *Gaussian Naive Bayes*
+4. *Ada Boost*, and
+5. *XG Boost*
 
-Selain itu dilakukan juga tuning hyperparameter menggunakan GridSearchCV
+Selain itu dilakukan juga *tuning hyperparameter* menggunakan *GridSearchCV*
 
 Dari kelima model ini akan dipilih model dengan akurasi tertinggi.
 
 Tahapan yang dilakukan untuk training model ini antara lain:
-1. Encoding Fitur Kategori
+1. *Encoding* Fitur Kategori
    Fitur kategori pada dateset di encoding dengan menggunakan Label Encoder
 
-   Data set sebelum dilakukan Label Encoder
+   Data set sebelum dilakukan *Label Encoder* adalah sebagai berikut:
+   
+   Tabel 13. Dataset sebelum dilakukan proses *Encoding*
+   
    | Index | age |   sex  |        cp       | trestbps |  chol |  fbs  |     restecg    | thalch | exang | oldpeak |    slope    |  ca |        thal       | num |
    |:-----:|:---:|:------:|:---------------:|:--------:|:-----:|:-----:|:--------------:|:------:|:-----:|:-------:|:-----------:|:---:|:-----------------:|:---:|
    |   0   |  63 |  Male  |  typical angina |  145.00  | 233.0 |  True | lv hypertrophy | 150.00 | False |  2.300  | downsloping | 0.0 |    fixed defect   |  0  |
@@ -695,18 +713,12 @@ Tahapan yang dilakukan untuk training model ini antara lain:
    |   3   |  37 |  Male  |   non-anginal   |  130.00  | 250.0 | False |     normal     | 187.00 | False |  3.500  | downsloping | 0.0 |       normal      |  0  |
    |   4   |  41 | Female | atypical angina |  130.00  | 204.0 | False | lv hypertrophy | 172.00 | False |  1.400  |  upsloping  | 0.0 |       normal      |  0  |
 
-   Code untuk proses Label Encoder
-   ```
-   categorical_cols = ['thal', 'ca', 'slope', 'exang', 'restecg','fbs', 'cp', 'sex', 'num']
+   Dari Tabel 13, terlihat bahwa untuk fitur kategori masih memiliki *type* data *object*. Hal ini akan menyulitkan model, dikarenakan model hanya mengenali data numerik. Oleh karena itu dilakukan proses *encoding* untuk merubah *type* data *object* tadi menjadi numerik dengan menggunakan fungsi *Label Encoder*.
 
-   label_encoder = LabelEncoder()
-
-   for col in heart_data.columns:
-       if heart_data[col].dtype == 'object' or heart_data[col].dtype == 'category':
-           heart_data[col] = label_encoder.fit_transform(heart_data[col])
-   ```
-  
    Hasil dari Label Encoder adalah sebagai berikut:
+   
+   Tabel 14. Dataset seteleh dilakukan proses *encoding*
+   
    | Index | age | sex | cp | trestbps |  chol | fbs | restecg | thalch | exang | oldpeak | slope |  ca | thal | num |
    |:-----:|:---:|:---:|:--:|:--------:|:-----:|:---:|:-------:|:------:|:-----:|:-------:|:-----:|:---:|:----:|:---:|
    |   0   |  63 |  1  |  3 |  145.00  | 233.0 |  1  |    0    | 150.00 |   0   |  2.300  |   0   | 0.0 |   0  |  0  |
@@ -714,18 +726,15 @@ Tahapan yang dilakukan untuk training model ini antara lain:
    |   2   |  67 |  1  |  0 |  120.00  | 229.0 |  0  |    0    | 129.00 |   1   |  2.600  |   1   | 2.0 |   2  |  1  |
    |   3   |  37 |  1  |  2 |  130.00  | 250.0 |  0  |    1    | 187.00 |   0   |  3.500  |   0   | 0.0 |   1  |  0  |
    |   4   |  41 |  0  |  1 |  130.00  | 204.0 |  0  |    0    | 172.00 |   0   |  1.400  |   2   | 0.0 |   1  |  0  |
-   
-2. Split data menjadi data train dan data test
-   Proses selanjutnya adalah proses split data menjadi data train dan data test dengan perbandingan 80:20 menggunakan fungsi "train_test_split"
-   ```
-   X = heart_data.drop(["num"],axis =1)
-   y = heart_data["num"]
-   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
-   ```
 
-3. Train data dengan 5 algortitma dengan menerapkan tuning hyperparameter menggunakan GridSearchCV
-   Proses selanjutnya adalah melakukan train data dengan menggunakan 5 algoritma serta melakukan tuning hyperparameter.
-   Model dan hyperparameter yang digunakan dimasukan kedalam dictionary seperti berikut:
+   Dari Tabel 14 terihat bahwa data kategori sudah memiliki nilai numerik sehingga data sudah siap untuk dilakukan *modeling*.
+   
+3. *Split* data menjadi data *train* dan data *test*
+   Proses selanjutnya adalah proses *split* data menjadi data *train* dan data *test* dengan perbandingan 80:20 menggunakan fungsi "train_test_split". Agar hasil *modeling* dapat divalidasi oleh data *test*.
+
+4. *Train* data dengan 5 algortitma dengan menerapkan *tuning hyperparameter* menggunakan *GridSearchCV*
+   Proses selanjutnya adalah melakukan train data dengan menggunakan 5 algoritma serta melakukan *tuning hyperparameter*.
+   Algoritma dan hyperparameter yang digunakan dimasukan kedalam dictionary seperti berikut:
    ```
    models = {
         'Random Forest': {
@@ -762,100 +771,109 @@ Tahapan yang dilakukan untuk training model ini antara lain:
    }
    ```
    
-   - **Random FOrest**       : Untuk Random Forest, hyperparameter yang diguanakan adalah "model__n_estimators" dan "model__max_depth".
-   - **K-Nearest Neighbors** : Untuk KNN, hyperparameter yang digunakan adalah "model__n_neighbors"
-   - **GaussianNB**          : Untuk GaussianNB tidak ada hyperparameter yang digunakan
-   - **Ada Boost**           : Untuk Ada Boost, hyperparameter yang digunakan adalah "model__n_estimators" dan "model__learning_rate"
-   - **XG Boost**            : Untuk XG Boost, hyperparameter yang digunakan adalah "model__n_estimators" dan "model__learning_rate"
+   - ***Random Forest***       : Untuk *Random Forest*, *hyperparameter* yang diguanakan adalah "*model__n_estimators*" dan "*model__max_depth*".
+   - ***K-Nearest Neighbors*** : Untuk KNN, *hyperparameter* yang digunakan adalah "*model__n_neighbors*"
+   - ***GaussianNB***          : Untuk *GaussianNB* tidak ada *hyperparameter* yang digunakan
+   - ***Ada Boost***           : Untuk *Ada Boost*, *hyperparameter* yang digunakan adalah "*model__n_estimators*" dan "*model__learning_rate*"
+   - ***XG Boost***            : Untuk *XG Boost*, *hyperparameter* yang digunakan adalah "*model__n_estimators*" dan "*model__learning_rate*"
   
-   Model dilatih menggunakan kelima algoritma diatas dengan bantuan GridSearchCV, untuk mendapatkan hasil tuning hyperparameter terbaik dari tiap tiap algoritma.
-   Matriks evaluasi yang digunakan adalah Accuracy, Precision, Recall,dan F1 Score.
+   Model dilatih menggunakan kelima algoritma diatas dengan bantuan *GridSearchCV*, untuk mendapatkan hasil tuning hyperparameter terbaik dari tiap tiap algoritma. *GridSearchCV* akan melatih model menggunakan algoritma yang ditentukan menggunakan semua *hyperparameter* yang ditentukan. *GridSearchCV* akan menggunakan *setting hyperparameter* terbaik untuk ditampilkan sebagai *output*.
+   Matriks evaluasi yang digunakan adalah *Accuracy*, *Precision*, *Recall* ,dan *F1 Score*.
 
    
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 Berikut adalah penjelasan singkat dari algoritma yang digunakan dalam proyek ini:
 
-**1. Random Forest**
+**1. *Random Forest***
 
-   Algoritma Random Forest diperkenalkan oleh Leo Breiman dan Adele Cutler. Algoritma ini didasarkan pada konsep ensemble learning, yakni proses menggabungkan beberapa pengklasifikasi untuk memecahkan masalah yang kompleks dan untuk meningkatkan kinerja model.
+   Algoritma *Random Forest* diperkenalkan oleh Leo Breiman dan Adele Cutler. Algoritma ini didasarkan pada konsep *ensemble learning*, yakni proses menggabungkan beberapa pengklasifikasi untuk memecahkan masalah yang kompleks dan untuk meningkatkan kinerja model.
 
-   Random Forest bekerja dalam dua fase. Fase pertama yaitu menggabungkan sejumlah N decision tree untuk membuat Random Forest. Kemudian fase kedua adalah membuat prediksi untuk setiap tree yang dibuat pada fase pertama.
+   Random Forest bekerja dalam dua fase. Fase pertama yaitu menggabungkan sejumlah *N decision tree* untuk membuat *Random Forest*. Kemudian fase kedua adalah membuat prediksi untuk setiap *tree* yang dibuat pada fase pertama.
 
-   ![Ilustrasti Random Forest](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/422ca5e4c4ae49cd1d7fc03ddf276622c285af73/Image/Illustration-of-random-forest-trees.png 'Random Forest')
-   
-   Cara kerja algoritma Random Forest dapat dijabarkan dalam langkah-langkah berikut:
+   ![Illustration-of-random-forest-trees](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/90dcb890-b7cd-4ee9-b545-23e0be77d948)
+
+   Gambar 25. Ilutrasi algoritma *Random Forest*
+
+   Dari Gambar 25, terlihat hubungan *Decision Tree* yang terhubung satu sama lain sehingga membentuk sebuah jaringan pepohonan seperti hutan pada umumnya. Itulah mengapa algoritma ini dinamakan *Random Forest*
+
+   Cara kerja algoritma *Random Forest* dapat dijabarkan dalam langkah-langkah berikut:
    - Algoritma memilih sampel acak dari dataset yang disediakan.
-   - Membuat decision tree untuk setiap sampel yang dipilih. Kemudian akan didapatkan hasil prediksi dari setiap decision tree yang telah dibuat.
-   - Dilakukan proses voting untuk setiap hasil prediksi. Untuk masalah klasifikasi menggunakan modus (nilai yg paling sering muncul), sedangkan untuk masalah regresi akan menggunakan mean (nilai rata-rata).
+   - Membuat *decision tree* untuk setiap sampel yang dipilih. Kemudian akan didapatkan hasil prediksi dari setiap *decision tree* yang telah dibuat.
+   - Dilakukan proses *voting* untuk setiap hasil prediksi. Untuk masalah klasifikasi menggunakan *modus* (nilai yg paling sering muncul), sedangkan untuk masalah regresi akan menggunakan *mean* (nilai rata-rata).
    - Algoritma akan memilih hasil prediksi yang paling banyak dipilih (vote terbanyak) sebagai prediksi akhir.
   
-   **Kelebihan Algoritma Random Forest**
-   Berikut adalah kelebihan dari algoritma Random Forest:
+   **Kelebihan Algoritma *Random Forest***
+   Berikut adalah kelebihan dari algoritma *Random Forest*:
 
    - Kuat terhadap data outlier (pencilan data).
-   - Bekerja dengan baik dengan data non-linear.
-   - Risiko overfitting lebih rendah.
+   - Bekerja dengan baik dengan data *non-linear*.
+   - Risiko *overfitting* lebih rendah.
    - Berjalan secara efisien pada kumpulan data yang besar.
    - Akurasi yang lebih baik daripada algoritma klasifikasi lainnya.
      
-   **Kekurangan Algoritma Random Forest**
-   Adapun kelemahan algoritma Random Forest adalah sebagai berikut:
+   **Kekurangan Algoritma *Random Forest***
+   Adapun kelemahan algoritma *Random Forest* adalah sebagai berikut:
 
-   - Random Forest cenderung bias saat berhadapan dengan variabel kategorikal.
+   - *Random Forest* cenderung bias saat berhadapan dengan variabel kategorikal.
    - Waktu komputasi pada dataset berskala besar relatif lambat
-   - Tidak cocok untuk metode linier dengan banyak fitur sparse
+   - Tidak cocok untuk metode *linier* dengan banyak fitur *sparse*
      
-**2. K-Nearest Neighbors (KNN)**
+**2. *K-Nearest Neighbors* (KNN)**
   
-   KNN adalah singkatan dari K-Nearest Neighbor, sebuah algoritma machine learning yang bekerja berdasarkan prinsip bahwa objek yang mirip cenderung berada dalam jarak yang dekat satu sama lain. Dengan kata lain, data yang memiliki karakteristik serupa akan cenderung saling bertetangga dalam ruang fitur (feature space).
+   KNN adalah singkatan dari *K-Nearest Neighbor*, sebuah algoritma *machine learning* yang bekerja berdasarkan prinsip bahwa objek yang mirip cenderung berada dalam jarak yang dekat satu sama lain. Dengan kata lain, data yang memiliki karakteristik serupa akan cenderung saling bertetangga dalam ruang fitur (*feature space*).
 
    Prinsip dasar algoritma KNN mengasumsikan bahwa objek yang mirip akan berada dalam jarak yang dekat satu sama lain. Dengan kata lain, data yang memiliki karakteristik serupa akan cenderung terletak berdekatan. KNN menggunakan seluruh data yang tersedia dalam pengambilan keputusan. Ketika ada data baru yang perlu diklasifikasikan, algoritma mengukur tingkat kemiripan atau fungsi jarak antara data baru tersebut dengan data yang sudah ada. Data baru kemudian ditempatkan dalam kelas yang paling banyak dimiliki oleh data tetangga terdekatnya.
       
-   ![Ilustrasti KNN](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/8ea1beff7e19561eb0706af98e2481653aabeffa/Image/algoritma-knn.png 'KNN')
-     
+  
+   ![algoritma-knn](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/200b584d-734b-48a0-9151-1e8e50e7f856)
+
+   Gambar 26. Ilustrasi algoritma *K-Nearest Neighbors* (KNN)
+
 
    **Kelebihan KNN**
    - Kemudahan implementasi 
    - Kemampuan beradaptasi 
-   - Hyperparameter yang sedikit
+   - *Hyperparameter* yang sedikit
 
    **Kekurangan KNN**
    - Tidak cocok untuk dataset berukuran besar
    - Tidak cocok untuk dimensi tinggi
    - Penskalaan fitur diperlukan
-   - Sensitif terhadap noise, missing value, dan outlier
+   - Sensitif terhadap *noise*, *missing value*, dan *outlier*
 
-**3. Gaussian Naive Bayes**
+**3. *Gaussian Naive Bayes***
   
-   Gaussian Naive Bayes (GNB) adalah teknik klasifikasi yang digunakan dalam pembelajaran mesin berdasarkan pendekatan probabilistik dan distribusi Gaussian. Gaussian Naive Bayes mengasumsikan bahwa setiap parameter, disebut juga fitur atau prediktor, memiliki kapasitas independen dalam memprediksi variabel keluaran.
+   *Gaussian Naive Bayes* (GNB) adalah teknik klasifikasi yang digunakan dalam *machine learning* berdasarkan pendekatan probabilistik dan distribusi *Gaussian*. *Gaussian Naive Bayes* mengasumsikan bahwa setiap parameter, disebut juga fitur atau prediktor, memiliki kapasitas independen dalam memprediksi variabel keluaran.
    Kombinasi prediksi untuk semua parameter merupakan prediksi akhir yang mengembalikan probabilitas variabel dependen untuk diklasifikasikan dalam setiap kelompok. Klasifikasi akhir diberikan kepada kelompok dengan probabilitas lebih tinggi.
 
-   Distribusi Gaussian disebut juga distribusi normal . Distribusi normal adalah model statistik yang menggambarkan sebaran variabel acak kontinu di alam dan ditentukan oleh kurva berbentuk lonceng. Dua ciri terpenting dari distribusi normal adalah mean ( $\mu$ ) dan  deviasi standar ( $\sigma$ ). Rata-rata adalah nilai rata-rata suatu distribusi, dan deviasi standar adalah “lebar” distribusi di sekitar rata-rata.
+   Distribusi *Gaussian* disebut juga distribusi normal . Distribusi normal adalah model statistik yang menggambarkan sebaran variabel acak kontinu di alam dan ditentukan oleh kurva berbentuk lonceng. Dua ciri terpenting dari distribusi normal adalah *mean* ( $\mu$ ) dan *standard deviasi* ( $\sigma$ ). Rata-rata adalah nilai rata-rata suatu distribusi, dan deviasi standar adalah “lebar” distribusi di sekitar rata-rata.
 Variabel ( $X$ ) yang berdistribusi normal terdistribusi secara kontinyu (variabel kontinu) dari $−\infty < X < +\infty$ , dan luas area di bawah kurva model adalah 1.
 
-   ![Ilustrasti GaussianNB](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/9b0959367f5d402a8c437c5aeb0c60f7b540b6a5/Image/1_gaussian-naive-bayes.jpg 'GaussianNB')
+   ![Illustration-of-how-a-Gaussian-Naive-Bayes-GNB-classifier-works-For-each-data-point](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/cdbf2a36-8753-45ee-819f-0cc8d38e6ea0)
+
+   Gambar 27. Ilustrasi algoritma *Gaussian Naive Bayes*
    
-   **Kelebihan Gaussian Naive Bayes**
-   Berikut ini adalah beberapa kelebihan menggunakan pengklasifikasi Naive Bayes:
+   **Kelebihan *Gaussian Naive Bayes***
+   Berikut ini adalah beberapa kelebihan menggunakan pengklasifikasi *Naive Bayes*:
    - Menangani kuantitatif dan data diskrit
-   - Kokoh untuk titik noise yang diisolasi, misalkan titik yang dirata – ratakan ketika mengestimasi peluang bersyarat data.
+   - Kokoh untuk titik *noise* yang diisolasi, misalkan titik yang dirata – ratakan ketika mengestimasi peluang bersyarat data.
    - Hanya memerlukan sejumlah kecil data pelatihan untuk mengestimasi parameter (rata – rata dan variansi dari variabel) yang dibutuhkan untuk klasifikasi.
    - Menangani nilai yang hilang dengan mengabaikan instansi selama perhitungan estimasi peluang
    - Cepat dan efisiensi ruang
    - Kokoh terhadap atribut yang tidak relevan
 
-   **Kelemahan Gaussian Naive Bayes**
+   **Kelemahan *Gaussian Naive Bayes***
    Berikut ini adalah beberapa kekurangan dari penggunaan pengklasifikasi Naive Bayes:
    - Tidak berlaku jika probabilitas kondisionalnya adalah nol, apabila nol maka probabilitas prediksi akan bernilai nol juga
    - Mengasumsikan variabel bebas
 
-**4. Ada Boost**
+**4. *Ada Boost***
   
-   Algoritma AdaBoost, singkatan dari Adaptive Boosting, adalah sebuah teknik Boosting yang digunakan sebagai metode ensemble dalam machine learning Algoritma AdaBoost bersifat iteratif atau berulang. Cara kerja algoritma ini dimulai dengan melatih sebuah weak classifier pada data pelatihan.
+   Algoritma *AdaBoost*, singkatan dari *Adaptive Boosting*, adalah sebuah teknik *Boosting* yang digunakan sebagai metode *ensemble** dalam machine learning*. Algoritma *AdaBoost* bersifat iteratif atau berulang. Cara kerja algoritma ini dimulai dengan melatih sebuah *weak classifier* pada data pelatihan.
 
-   Weak classifier kemudian diberi bobot berdasarkan performanya. Selanjutnya, algoritma melatih weak classifier kedua menggunakan data yang telah diberi bobot. Weak classifier kedua kemudian diberi bobot berdasarkan performanya. Proses ini diulang sejumlah iterasi tertentu atau hingga tingkat kesalahan berada di bawah ambang batas yang ditentukan. Classifier akhir adalah rata-rata terbobot dari semua weak classifiers. Bobot ditentukan berdasarkan tingkat kesalahan dari masing-masing weak classifier. Semakin rendah tingkat kesalahan, semakin tinggi bobotnya.
+   *Weak classifier* kemudian diberi bobot berdasarkan performanya. Selanjutnya, algoritma melatih *weak classifier* kedua menggunakan data yang telah diberi bobot. *Weak classifier* kedua kemudian diberi bobot berdasarkan performanya. Proses ini diulang sejumlah iterasi tertentu atau hingga tingkat kesalahan berada di bawah ambang batas yang ditentukan. *Classifier* akhir adalah rata-rata terbobot dari semua *weak classifiers*. Bobot ditentukan berdasarkan tingkat kesalahan dari masing-masing *weak classifier*. Semakin rendah tingkat kesalahan, semakin tinggi bobotnya.
 
-   ![Ilustrasti Ada Boost](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/01882ff98a8a57e28202fb4a2b7fc40c95971517/Image/Ada%20Boost.webp 'Ada Boost')
+   
 
    Secara runtun, cara kerja algoritma ini dapat dijabarkan sebagai berikut:
    1. Inisialisasi bobot sampel pelatihan
