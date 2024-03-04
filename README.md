@@ -159,6 +159,7 @@ Dari Tabel 2 terlihat bahwa:
 
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
+
 Untuk lebih memahami dataset yang digunakan, dilakukan Exploratory Data Analysis pada data sebagai berikut:
 
 ### Exploratory Data Analysis
@@ -230,19 +231,20 @@ Barplot untuk fitur 'ca' adalah:
 
 ![bar-plot-ca](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/b4a5e5ba-d631-4fcf-86fe-bb359631564b)
 
-Gambar 
+Gambar 7, Barplot fitur ca
 
-Kebanyakan dari pasien memiliki jumlah pembuluh darah utama 0 dengen 70,7% persentase, dimana sisanya 19% memiliki jumlah 1, 7,7% memiliki jumlah  2 and 2,6% memiliki jumlah 3 pembuluh darah utama.
+Dari Gambar 7 dapat diketahui bahwa kebanyakan dari pasien memiliki jumlah pembuluh darah utama 0 dengen 70,7% persentase, dimana sisanya 19% memiliki jumlah 1, 7,7% memiliki jumlah  2 dan 2,6% memiliki jumlah 3 pembuluh darah utama.
 
-##### thal (Thalassemia)
+##### thal (*Thalassemia*)
 Barplot untuk fitur 'tal' adalah:
 
 ![bar-plot-thal](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/b7bf20ce-50da-4fe3-bb03-e90241604db1)
 
+Gambar 8. Barplot fitur tal
 
-Kebanyakan pasien memiliki thalasemia normal and reversible defect dengan 48,5% and 45,9% persentase, sisanya memilki thalasemia fixed defect
+Berdasarkan informasi pada Gambar 8. Kebanyakan pasien memiliki *thalasemia* normal dan *reversible defect* dengan 48,5% and 45,9% persentase, sisanya memilki *thalasemia fixed defect*
 
-#### Univeariate Analysis - Fitur Numerik
+#### *Univeariate Analysis* - Fitur Numerik
 Analisis ini dilakukan dengan menggunakan histogram untuk fitur numerik.
 Fitur - fitur numerik pada dataset ini adalah : ['age','trestbps','chol','thalch','oldpeak']
 
@@ -250,45 +252,48 @@ Data histogram untuk fitur numerik adalah:
 
 ![histogram](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/f4a20956-1d75-4593-bb55-e93179eb7e34)
 
-Dari histogram diatas dapat disimpulkan:
+Gambar 9. Histogram fitur numerik
 
-1. **Age  :** Puncak dari data berada di akhir 50 an sampai 60 an
-2. **Trest bps (Tekanan Darah) :** Data terkonsentrasi pada kisaran 120-140 mmHg
+Dari Gambar 9 diatas dapat disimpulkan bahwa:
+
+1. ***Age*  :** Puncak dari data berada di akhir 50 an sampai 60 an
+2. ***Trest bps* (Tekanan Darah) :** Data terkonsentrasi pada kisaran 120-140 mmHg
 3. **Chol (Serum Kolestrol)  :** Kebanyakan pasien memiliki nilai Kolestrol antara 200 - 300
-4. **Thalch (Detak jantung maksimal yang dicapai)  :** MMayoritas pasien memperoleh nilai detak jantung 125 - 175 bpm selama tes.
-5. **Oldpeak (ST depresi yang diakibatkan oleh latihan)  :** Kebanyakan nilai terkonsentrasi pada nilai 0, hal ini mengindikasikan bahwa pasien tidak mengalami ST depresi yang signifikan selama latihan
+4. ***Thalch* (Detak jantung maksimal yang dicapai)  :** Mayoritas pasien memperoleh nilai detak jantung 125 - 175 bpm selama tes.
+5. ***Oldpeak* (ST depresi yang diakibatkan oleh latihan)  :** Kebanyakan nilai terkonsentrasi pada nilai 0, hal ini mengindikasikan bahwa pasien tidak mengalami ST depresi yang signifikan selama latihan
 
-### Bivariate Analysis
+### *Bivariate Analysis*
 
-Setelah melakukan univariate analyisis, selanjutnya dilakukan bivariate analayisis.
+Setelah melakukan *univariate analyisis*, selanjutnya dilakukan *bivariate analayisis*.
 1. Untuk data numerik: Mengguankan bar plots untuk menunjukkan nilai rata rata dari tiap fitur terhadap target, dan  KDE plots untuk memahami distribusi masing masing fitur terhadap target. Hal ini membantu dalam memahami bagaimana setiap fitur bervariasi antara dua hasil target.
 
-2. Untuk data kategori : Untuk melihat korelasi antara nilai kategori terhadap nilai target, digunakan Chi-square test of independence. Uji statistik ini menilai apakah terdapat hubungan yang signifikan antara dua variabel kategori.
+2. Untuk data kategori : Untuk melihat korelasi antara nilai kategori terhadap nilai target, digunakan *Chi-square test of independence*. Uji statistik ini menilai apakah terdapat hubungan yang signifikan antara dua variabel kategori.
 
-#### Bivariate Analysis - Data numerik vs Target
+#### *Bivariate Analysis* - Data numerik vs Target
 
-Plot untuk Bivariate Analysis - Data numerik vs Target adalah sebagai berikut:
+Plot untuk *Bivariate Analysis* - Data numerik vs Target adalah sebagai berikut:
 
 ![continous-features-vs-target](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/414e7861-b7d2-4448-8e3f-52edf75b4e30)
 
+Ganmbar 10. Fitur numerik vs target
 
-**Kesimpulan:**
+Dari Gambar 10 dapat ditarik kesimpulan:
 
-1. Usia (age): Distribusinya menunjukkan sedikit perubahan dengan rata-rata pasien yang menderita penyakit jantung sedikit lebih muda dibandingkan mereka yang tidak menderita penyakit jantung. Usia rata-rata pasien tanpa penyakit jantung lebih tinggi.
-2. Tekanan Darah Saat Istirahat (trestbps): Kedua kategori menampilkan distribusi yang tumpang tindih dalam plot KDE, dengan nilai rata-rata yang hampir sama, menunjukkan terbatasnya daya pembeda untuk fitur ini.
+1. Usia (*age*): Distribusinya menunjukkan sedikit perubahan dengan rata-rata pasien yang menderita penyakit jantung sedikit lebih muda dibandingkan mereka yang tidak menderita penyakit jantung. Usia rata-rata pasien tanpa penyakit jantung lebih tinggi.
+2. Tekanan Darah Saat Istirahat (*trestbps*): Kedua kategori menampilkan distribusi yang tumpang tindih dalam plot KDE, dengan nilai rata-rata yang hampir sama, menunjukkan terbatasnya daya pembeda untuk fitur ini.
 3. Kolesterol Serum (chol): Distribusi kadar kolesterol untuk kedua kategori tersebut cukup dekat, namun rata-rata kadar kolesterol pada pasien penyakit jantung sedikit lebih rendah.
-4. Pencapaian Denyut Jantung Maksimum (thalach): Ada perbedaan nyata dalam distribusi. Pasien dengan penyakit jantung cenderung mencapai detak jantung maksimum yang lebih tinggi selama tes stres dibandingkan dengan mereka yang tidak menderita penyakit jantung.
-5. ST Depresi (oldpeak): Depresi ST yang disebabkan oleh olahraga relatif lebih rendah pada pasien dengan penyakit jantung. Sebarannya mencapai puncaknya mendekati nol, sedangkan kategori non-penyakit memiliki penyebaran yang lebih luas.
+4. Pencapaian Denyut Jantung Maksimum (*thalach*): Ada perbedaan nyata dalam distribusi. Pasien dengan penyakit jantung cenderung mencapai detak jantung maksimum yang lebih tinggi selama tes stres dibandingkan dengan mereka yang tidak menderita penyakit jantung.
+5. ST Depresi (*oldpeak*): Depresi ST yang disebabkan oleh olahraga relatif lebih rendah pada pasien dengan penyakit jantung. Sebarannya mencapai puncaknya mendekati nol, sedangkan kategori non-penyakit memiliki penyebaran yang lebih luas.
 ------------------------
-Berdasarkan perbedaan visual dalam distribusi dan nilai rata-rata, Denyut Jantung Maksimum (thalach) tampaknya memiliki dampak paling besar terhadap status penyakit jantung, diikuti oleh ST Depresi (oldpeak) dan Usia (age).
+Berdasarkan perbedaan visual dalam distribusi dan nilai rata-rata, Denyut Jantung Maksimum (*thalach*) tampaknya memiliki dampak paling besar terhadap status penyakit jantung, diikuti oleh ST Depresi (*oldpeak*) dan Usia (*age*).
 
-Selain menggunakan Bar Plot dan KDE Plot, digunakan juga Correlation Matrix untuk melihat korelasi antar data numerik.
+Selain menggunakan Bar Plot dan KDE Plot, digunakan juga *Correlation Matrix* untuk melihat korelasi antar data numerik.
 
-![Correlation Matrix](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/blob/4c80a62d75623cc41f9444e56b661e4f19fbbd99/Image/correlation%20matrix.png 'Correlation Matrix')
+![correlation-matrix](https://github.com/Rizki-Kidut/Predictive-Analytics---UCI-Heart-Disease-Data/assets/116653612/cb51c2c0-f8f8-4dc6-9c77-39eb3fee7929)
 
-**Kesimpulan:**
+Gambar 11. *Correlation Matrix* data numerik dengan target
 
-Dari correlation matrix, ca (Number of major vessels (0-3) colored by fluoroscopy) adalah fitur pertama yang memiliki korelasi yang kuat dengan nilai target, dengan oldpeak (ST Depression) di urutan kedua dan age di urutan ketiga.
+Dari Gambar 11 dapat ditarik kesimpulan, bahwa ca (Number of major vessels (0-3) colored by fluoroscopy) adalah fitur pertama yang memiliki korelasi yang kuat dengan nilai target, dengan oldpeak (ST Depression) di urutan kedua dan age di urutan ketiga.
 
 #### Bivariate Analysis - Data kategori vs Target
 ​Hasil Chi-square test of independence untuk data kategori adalah sebagai berikut:
