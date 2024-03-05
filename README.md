@@ -720,43 +720,7 @@ Tahapan yang dilakukan untuk training model ini antara lain:
    Proses selanjutnya adalah proses *split* data menjadi data *train* dan data *test* dengan perbandingan 80:20 menggunakan fungsi "train_test_split". Agar hasil *modeling* dapat divalidasi oleh data *test*.
 
 4. *Train* data dengan 5 algortitma dengan menerapkan *tuning hyperparameter* menggunakan *GridSearchCV*
-   Proses selanjutnya adalah melakukan train data dengan menggunakan 5 algoritma serta melakukan *tuning hyperparameter*.
-   Algoritma dan hyperparameter yang digunakan dimasukan kedalam dictionary seperti berikut:
-   ```
-   models = {
-        'Random Forest': {
-        'model'  : RandomForestClassifier(random_state=42),
-        'params' :
-        {'model__n_estimators': [50, 100, 200],
-         'model__max_depth': [None, 10, 20]}
-        },
-        'K-Nearest Neighbors': {
-        'model'  :KNeighborsClassifier(),
-        'params' :
-        {'model__n_neighbors': [3, 5]},
-        },
-        'GaussianNB': {
-        'model'  : GaussianNB(),
-        'params' :
-        {},
-        },
-        'Ada Boost': {
-        'model': AdaBoostClassifier(random_state=42),
-        'params': {
-        'model__n_estimators': [50, 100, 200],
-        'model__learning_rate': [0.05, 0.1, 0.5]
-        },
-        },
-        'XG Boost': {
-        'model': XGBClassifier(random_state=42),
-        'params':
-        {
-        'model__n_estimators': [50, 100, 200],
-        'model__learning_rate': [0.05, 0.1, 0.5]
-        },
-        },
-   }
-   ```
+   Proses selanjutnya adalah melakukan train data dengan menggunakan 5 algoritma serta melakukan *tuning hyperparameter* sebagai berikut:
    
    - ***Random Forest***       : Untuk *Random Forest*, *hyperparameter* yang diguanakan adalah "*model__n_estimators*" dan "*model__max_depth*".
    - ***K-Nearest Neighbors*** : Untuk KNN, *hyperparameter* yang digunakan adalah "*model__n_neighbors*"
@@ -767,8 +731,6 @@ Tahapan yang dilakukan untuk training model ini antara lain:
    Model dilatih menggunakan kelima algoritma diatas dengan bantuan *GridSearchCV*, untuk mendapatkan hasil tuning hyperparameter terbaik dari tiap tiap algoritma. *GridSearchCV* akan melatih model menggunakan algoritma yang ditentukan menggunakan semua *hyperparameter* yang ditentukan. *GridSearchCV* akan menggunakan *setting hyperparameter* terbaik untuk ditampilkan sebagai *output*.
    Matriks evaluasi yang digunakan adalah *Accuracy*, *Precision*, *Recall* ,dan *F1 Score*.
 
-   
-**Rubrik/Kriteria Tambahan (Opsional)**: 
 Berikut adalah penjelasan singkat dari algoritma yang digunakan dalam proyek ini:
 
 **1. *Random Forest***
@@ -959,8 +921,6 @@ Tabel 16. Nilai metrik untuk *Ada Boost*
 ## Evaluation
 Metrik yang digunakan untuk permasalahan *Multiclass Classification* ini adalah *Accuracy*, *Precision*, *Recall*, dan *F1 Score*. Penjelasan untuk masing masing metrik adalah sebagai berikut:
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-
 1. *Accuracy*
    
    *Accuracy* adalah metrik yang mengukur seberapa sering model *machine learning* memprediksi hasil dengan benar. Anda dapat menghitung akurasi dengan membagi jumlah prediksi yang benar dengan jumlah total prediksi.
@@ -1149,6 +1109,17 @@ Tabel 17. Hasil prediksi algoritma
 |  562  |    1   |            1           |               1              |          1          |          1         |         1         |
 
 Dari Tabel 17, dapat ditarik kesimpulan bahwa dari kelima algoritma yang digunakan Algoritma Random Forest, Ada Boost dan XG Boost dapat memprediksi kelima nilai target dengan benar. Sedangkan algoritma KNN dapat memprediksi 4 dari 5 nilai target dan GaussianNB hanya dapat memprediksi 3 dari 5 nilai target.
+
+Dari Tabel 16 dan Tabel 17 dapat ditarik kesimpulan bahwa model *machine learning* yang dibuat sudah dapat mendeteksi penyakit jantung dari fitur fitur pada dataset, meskipun nilai *accuracy*, *precision*, *recall*, dan *F1 score* masih berada dibawah 80%. Hal ini menunjukkan masih perlu dilakukan perbaikan dari *tuning hyperparameter* maupun dari proses data *preparation*.
+
+Jawaban dari *problem statement* adalah sebagai berikut:
+- Dari serangkaian fitur yang ada, fitur apa yang peling berpengaruh terhadap risiko penyakit jantung?
+
+  Dari Gambar 11 *Correltion Matrix* dapat ditarik kesimpulan, bahwa ca ( Jumlah pembuluh darah mayor (0-3) diwarnai oleh *fluoroscopy*) adalah fitur pertama yang memiliki korelasi yang kuat dengan nilai target, dengan *oldpeak* (ST Depression) di urutan kedua dan *age* di urutan ketiga.
+  
+- Apakah resiko penyakit jantung pasien dapat dideteksi secara dini?
+
+  Risiko penyakit jantung dapat dideteksi dengan model yang dibuat (Algoritma terbaik *Ada Boost*), meskipun performa model menunjukkan masih perlu dilakukan perbaikan dari segi *tuning hyperparameter* dan proses pembersihan data agar dapat dihasilkan performa yang lebih baik lagi dalam mendeteksi risiko penyakit jantung
 
 
   Format Referensi: 
