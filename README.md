@@ -283,7 +283,7 @@ Gambar 11. *Correlation Matrix* data numerik dengan target
 Dari Gambar 11 dapat ditarik kesimpulan, bahwa ca ( Jumlah pembuluh darah mayor (0-3) diwarnai oleh *fluoroscopy*) adalah fitur pertama yang memiliki korelasi yang kuat dengan nilai target, dengan *oldpeak* (ST Depression) di urutan kedua dan *age* di urutan ketiga.
 
 #### *Bivariate Analysis* - Data kategori vs Target
-​Hasil *Chi-square test of independence* untuk data kategori adalah sebagai berikut:
+Hasil *Chi-square test of independence* untuk data kategori adalah sebagai berikut:
 
 Chi-square statistic for sex: 65.9822706513826
 
@@ -448,7 +448,7 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      Hal ini bersifat iteratif karena proses ini diulang beberapa kali, sehingga estimasi nilai yang hilang dapat dihitung dengan lebih baik seiring dengan estimasi nilai yang hilang di seluruh fitur.
 
      Algoritma regresi yang berbeda dapat digunakan untuk memperkirakan nilai yang hilang untuk setiap fitur, meskipun metode linier sering kali digunakan untuk kesederhanaan. Jumlah iterasi suatu prosedur seringkali dibuat kecil, misalnya 10. Terakhir, urutan fitur yang diproses secara berurutan dapat dipertimbangkan, seperti dari fitur dengan nilai yang hilang paling sedikit ke fitur dengan nilai yang hilang paling banyak.
-​
+
    - Cek hasil penanganan *missing values*
    
      Setelah dilakukan proses *Iterative Imputer* tersebut, hasil pengecekan *missing values* mendapatkan hasil sebagai berikut:
@@ -475,24 +475,21 @@ Adapun detail dari proses-proses tersebut adalah sebagai berikut:
      dtype: int64
 
      *Missing values* adalah masalah umum dalam proyek *machine learning* dan ilmu data. Kegagalan dalam menangani *missing values* dengan benar dapat mengganggu hasil model *machine learning* atau mengurangi akurasi model. Untuk mengatasi hambatan ini, perlu dilakukan penanganan nilai-nilai yang hilang secara hati-hati. Tujuan dari penanganan *missing values* adalah membuat kumpulan data lengkap yang akan menempatkan analisis pada landasan yang kokoh. Mengabaikan data yang hilang dapat secara langsung memengaruhi performa dan keandalan dari model .
-​
+
 2. Menangani *Outliers*,
    - Melakukan inspeksi outliers dengan metode IQR
      IQR adalah *interquartile rang*e atau rentang akar kuartil dari sekumpulan data. IQR digunakan dalam analisis statistik untuk membantu menarik kesimpulan mengenai sekumpulan data. IQR lebih sering digunakan daripada range karena IQR tidak menyertakan data paling luar.
      Secara matematis, IQR dapat dirumuskan sebagai berikut:
 
      $$IQR = Q3 - Q1$$
-
-
+     
      Dengan Q1 adalah nilai di antara median dengan data terkecil atau dapat dikatakan *25th Percentile* sedang Q3 adalah nilai di antara median dengan data terbesar atau dapat dikatakan *75th Percentile*. Untuk menentukan *outliers*, perlu di tetapkan nilai batas atas dan batas bawah. Adapun rumus untuk batas atas dan batas bawah adalah:
-
-    
+     
      $$Batas Atas = Q3 + 1.5 * IQR$$
      
      $$Batas Bawah = Q1 - 1.5 * IQR$$
    
-
-     Maka dengan menggunakan perhitungan IQR tersebut, didapat *outliers* pada dataset ini adalah sebagai berikut:
+        Maka dengan menggunakan perhitungan IQR tersebut, didapat *outliers* pada dataset ini adalah sebagai berikut:
      
      Tabel 6. Jumlah *Outliiers* pada dataset
      
@@ -1131,3 +1128,4 @@ Jawaban dari *problem statement* adalah sebagai berikut:
 
 
 **---Ini adalah bagian akhir laporan---**
+
