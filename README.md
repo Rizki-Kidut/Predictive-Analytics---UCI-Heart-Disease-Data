@@ -4,8 +4,6 @@
 
 Penyakit jantung koroner adalah salah satu penyebab utama kematian di seluruh dunia. Memprediksi penyakit jantung adalah salah satu tugas yang paling menantang di bidang analisis data klinis. *Machine learning (ML)* berguna dalam bantuan diagnostik dalam hal pengambilan keputusan dan prediksi berdasarkan data yang dihasilkan oleh sektor perawatan kesehatan secara global. Teknik ML sudah banyak digunakan dalam bidang medis untuk prediksi penyakit. Dalam hal ini, banyak studi penelitian telah ditunjukkan pada prediksi penyakit jantung menggunakan pengklasifikasi ML.
 
-**Rubrik/Kriteria Tambahan**:
-
 Menurut Organisasi Kesehatan Dunia [1], CVD adalah penyebab kematian terbesar di dunia, yang mengakibatkan kematian sekitar 17,9 juta orang setiap tahunnya. 
 
 Industri perawatan kesehatan menghasilkan banyak data mengenai pasien, penyakit, dan diagnosis, tetapi tidak dianalisis dengan benar, sehingga tidak memiliki dampak yang sama seperti yang seharusnya pada kesehatan pasien[1]
@@ -37,7 +35,6 @@ Untuk menjawab pertanyaan tersebut akan dibuatkan Model *Predictive Analysis* un
 - Mengetahui fitur yang paling berpengaruh terhadap risiko penyakit jantung
 - Membuat model *machine learning* yang dapat mendeteksi risiko penyakit jantung dengan akurasi terbaik
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
 
 ### Solution statements
 
@@ -149,8 +146,6 @@ Dari Tabel 2 terlihat bahwa:
 4. *oldpeak*:
    Nilai minimal adalah -2.6, hal tersebut mengindikasikan *outliers* pada fitur ini
 
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
 
 Untuk lebih memahami dataset yang digunakan, dilakukan Exploratory Data Analysis pada data sebagai berikut:
 
@@ -276,7 +271,7 @@ Dari Gambar 10 dapat ditarik kesimpulan:
 3. Kolesterol Serum (chol): Distribusi kadar kolesterol untuk kedua kategori tersebut cukup dekat, namun rata-rata kadar kolesterol pada pasien penyakit jantung sedikit lebih rendah.
 4. Pencapaian Denyut Jantung Maksimum (*thalach*): Ada perbedaan nyata dalam distribusi. Pasien dengan penyakit jantung cenderung mencapai detak jantung maksimum yang lebih tinggi selama tes stres dibandingkan dengan mereka yang tidak menderita penyakit jantung.
 5. ST Depresi (*oldpeak*): Depresi ST yang disebabkan oleh olahraga relatif lebih rendah pada pasien dengan penyakit jantung. Sebarannya mencapai puncaknya mendekati nol, sedangkan kategori non-penyakit memiliki penyebaran yang lebih luas.
-------------------------
+
 Berdasarkan perbedaan visual dalam distribusi dan nilai rata-rata, Denyut Jantung Maksimum (*thalach*) tampaknya memiliki dampak paling besar terhadap status penyakit jantung, diikuti oleh ST Depresi (*oldpeak*) dan Usia (*age*).
 
 Selain menggunakan Bar Plot dan KDE Plot, digunakan juga *Correlation Matrix* untuk melihat korelasi antar data numerik.
@@ -389,7 +384,7 @@ Maka proses data preparation yang dilakukan adalah sebagai barikut:
    - Melakukan penanganan *outliers* satu per satu pada fitur
    - Cek hasil penanganan *outliers*
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
+
 Adapun detail dari proses-proses tersebut adalah sebagai berikut:
 
 1. Menangani *Missing Values*
